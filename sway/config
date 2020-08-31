@@ -1,0 +1,180 @@
+# Flagrantior config for sway
+set $mod Mod4
+set $term "swaymsg 'input type:keyboard xkb_switch_layout 0' && alacritty"
+set $menu "swaymsg 'input type:keyboard xkb_switch_layout 0' && rofi -show run -font 'Hurmit Nerd Font 11' -run-command 'swaymsg exec {cmd}'"
+
+### Input configuration:
+#   input "2:14:SynPS/2_Synaptics_TouchPad" {
+#       dwt enabled
+#       tap enabled
+#       natural_scroll enabled
+#       middle_emulation enabled
+#   }
+
+# Main hotkeys
+bindsym --to-code $mod+Return exec $term
+bindsym --to-code $mod+t exec $term
+bindsym --to-code $mod+q kill
+bindsym --to-code $mod+d exec --no-startup-id $menu
+floating_modifier $mod normal
+bindsym --to-code $mod+Shift+r reload
+bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+bindsym --to-code $mod+grave exec killall -SIGUSR1 waybar
+
+# Moving focus
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+	
+# Moving windows
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+    
+# Switch to workspace
+bindsym $mod+tab workspace back_and_forth
+bindsym alt+tab workspace back_and_forth
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+# Move focused to workspace
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+    
+# Set split axis
+bindsym $mod+Control+Left splith
+bindsym $mod+Control+Right splith
+bindsym $mod+Control+Up splitv
+bindsym $mod+Control+Down splitv
+
+# Switch the current window layout style
+#bindsym $mod+s layout stacking
+bindsym --to-code $mod+s sticky toggle
+bindsym --to-code $mod+e layout toggle split
+bindsym --to-code $mod+w layout tabbed
+
+# Toggle fullscreen
+bindsym --to-code $mod+f fullscreen
+
+# Toggle float
+bindsym $mod+space floating toggle
+
+# Swap focus between tliing and floating area
+bindsym $mod+Shift+space focus mode_toggle
+
+# Move focus to the parent
+bindsym $mod+a focus parent
+
+# Scratchpad
+bindsym $mod+KP_Subtract move scratchpad
+bindsym $mod+KP_Add scratchpad show
+
+# Resize
+bindsym $mod+Alt+Left resize shrink width 10px
+bindsym $mod+Alt+Down resize grow height 10px
+bindsym $mod+Alt+Up resize shrink height 10px
+bindsym $mod+Alt+Right resize grow width 10px
+
+# Statusbar
+bar {
+	swaybar_command waybar
+}
+
+# Input layouts
+input type:keyboard {
+	xkb_layout us,ru
+	xkb_options grp:alt_shift_toggle
+	xkb_numlock enabled
+}
+input type:touchpad {
+	dwt enabled
+	tap enabled
+	middle_emulation enabled
+	tap_button_map lrm
+}
+
+# Screenrecord
+bindsym --to-code $mod+Shift+s exec 'grim -g "$(slurp -b 00000055 -c ffffff -w 2)" - | wl-copy'
+bindsym Print exec 'grim - | wl-copy'
+bindsym --to-code $mod+Shift+a exec wf-recorder -g "$(slurp -b 00000055 -c ffffff -w 2)"
+bindsym --to-code $mod+Shift+d exec killall --signal 2 wf-recorder
+
+# Locker
+set $locker swaylock -c 000000 --font "Hurmit Nerd Font Mono" --line-color fff --ring-color fff -n --key-hl-color fff -l --inside-ver-color 000000 --ring-ver-color 000000 --indicator-thickness 10 --ring-color 000000 --inside-wrong-color 000000 --ring-wrong-color ff0000 --bs-hl-color ff0000 --inside-clear-color 000000 --ring-clear-color ffffff -K
+bindsym --to-code $mod+Shift+x exec swaymsg "input type:keyboard xkb_switch_layout 0" && swaylock -c 00000000 --font "Hurmit Nerd Font Mono" --line-color fff --ring-color fff -n --key-hl-color fff -l --inside-ver-color 000000 --ring-ver-color 000000 --indicator-thickness 10 --ring-color 000000 --inside-wrong-color 000000 --ring-wrong-color ff0000 --bs-hl-color ff0000 --inside-clear-color 000000 --ring-clear-color ffffff -K
+bindsym --to-code $mod+x exec swaymsg "input type:keyboard xkb_switch_layout 0" && $locker
+bindsym --to-code $mod+z exec swaymsg "input type:keyboard xkb_switch_layout 0" && systemctl suspend && $locker
+bindsym --to-code $mod+h exec swaymsg "input type:keyboard xkb_switch_layout 0" && systemctl hibernate && $locker
+
+# class                 border  backgr. text    indicator child_border
+client.focused          #000000 #000000 #ffffff #000000   #000000
+client.focused_inactive #000000 #000000 #ffffff #000000   #000000
+client.unfocused        #000000 #000000 #888888 #000000   #000000
+client.urgent           #2f343a #900000 #ffffff #900000   #900000
+client.background       #000000
+
+# Appearance
+output * bg #000000 solid_color
+seat seat0 xcursor_theme Dot-Dark
+seat seat0 hide_cursor 1500
+exec_always {
+	gsettings set org.gnome.desktop.interface cursor-theme Dot-Dark
+	gsettings set org.gnome.desktop.interface gtk-theme Flagrantior
+}
+
+# Reboot
+bindsym XF86Launch1 exec "reboot"
+
+# Brightness
+bindsym XF86MonBrightnessUp exec --no-startup-id "light -s sysfs/backlight/intel_backlight -A 1"
+bindsym Shift+XF86MonBrightnessUp exec --no-startup-id "light -s sysfs/backlight/intel_backlight -A 0.1"
+bindsym XF86MonBrightnessDown exec --no-startup-id "light -s sysfs/backlight/intel_backlight -U 1"
+bindsym Shift+XF86MonBrightnessDown exec --no-startup-id "light -s sysfs/backlight/intel_backlight -U 0.1"
+
+# Volume
+bindsym XF86AudioRaiseVolume exec --no-startup-id "pactl set-sink-volume 0 +5%"
+bindsym XF86AudioLowerVolume exec --no-startup-id "pactl set-sink-volume 0 -5%"
+bindsym XF86AudioMute exec --no-startup-id "pactl set-sink-mute 0 toggle"
+
+# Dusable titlebar
+font [pango:] none 0
+titlebar_border_thickness 0
+titlebar_padding 0
+
+# Notifications
+exec mako --background-color \#000000FF --font "Hurmit Nerd Font 10" --actions 1 --max-visible 5 --border-color \#00FFFFFF --text-color \#00FFFFFF --border-size 2
+
+#autotiling
+#exec autotiling
+
+# Apps
+bindsym --to-code $mod+n exec nemo
+bindsym --to-code $mod+Shift+f exec firefox
+bindsym --to-code $mod+Shift+t exec telegram
+bindsym --to-code $mod+Shift+b exec primusrun blender
+bindsym --to-code $mod+Shift+m exec primusrun mctlauncher
+bindsym --to-code $mod+b exec alacritty -e watch -n0.5 acpi
+
+#playerctl
+bindsym --to-code $mod+alt+KP_add exec playerctl next
+bindsym --to-code $mod+alt+KP_subtract exec playerctl previous
+bindsym --to-code $mod+alt+KP_multiply exec playerctl play-pause
+
