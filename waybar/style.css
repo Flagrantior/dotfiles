@@ -1,0 +1,47 @@
+* {
+    border: none;
+    border-radius: 0;
+    font-family: Hurmit Nerd Font Mono;
+    font-size: 12px;
+    min-height: 0;
+}
+
+window#waybar {
+    background: #000;
+    color: #0cf;
+}
+
+window#waybar.hidded {
+    opacity: 0.0;
+}
+
+#network {
+	padding-left: 20px;
+}
+
+#workspaces button {
+	color: #0df;
+}
+
+#workspaces button:hover {
+	background: black;
+}
+
+#workspaces button.focused {
+}
+
+#clock, #battery, #temperature, #backlight, #pulseaudio, #memoru, #cpu, #disk {
+    padding: 0 10px;
+}
+
+#tray {
+}
+
+#battery.warning {
+	background: black;
+	color: yellow;
+}
+
+#battery.critical {
+	color: red;
+}
