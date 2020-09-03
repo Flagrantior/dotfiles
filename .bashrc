@@ -1,0 +1,45 @@
+# ~/.bashrc
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+PS1='\[\033[1;35m\]>\[\033[0m\]'
+source /usr/share/autojump/autojump.bash
+alias pacman='sudo pacman --color always'
+alias pingg='ping google.com'
+alias wifi='sudo wifi-menu'
+alias yay='yay --color always'
+alias ls='ls --color=auto'
+alias pyserv='python -m http.server'
+alias py='python'
+#alias factorio='~/Games/Factorio/run.sh'
+alias mount='sudo mount'
+alias umount='sudo umount'
+alias pyserv='python -m http.server'
+alias weather='curl wttr.in/Spb?0 --silent --max-time 3'
+alias weather1='curl wttr.in/Spb?1 --silent --max-time 3'
+alias weather2='curl wttr.in/Spb?2 --silent --max-time 3'
+alias weather3='curl wttr.in/Spb?3 --silent --max-time 3'
+alias sshf='ssh u0862558@flagrantior.art'
+alias ableton='wine64 ~/.wine/drive_c/ProgramData/Ableton/Live\ 10\ Suite/Program/Ableton\ Live\ 10\ Suite.exe'
+alias grep='rg'
+alias ls='exa -a'
+alias ll='exa -la'
+alias off='systemctl poweroff'
+alias hiber='systemctl hibernate'
+alias susp='systemctl suspend'
+#alias sway='--my-next-gpu-wont-be-nvidia'
+alias minecraft='mctlauncher'
+alias prime='primusrun'
+alias wioff='sudo ip link set wlp3s0 down'
+alias widown='sudo ip link set wlp3s0 down'
+alias wiup='sudo ip link set wlp3s0 up'
+alias wion='sudo ip link set wlp3s0 up'
+alias vim='nvim'
+alias fzf='fzf --color=16,hl:#ffffff,fg+:#ff00ff,hl+:#ffffff,prompt:#00ffff,pointer:#ffff00,spinner:#ff00ff,info:#ff00ff -m'
+alias btr='watch -n0.5 acpi'
+alias sctl='sudo systemctl'
+alias netctl='sudo netctl'
+
+reset-cursor() {
+	printf '\[\033[3 q\]'
+}
+export PS1="$(reset-cursor)$PS1"
