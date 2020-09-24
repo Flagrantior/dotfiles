@@ -4,6 +4,7 @@ call plug#begin()
 	Plug 'kien/ctrlp.vim'
 	Plug 'mattn/emmet-vim'
 	Plug 'preservim/nerdtree', {'on': 'NERDTreeToggle'}
+	Plug 'preservim/nerdcommenter'
 	Plug 'vim-airline/vim-airline'
 	Plug 'vim-airline/vim-airline-themes'
 "	Plug 'majutsushi/tagbar'
@@ -33,6 +34,7 @@ let g:airline_symbols.whitespace = ''
 let g:airline_theme='monochrome'
 map <C-t>     :tabnew<CR>
 map <C-x> :NERDTreeToggle<CR>
+map <C-_> <plug>NERDCommenterToggle
 map <S-t>     :tabclose<CR>
 map <Space> <Plug>(easymotion-overwin-f)
 set gdefault
