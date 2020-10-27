@@ -5,7 +5,7 @@
 //	"width": 1280, // Waybar width
 //	"modules-left": ["tray", "network"],
     "modules-left": ["sway/workspaces"],
-    "modules-right": ["pulseaudio", "cpu", "memory", "disk", "battery", "clock"],
+    "modules-right": ["pulseaudio", "backlight", "cpu", "memory", "disk", "battery", "clock"],
     "sway/workspaces": {
         "disable-scroll": true,
         "all-outputs": true,
@@ -56,10 +56,12 @@
 //		"format-critical": "{temperatureC}°C",
         "format": "t{temperatureC}"
     },
-//	"backlight": {
-//		"device": "acpi_video1",
-//		"format": "b{percent}"
-//	},
+	"backlight": {
+		"device": "acpi_video1",
+		"format": "i{percent}",
+		"on-scroll-up": "BR=$(cat /sys/class/backlight/amdgpu_bl0/brightness); echo $(($BR+10)) > /sys/class/backlight/amdgpu_bl0/brightness",
+		"on-scroll-down": "BR=$(cat /sys/class/backlight/amdgpu_bl0/brightness); echo $(($BR-10)) > /sys/class/backlight/amdgpu_bl0/brightness"
+	},
     "battery": {
         "states": {
 //			"good": 95,

@@ -1,7 +1,7 @@
 # Flagrantior config for sway
 set $mod Mod4
 set $term "swaymsg 'input type:keyboard xkb_switch_layout 0' && alacritty"
-set $menu "swaymsg 'input type:keyboard xkb_switch_layout 0' && rofi -show run -font 'Hurmit Nerd Font 11' -run-command 'swaymsg exec {cmd}'"
+set $menu rofi -show run -lines 5 -columns 1 -padding 10 -bw 1 -line-padding 0 -line-margin 0 -hide-scrollbar -color-normal "#000000, #ff00ff, #000000, #000000, #00ffff" -color-window "#000000, #ff00ff, #000000" -color-active "#ffffff, #ffffff, #ffffff, #ffffff, #ffffff" -font "Hurmit Nerd Font 12" -width 25 -scroll-method 1
 
 ### Input configuration:
 #   input "2:14:SynPS/2_Synaptics_TouchPad" {
@@ -26,13 +26,13 @@ bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
-	
+
 # Moving windows
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
-    
+
 # Switch to workspace
 bindsym $mod+tab workspace back_and_forth
 bindsym alt+tab workspace back_and_forth
@@ -144,15 +144,21 @@ exec_always {
 bindsym XF86Launch1 exec "reboot"
 
 # Brightness
-bindsym XF86MonBrightnessUp exec --no-startup-id "light -s sysfs/backlight/intel_backlight -A 1"
-bindsym Shift+XF86MonBrightnessUp exec --no-startup-id "light -s sysfs/backlight/intel_backlight -A 0.1"
-bindsym XF86MonBrightnessDown exec --no-startup-id "light -s sysfs/backlight/intel_backlight -U 1"
-bindsym Shift+XF86MonBrightnessDown exec --no-startup-id "light -s sysfs/backlight/intel_backlight -U 0.1"
+#bindsym XF86MonBrightnessUp exec --no-startup-id "light -s sysfs/backlight/intel_backlight -A 1"
+#bindsym Shift+XF86MonBrightnessUp exec --no-startup-id "light -s sysfs/backlight/intel_backlight -A 0.1"
+#bindsym XF86MonBrightnessDown exec --no-startup-id "light -s sysfs/backlight/intel_backlight -U 1"
+#bindsym Shift+XF86MonBrightnessDown exec --no-startup-id "light -s sysfs/backlight/intel_backlight -U 0.1"
+
+bindsym XF86MonBrightnessUp exec --no-startup-id "BR=$(cat /sys/class/backlight/amdgpu_bl0/brightness); echo $(($BR+10)) > /sys/class/backlight/amdgpu_bl0/brightness"
+bindsym XF86MonBrightnessDown exec --no-startup-id "BR=$(cat /sys/class/backlight/amdgpu_bl0/brightness); echo $(($BR-10)) > /sys/class/backlight/amdgpu_bl0/brightness"
+
 
 # Volume
 bindsym XF86AudioRaiseVolume exec --no-startup-id "pactl set-sink-volume 0 +5%"
 bindsym XF86AudioLowerVolume exec --no-startup-id "pactl set-sink-volume 0 -5%"
 bindsym XF86AudioMute exec --no-startup-id "pactl set-sink-mute 0 toggle"
+
+
 
 # Dusable titlebar
 font [pango:] none 0
