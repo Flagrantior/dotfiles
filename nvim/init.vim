@@ -49,5 +49,10 @@ set smartcase
 set softtabstop=4
 set tabstop=4
 syntax on
-
 hi Comment ctermfg=DarkRed
+
+"hi LineNr ctermfg=Black
+"set number
+"set cursorline
+"highlight clear CursorLine
+"highlight CursorLineNR ctermfg=DarkMagenta
