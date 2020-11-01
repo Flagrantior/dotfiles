@@ -4,7 +4,7 @@ cd $(dirname "$0")
 
 pacman -Syu
 pacman -S yay
-yay -S base base-devel networkmanager neovim exa autojump ripgrep wayland xwayland sway waybar alacritty rofi-lbonn-wayland-git slurp wl-clipboard grim nemo
+yay -S base base-devel networkmanager neovim exa autojump ripgrep wayland xwayland sway waybar alacritty rofi-lbonn-wayland-git slurp wl-clipboard grim nemo xcursor-thedot
 
 cp .bashrc ~/.bashrc
 cp .bash_profile ~/.bash_profile
@@ -19,5 +19,7 @@ if [[ $(echo 9c15f5d3d6f3f8ad63a6927ba78ed54f1a52176b strap.sh | sha1sum -c) = "
 	sudo ./strap.sh
 	sudo pacman -Syu
 fi
+
+echo -e "[Icon Theme]\nInherits=TheDOT-dark" | sudo tee /usr/share/icons/default/index.theme
 
 mkdir ~/Projects
