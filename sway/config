@@ -68,8 +68,8 @@ bindsym $mod+Control+Down splitv
 # Switch the current window layout style
 #bindsym $mod+s layout stacking
 bindsym --to-code $mod+s sticky toggle
-bindsym --to-code $mod+e layout toggle split
-bindsym --to-code $mod+w layout tabbed
+bindsym --to-code $mod+w layout toggle split
+bindsym --to-code $mod+e layout tabbed
 
 # Toggle fullscreen
 bindsym --to-code $mod+f fullscreen

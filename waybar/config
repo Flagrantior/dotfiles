@@ -37,10 +37,10 @@
         "spacing": 10
     },
     "clock": {
-//		"timezone": "America/New_York",
+//		"timezone": "Europe/Moscow",
 		"format": "{:%H%M}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><big>{calendar}</big></tt>",
-        "format-alt": "{:%d_%w/%m}"
+        "format-alt": "{:%w:%d/%m}"
     },
     "cpu": {
         "format": "c{usage}",
@@ -58,7 +58,7 @@
     },
 	"backlight": {
 		"device": "acpi_video1",
-		"format": "i{percent}",
+		"format": "b{percent}",
 		"on-scroll-up": "BR=$(cat /sys/class/backlight/amdgpu_bl0/brightness); echo $(($BR+10)) > /sys/class/backlight/amdgpu_bl0/brightness",
 		"on-scroll-down": "BR=$(cat /sys/class/backlight/amdgpu_bl0/brightness); echo $(($BR-10)) > /sys/class/backlight/amdgpu_bl0/brightness"
 	},
@@ -68,11 +68,11 @@
             "warning": 30,
             "critical": 15
         },
-        "format": "DISCHARGING b{capacity}",
+        "format": "p{capacity}",
         "format-charging": "p{capacity}+",
         "format-alt": "{time}",
 //		"format-good": "", // An empty format will hide the module
-		"format-full": "bF"
+		"format-full": "pF"
     },
     "network": {
 		"interface": "wlp3s0", // (Optional) To force the use of this interface
