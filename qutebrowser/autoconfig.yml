@@ -158,7 +158,7 @@ settings:
       D: https://duckduckgo.com/?q={}
       DEFAULT: https://www.google.com/search?q={}
       W: https://ru.wikipedia.org/wiki/{}
-      WENG: https://en.wikipedia.org/wiki/{}
+      We: https://en.wikipedia.org/wiki/{}
       Y: https://www.youtube.com/results?search_query={}
   url.start_pages:
     global: https://www.google.com
