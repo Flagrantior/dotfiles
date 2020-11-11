@@ -1,7 +1,7 @@
 # Flagrantior config for sway
 set $mod Mod4
 set $term "swaymsg 'input type:keyboard xkb_switch_layout 0' && alacritty"
-set $menu rofi -show run -lines 5 -columns 1 -padding 10 -bw 1 -line-padding 0 -line-margin 0 -hide-scrollbar -color-normal "#000000, #ff00ff, #000000, #000000, #00ffff" -color-window "#000000, #ff00ff, #000000" -color-active "#ffffff, #ffffff, #ffffff, #ffffff, #ffffff" -font "Hurmit Nerd Font 12" -width 25 -scroll-method 1
+set $menu rofi -show run -lines 5 -columns 1 -padding 10 -bw 1 -line-padding 0 -line-margin 0 -hide-scrollbar -color-normal "#000000, #ff00ff, #000000, #000000, #00ffff" -color-window "#000000, #ff00ff, #000000" -color-active "#ffffff, #ffffff, #ffffff, #ffffff, #ffffff" -font "Hurmit Nerd Font 12" -width 25 -scroll-method 1 -run-command 'sway exec {cmd}'
 
 ### Input configuration:
 #   input "2:14:SynPS/2_Synaptics_TouchPad" {
