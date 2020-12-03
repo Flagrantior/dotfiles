@@ -36,10 +36,9 @@ let g:airline_symbols.readonly = ''
 let g:airline_symbols.whitespace = ''
 let g:airline_theme='monochrome'
 
-map <C-t>     :tabnew<CR>
+map <C-t> :tabnew<CR>
+map <S-t> :tabclose<CR>
 nmap <C-x> :NERDTreeToggle<CR>
-map <C-_> <plug>NERDCommenterToggle
-map <S-t>     :tabclose<CR>
 nmap <Space> <Plug>(easymotion-overwin-f)
 
 set mouse=a
