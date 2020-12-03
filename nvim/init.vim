@@ -10,12 +10,15 @@ call plug#begin()
 "	Plug 'majutsushi/tagbar'
 "	Plug 'mattn/emmet-vim'
 "	Plug 'terryma/vim-multiple-cursors'
-"	Plug 'valloric/youcompleteme'
+	Plug 'valloric/youcompleteme'
 call plug#end()
 
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
+
+scriptencoding utf-8
+set encoding=utf-8
 
 let g:airline_left_alt_sep = ''
 let g:airline_left_sep = ''
@@ -42,7 +45,8 @@ set guifont=Source\ Code\ Pro\ for\ Powerline:h15:cANSI
 set hlsearch
 set ignorecase
 set incsearch
-set list
+set list listchars=tab:\ \ ,trail:_
+set showbreak=\\\ 
 set noexpandtab
 set shiftwidth=4
 set smartcase
