@@ -35,11 +35,14 @@ let g:airline_symbols.paste = 'ρ'
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.whitespace = ''
 let g:airline_theme='monochrome'
+
 map <C-t>     :tabnew<CR>
-map <C-x> :NERDTreeToggle<CR>
+nmap <C-x> :NERDTreeToggle<CR>
 map <C-_> <plug>NERDCommenterToggle
 map <S-t>     :tabclose<CR>
-map <Space> <Plug>(easymotion-overwin-f)
+nmap <Space> <Plug>(easymotion-overwin-f)
+
+set mouse=a
 set gdefault
 set guifont=Source\ Code\ Pro\ for\ Powerline:h15:cANSI
 set hlsearch
