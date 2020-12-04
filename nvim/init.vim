@@ -38,7 +38,8 @@ let g:airline_theme='monochrome'
 
 map <C-t> :tabnew<CR>
 map <S-t> :tabclose<CR>
-nmap <C-x> :NERDTreeToggle<CR>
+nmap <C-x> NERDTreeToggle<CR>
+nmap <C-_> <Plug>NERDCommenterToggle
 nmap <Space> <Plug>(easymotion-overwin-f)
 
 set mouse=a
