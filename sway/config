@@ -149,8 +149,8 @@ bindsym XF86Launch1 exec "reboot"
 #bindsym XF86MonBrightnessDown exec --no-startup-id "light -s sysfs/backlight/intel_backlight -U 1"
 #bindsym Shift+XF86MonBrightnessDown exec --no-startup-id "light -s sysfs/backlight/intel_backlight -U 0.1"
 
-bindsym XF86MonBrightnessUp exec --no-startup-id "BR=$(cat /sys/class/backlight/amdgpu_bl0/brightness); echo $(($BR+10)) > /sys/class/backlight/amdgpu_bl0/brightness"
-bindsym XF86MonBrightnessDown exec --no-startup-id "BR=$(cat /sys/class/backlight/amdgpu_bl0/brightness); echo $(($BR-10)) > /sys/class/backlight/amdgpu_bl0/brightness"
+bindsym XF86MonBrightnessUp exec --no-startup-id "BR=$(cat /sys/class/backlight/radeon_bl0/brightness); echo $(($BR+10)) > /sys/class/backlight/radeon_bl0/brightness"
+bindsym XF86MonBrightnessDown exec --no-startup-id "BR=$(cat /sys/class/backlight/radeon_bl0/brightness); echo $(($BR-10)) > /sys/class/backlight/radeon_bl0/brightness"
 
 
 # Volume
