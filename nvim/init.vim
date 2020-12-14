@@ -7,10 +7,10 @@ call plug#begin()
 	Plug 'preservim/nerdcommenter'
 	Plug 'vim-airline/vim-airline'
 	Plug 'vim-airline/vim-airline-themes'
-"	Plug 'majutsushi/tagbar'
-"	Plug 'mattn/emmet-vim'
-"	Plug 'terryma/vim-multiple-cursors'
-	Plug 'valloric/youcompleteme'
+	"Plug 'majutsushi/tagbar'
+	"Plug 'mattn/emmet-vim'
+	"Plug 'terryma/vim-multiple-cursors'
+	"Plug 'valloric/youcompleteme'
 call plug#end()
 
 if !exists('g:airline_symbols')
@@ -49,7 +49,7 @@ set hlsearch
 set ignorecase
 set incsearch
 set list listchars=tab:\ \ ,trail:_
-set showbreak=\\\ 
+set showbreak=\\
 set noexpandtab
 set shiftwidth=4
 set smartcase

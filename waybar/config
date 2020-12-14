@@ -57,10 +57,10 @@
         "format": "t{temperatureC}"
     },
 	"backlight": {
-		"device": "acpi_video1",
+		"device": "radeon_b10",
 		"format": "b{percent}",
-		"on-scroll-up": "BR=$(cat /sys/class/backlight/amdgpu_bl0/brightness); echo $(($BR+10)) > /sys/class/backlight/amdgpu_bl0/brightness",
-		"on-scroll-down": "BR=$(cat /sys/class/backlight/amdgpu_bl0/brightness); echo $(($BR-10)) > /sys/class/backlight/amdgpu_bl0/brightness"
+		"on-scroll-up": "BR=$(cat /sys/class/backlight/radeon_bl0/brightness); echo $(($BR+10)) > /sys/class/backlight/radeon_bl0/brightness",
+		"on-scroll-down": "BR=$(cat /sys/class/backlight/radeon_bl0/brightness); echo $(($BR-10)) > /sys/class/backlight/radeon_bl0/brightness"
 	},
     "battery": {
         "states": {

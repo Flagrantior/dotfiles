@@ -1,0 +1,17 @@
+* {
+	border-color: darkmagenta !important;
+	color: cyan;
+}
+
+button {
+	border-color: darkcyan !important;
+}
+
+input {
+	color: cyan !important;
+	background: black !important;
+}
+
+code {
+	background: black !important;
+}
