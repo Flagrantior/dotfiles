@@ -1,6 +1,7 @@
 * {
 	border-color: darkmagenta !important;
-	color: cyan;
+	color: #0fd;
+	font-family: Hermit Nerd Font;
 }
 
 button {
@@ -14,4 +15,8 @@ input {
 
 code {
 	background: black !important;
+}
+
+a {
+	color: #ff0 !important;
 }
