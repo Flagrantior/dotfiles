@@ -1,7 +1,9 @@
 * {
 	border-color: darkmagenta !important;
 	color: #0fd;
-	font-family: Hermit Nerd Font;
+	box-shadow: none !important;
+	font-family: Hermit Nerd Font !important;
+	font-style: italic !important;
 }
 
 button {
@@ -18,5 +20,5 @@ code {
 }
 
 a {
-	color: #0f0 !important;
+	color: #f0f !important;
 }
