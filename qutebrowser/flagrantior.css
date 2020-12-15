@@ -22,3 +22,11 @@ code {
 a {
 	color: #f0f !important;
 }
+
+#mw-page-base {
+	background: black;
+}
+
+.vector-menu-tabs li {
+	background: #202;
+}
