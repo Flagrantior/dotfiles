@@ -2,7 +2,7 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 PS1='\[\033[1;35m\]>\[\033[0m\]'
-source /usr/share/autojump/autojump.bash
+#source /usr/share/autojump/autojump.bash
 alias pacman='sudo pacman --color always'
 alias pingg='ping google.com'
 alias wifi='sudo wifi-menu'
@@ -38,8 +38,11 @@ alias fzf='fzf --color=16,hl:#ffffff,fg+:#ff00ff,hl+:#ffffff,prompt:#00ffff,poin
 alias btr='watch -n0.5 acpi'
 alias sctl='sudo systemctl'
 alias netctl='sudo netctl'
+alias nmr='nmcli n of && sleep 1; nmcli n on'
 
 reset-cursor() {
 	printf '\[\033[3 q\]'
 }
 export PS1="$(reset-cursor)$PS1"
+
+#source /home/flagrantior/.config/broot/launcher/bash/br
