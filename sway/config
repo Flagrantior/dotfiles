@@ -112,8 +112,8 @@ input type:touchpad {
 }
 
 # Screenrecord
-bindsym --to-code $mod+Shift+s exec 'grim -g "$(slurp -b 00000055 -c ffffff -w 2)" -c - | wl-copy'
-bindsym Print exec 'grim -c - | wl-copy'
+bindsym --to-code $mod+Shift+s exec 'grim -g "$(slurp -b 00000055 -c ffffff -w 2)" - | wl-copy'
+bindsym Print exec 'grim - | wl-copy'
 bindsym --to-code $mod+Shift+a exec wf-recorder -g "$(slurp -b 00000055 -c ffffff -w 2)"
 bindsym --to-code $mod+Shift+d exec killall --signal 2 wf-recorder
 
@@ -132,7 +132,8 @@ client.urgent           #2f343a #900000 #ffffff #900000   #900000
 client.background       #000000
 
 # Appearance
-output * bg #000000 solid_color
+#output * bg #000000 solid_color
+output * bg ~/.config/sway/wp.jpg fill
 seat seat0 xcursor_theme Dot-Dark
 seat seat0 hide_cursor 1500
 exec_always {
