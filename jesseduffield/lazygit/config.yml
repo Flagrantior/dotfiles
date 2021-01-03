@@ -1,0 +1,24 @@
+gui:
+    # stuff relating to the UI
+    scrollHeight: 2 # how many lines you scroll by
+    scrollPastBottom: true # enable scrolling past the bottom
+    sidePanelWidth: 0.3333 # number from 0 to 1
+    expandFocusedSidePanel: false
+    mainPanelSplitMode: 'flexible' # one of 'horizontal' | 'flexible' | 'vertical'
+    theme:
+      lightTheme: false # For terminals with a light background
+      activeBorderColor:
+        - cyan
+      inactiveBorderColor:
+        - magenta
+      optionsTextColor:
+        - blue
+      selectedLineBgColor:
+        - default
+      selectedRangeBgColor:
+        - blue
+    commitLength:
+      show: true
+    mouseEvents: true
+    skipUnstageLineWarning: false
+    skipStashWarning: true
