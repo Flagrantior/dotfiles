@@ -87,6 +87,10 @@ bindsym $mod+a focus parent
 bindsym $mod+KP_Subtract move scratchpad
 bindsym $mod+KP_Add scratchpad show
 
+# Killer
+bindsym --to-code $mod+k+t killall tg
+bindsym --to-code $mod+k+q killall qb
+
 # Resize
 bindsym $mod+Alt+Left resize shrink width 10px
 bindsym $mod+Alt+Down resize grow height 10px
@@ -112,13 +116,13 @@ input type:touchpad {
 }
 
 # Screenrecord
-bindsym --to-code $mod+Shift+s exec 'grim -g "$(slurp -b 00000055 -c ffffff -w 2)" - | wl-copy'
+bindsym --to-code $mod+Shift+s exec 'grim -g "$(slurp -b 00000055 -c ffffff -w 2 && sleep 1)" - | wl-copy'
 bindsym Print exec 'grim - | wl-copy'
 bindsym --to-code $mod+Shift+a exec wf-recorder -g "$(slurp -b 00000055 -c ffffff -w 2)"
 bindsym --to-code $mod+Shift+d exec killall --signal 2 wf-recorder
 
 # Locker
-set $locker swaylock -c 000000 --font "Hurmit Nerd Font Mono" --line-color ffffff --ring-color ffffff -n --key-hl-color 00ffff -l --inside-ver-color 000000 --ring-ver-color 000000 --indicator-thickness 10 --ring-color 000000 --inside-wrong-color 000000 --ring-wrong-color ff0000 --bs-hl-color ff0000 --inside-clear-color 000000 --ring-clear-color ffffff -K
+set $locker swaylock -c 000000 --font "Hurmit Nerd Font Mono" --line-color ff00ff --ring-color ff00ff -n --key-hl-color 00ffff -l --inside-ver-color 000000 --ring-ver-color 000000 --indicator-thickness 10 --ring-color 000000 --inside-wrong-color 000000 --ring-wrong-color ff0000 --bs-hl-color ff0000 --inside-clear-color 000000 --ring-clear-color 00ffff -K
 bindsym --to-code $mod+Shift+x exec swaymsg "input type:keyboard xkb_switch_layout 0" && swaylock -c 00000000 --font "Hurmit Nerd Font Mono" --line-color fff --ring-color fff -n --key-hl-color fff -l --inside-ver-color 000000 --ring-ver-color 000000 --indicator-thickness 10 --ring-color 000000 --inside-wrong-color 000000 --ring-wrong-color ff0000 --bs-hl-color ff0000 --inside-clear-color 000000 --ring-clear-color fff -K
 bindsym --to-code $mod+x exec swaymsg "input type:keyboard xkb_switch_layout 0" && $locker
 bindsym --to-code $mod+Shift+z exec swaymsg "input type:keyboard xkb_switch_layout 0" && systemctl suspend && $locker
@@ -135,7 +139,7 @@ client.background       #000000
 #output * bg #000000 solid_color
 output * bg ~/.config/sway/wp.jpg fill
 seat seat0 xcursor_theme Dot-Dark
-seat seat0 hide_cursor 1500
+seat seat0 hide_cursor 1000
 exec_always {
 	gsettings set org.gnome.desktop.interface cursor-theme Dot-Dark
 	gsettings set org.gnome.desktop.interface gtk-theme Flagrantior
@@ -173,15 +177,14 @@ exec mako --background-color \#000000FF --font "Hurmit Nerd Font 10" --actions 1
 #exec autotiling
 
 # Apps
-bindsym --to-code $mod+n exec nemo
-bindsym --to-code $mod+Shift+f exec firefox
-bindsym --to-code $mod+Shift+t exec telegram
-bindsym --to-code $mod+Shift+b exec primusrun blender
-bindsym --to-code $mod+Shift+m exec primusrun mctlauncher
-bindsym --to-code $mod+b exec alacritty -e watch -n0.5 acpi
+bindsym --to-code $mod+Shift+n exec nemo
+bindsym --to-code $mod+Shift+q exec qb
+bindsym --to-code $mod+Shift+t exec tg
+#bindsym --to-code $mod+Shift+b exec primusrun blender
+#bindsym --to-code $mod+Shift+m exec primusrun mctlauncher
+#bindsym --to-code $mod+b exec alacritty -e watch -n0.5 acpi
 
-#playerctl
+# Playerctl
 bindsym --to-code $mod+alt+KP_add exec playerctl next
 bindsym --to-code $mod+alt+KP_subtract exec playerctl previous
 bindsym --to-code $mod+alt+KP_multiply exec playerctl play-pause
-

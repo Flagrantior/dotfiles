@@ -17,6 +17,7 @@ button {
 }
 
 button:hover {
+	transition-duration: 0.1s !important;
 	transform: scale(1.1) skew(-5deg);
 	z-index: 999;
 	/*box-shadow:*/
