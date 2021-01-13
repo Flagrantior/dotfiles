@@ -14,12 +14,17 @@ body {
 
 button {
 	border-color: darkcyan !important;
+	cursor: pointer !important;
 }
 
 button:hover {
 	transition-duration: 0.1s !important;
 	transform: scale(1.1) skew(-5deg);
-	z-index: 999;
+	z-index: 999 !important;
+	border-style: solid !important;
+	border-width: 1px !important;
+	background: #000;
+	color: #0ff;
 	/*box-shadow:*/
     /*0 0 6px 2px #fff,*/
 	/*0 0 10px 3px #f0f,*/
@@ -36,6 +41,7 @@ code {
 }
 
 a {
+	cursor: pointer !important;
 	color: #f0f !important;
 	text-transform: uppercase;
 }
