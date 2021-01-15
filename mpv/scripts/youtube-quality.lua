@@ -20,13 +20,13 @@ local opts = {
     select_binding = "ENTER",
 
     --formatting / cursors
-    selected_and_active     = "▶ - ",
-    selected_and_inactive   = "● - ",
-    unselected_and_active   = "▷ - ",
-    unselected_and_inactive = "○ - ",
+	selected_and_active     = "▶",
+    selected_and_inactive   = "▶",
+    unselected_and_active   = "▷",
+    unselected_and_inactive = ">",
 
 	--font size scales by window, if false requires larger font and padding sizes
-	scale_playlist_by_window=false,
+	scale_playlist_by_window=true,
 
     --playlist ass style overrides inside curly brackets, \keyvalue is one field, extra \ for escape in lua
     --example {\\fnUbuntu\\fs10\\b0\\bord1} equals: font=Ubuntu, size=10, bold=no, border=1
@@ -35,11 +35,11 @@ local opts = {
     --these styles will be used for the whole playlist. More specific styling will need to be hacked in
     --
     --(a monospaced font is recommended but not required)
-    style_ass_tags = "{\\fnmonospace}",
+    style_ass_tags = "{\\fnmonospace\\fs30}",
 
     --paddings for top left corner
-    text_padding_x = 5,
-    text_padding_y = 5,
+    text_padding_x = 0,
+    text_padding_y = 0,
 
     --other
     menu_timeout = 10,
@@ -50,8 +50,8 @@ local opts = {
     --default menu entries
     quality_strings=[[
     [
-    {"4320p" : "bestvideo[height<=?4320p]+bestaudio/best"},
-    {"2160p" : "bestvideo[height<=?2160]+bestaudio/best"},
+	{"4320p" : "bestvideo[height<=?4320p]+bestaudio/best"},
+	{"2160p" : "bestvideo[height<=?2160]+bestaudio/best"},
     {"1440p" : "bestvideo[height<=?1440]+bestaudio/best"},
     {"1080p" : "bestvideo[height<=?1080]+bestaudio/best"},
     {"720p" : "bestvideo[height<=?720]+bestaudio/best"},
@@ -157,7 +157,7 @@ function show_menu()
     mp.add_forced_key_binding(opts.toggle_menu_binding, "escape", destroy)
 
     draw_menu()
-    return 
+    return
 end
 
 local ytdl = {
@@ -190,7 +190,7 @@ function download_formats()
         local res = format_cache[url]
         return res, table_size(res)
     end
-    mp.osd_message("fetching available formats with youtube-dl...", 60)
+    mp.osd_message("Fetching...", 60)
 
     if not (ytdl.searched) then
         local ytdl_mcd = mp.find_config_file("youtube-dl")
@@ -223,9 +223,9 @@ function download_formats()
     msg.verbose("youtube-dl succeeded!")
     for i,v in ipairs(json.formats) do
         if v.vcodec ~= "none" then
-            local fps = v.fps and v.fps.."fps" or ""
+            local fps = v.fps and v.fps
             local resolution = string.format("%sx%s", v.width, v.height)
-            local l = string.format("%-9s %-5s (%-4s / %s)", resolution, fps, v.ext, v.vcodec)
+            local l = string.format("%-9s %s %s %s", resolution, fps, v.ext, v.vcodec)
             local f = string.format("%s+bestaudio/best", v.format_id)
             table.insert(res, {label=l, format=f, width=v.width })
         end
