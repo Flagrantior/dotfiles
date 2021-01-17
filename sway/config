@@ -124,7 +124,8 @@ bindsym --to-code $mod+Shift+d exec killall --signal 2 wf-recorder
 # Locker
 set $locker swaylock -c 000000 --font "Hurmit Nerd Font Mono" --line-color ff00ff --ring-color ff00ff -n --key-hl-color 00ffff -l --inside-ver-color 000000 --ring-ver-color 000000 --indicator-thickness 10 --ring-color 000000 --inside-wrong-color 000000 --ring-wrong-color ff0000 --bs-hl-color ff0000 --inside-clear-color 000000 --ring-clear-color 00ffff -K
 bindsym --to-code $mod+Shift+x exec swaymsg "input type:keyboard xkb_switch_layout 0" && swaylock -c 00000000 --font "Hurmit Nerd Font Mono" --line-color fff --ring-color fff -n --key-hl-color fff -l --inside-ver-color 000000 --ring-ver-color 000000 --indicator-thickness 10 --ring-color 000000 --inside-wrong-color 000000 --ring-wrong-color ff0000 --bs-hl-color ff0000 --inside-clear-color 000000 --ring-clear-color fff -K
-bindsym --to-code $mod+x exec swaymsg "input type:keyboard xkb_switch_layout 0" && $locker
+bindsym --to-code $mod+x exec 'swaymsg "input type:keyboard xkb_switch_layout 0" && BR=$(cat /sys/class/backlight/radeon_bl0/brightness); echo 1 > /sys/class/backlight/radeon_bl0/brightness && $locker && echo $BR > /sys/class/backlight/radeon_bl0/brightness'
+
 bindsym --to-code $mod+Shift+z exec swaymsg "input type:keyboard xkb_switch_layout 0" && systemctl suspend && $locker
 bindsym --to-code $mod+h exec swaymsg "input type:keyboard xkb_switch_layout 0" && systemctl hibernate && $locker
 
@@ -153,7 +154,6 @@ bindsym XF86Launch1 exec "reboot"
 #bindsym Shift+XF86MonBrightnessUp exec --no-startup-id "light -s sysfs/backlight/intel_backlight -A 0.1"
 #bindsym XF86MonBrightnessDown exec --no-startup-id "light -s sysfs/backlight/intel_backlight -U 1"
 #bindsym Shift+XF86MonBrightnessDown exec --no-startup-id "light -s sysfs/backlight/intel_backlight -U 0.1"
-
 bindsym XF86MonBrightnessUp exec --no-startup-id "BR=$(cat /sys/class/backlight/radeon_bl0/brightness); echo $(($BR+10)) > /sys/class/backlight/radeon_bl0/brightness"
 bindsym XF86MonBrightnessDown exec --no-startup-id "BR=$(cat /sys/class/backlight/radeon_bl0/brightness); echo $(($BR-10)) > /sys/class/backlight/radeon_bl0/brightness"
 
@@ -165,7 +165,7 @@ bindsym XF86AudioMute exec --no-startup-id "pactl set-sink-mute 0 toggle"
 
 
 
-# Dusable titlebar
+# Disable titlebar
 font [pango:] none 0
 titlebar_border_thickness 0
 titlebar_padding 0
