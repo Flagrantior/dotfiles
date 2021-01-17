@@ -123,7 +123,7 @@ bindsym --to-code $mod+Shift+d exec killall --signal 2 wf-recorder
 
 # Locker
 set $locker swaylock -c 000000 --font "Hurmit Nerd Font Mono" --line-color ff00ff --ring-color ff00ff -n --key-hl-color 00ffff -l --inside-ver-color 000000 --ring-ver-color 000000 --indicator-thickness 10 --ring-color 000000 --inside-wrong-color 000000 --ring-wrong-color ff0000 --bs-hl-color ff0000 --inside-clear-color 000000 --ring-clear-color 00ffff -K
-bindsym --to-code $mod+Shift+x exec swaymsg "input type:keyboard xkb_switch_layout 0" && swaylock -c 00000000 --font "Hurmit Nerd Font Mono" --line-color fff --ring-color fff -n --key-hl-color fff -l --inside-ver-color 000000 --ring-ver-color 000000 --indicator-thickness 10 --ring-color 000000 --inside-wrong-color 000000 --ring-wrong-color ff0000 --bs-hl-color ff0000 --inside-clear-color 000000 --ring-clear-color fff -K
+bindsym --to-code $mod+Shift+x exec swaymsg "input type:keyboard xkb_switch_layout 0" && $locker -c 00000000
 bindsym --to-code $mod+x exec 'swaymsg "input type:keyboard xkb_switch_layout 0" && BR=$(cat /sys/class/backlight/radeon_bl0/brightness); echo 1 > /sys/class/backlight/radeon_bl0/brightness && $locker && echo $BR > /sys/class/backlight/radeon_bl0/brightness'
 
 bindsym --to-code $mod+Shift+z exec swaymsg "input type:keyboard xkb_switch_layout 0" && systemctl suspend && $locker
