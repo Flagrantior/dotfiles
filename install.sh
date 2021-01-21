@@ -23,3 +23,8 @@ fi
 echo -e "[Icon Theme]\nInherits=TheDOT-dark" | sudo tee /usr/share/icons/default/index.theme
 
 mkdir ~/Projects
+
+shopt -s globstar
+shopt -s checkjobs
+shopt -s extglob
+shopt -s dotglob

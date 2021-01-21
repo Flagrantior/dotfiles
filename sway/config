@@ -90,6 +90,7 @@ bindsym $mod+KP_Add scratchpad show
 # Killer
 bindsym --to-code $mod+k+t killall tg
 bindsym --to-code $mod+k+q killall qb
+bindsym --to-code $mod+k+s killall spotify
 
 # Resize
 bindsym $mod+Alt+Left resize shrink width 10px

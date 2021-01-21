@@ -6,6 +6,8 @@
 
 config_version: 2
 settings:
+  auto_save.session:
+    global: true
   backend:
     global: webengine
   bindings.commands:
@@ -121,6 +123,9 @@ settings:
   content.host_blocking.lists:
     global:
     - https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
+  content.host_blocking.whitelist:
+    global:
+    - analytics.google.com
   content.media.audio_capture:
     file://: true
   content.notifications:
@@ -135,11 +140,13 @@ settings:
   content.plugins:
     global: true
   content.proxy:
-    global: none
+    global: socks://localhost:9050/
   content.register_protocol_handler:
     https://mail.google.com?extsrc=mailto&url=%25s: true
   content.user_stylesheets:
     global: flagrantior.css
+  content.xss_auditing:
+    global: true
   downloads.position:
     global: bottom
   editor.command:
@@ -173,6 +180,8 @@ settings:
     global: letter
   prompt.radius:
     global: 0
+  statusbar.show:
+    global: in-mode
   tabs.background:
     global: true
   tabs.favicons.scale:
@@ -185,6 +194,12 @@ settings:
       left: 0
       right: 15
       top: 0
+  tabs.position:
+    global: top
+  tabs.show:
+    global: multiple
+  tabs.show_switching_delay:
+    global: 800
   tabs.title.alignment:
     global: center
   tabs.title.format:
@@ -195,9 +210,14 @@ settings:
     global:
       D: https://duckduckgo.com/?q={}
       DEFAULT: https://www.google.com/search?q={}
+      I: https://www.instagram.com/{}
       T: https://translate.google.com/translate?sl=auto&tl=ru&u={}
       W: https://ru.wikipedia.org/wiki/{}
       We: https://en.wikipedia.org/wiki/{}
       Y: https://www.youtube.com/results?search_query={}
   url.start_pages:
     global: https://www.google.com
+  window.hide_decoration:
+    global: true
+  window.transparent:
+    global: false
