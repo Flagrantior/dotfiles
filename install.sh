@@ -28,3 +28,6 @@ shopt -s globstar
 shopt -s checkjobs
 shopt -s extglob
 shopt -s dotglob
+
+cp qutebrowser.desktop ~/.local/share/applications/qutebrowser.desktop
+xdg-settings set default-web-browser qutebrowser.desktop
