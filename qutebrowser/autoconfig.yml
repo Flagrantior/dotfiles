@@ -129,7 +129,7 @@ settings:
   content.media.audio_capture:
     file://: true
   content.notifications:
-    global: false
+    global: ask
     https://ru-mi.com: false
     https://tinder.com: true
     https://www.instagram.com: true
@@ -140,7 +140,7 @@ settings:
   content.plugins:
     global: true
   content.proxy:
-    global: socks://localhost:9050/
+    global: system
   content.register_protocol_handler:
     https://mail.google.com?extsrc=mailto&url=%25s: true
   content.user_stylesheets:
@@ -149,6 +149,8 @@ settings:
     global: true
   downloads.position:
     global: bottom
+  downloads.remove_finished:
+    global: 0
   editor.command:
     global:
     - nvim
