@@ -190,4 +190,3 @@ bindsym --to-code $mod+alt+KP_add exec playerctl next
 bindsym --to-code $mod+alt+KP_subtract exec playerctl previous
 bindsym --to-code $mod+alt+KP_multiply exec playerctl play-pause
 
-for_window [title=".*mpv$"] floating enable
