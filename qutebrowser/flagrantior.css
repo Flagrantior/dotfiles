@@ -12,28 +12,63 @@ body {
 	/*background: black !important;*/
 }
 
+header {
+	/*background: black !important;*/
+	border-bottom: 4px #404 solid !important;
+	background: repeating-linear-gradient(
+	  -45deg,
+	  #202,
+	  #202 15px,
+	  #000 15px,
+	  #000 30px
+	) !important;
+}
+
+main {
+	background: black !important;
+}
+
 button {
-	border-color: darkcyan !important;
+	border-color: #022 !important;
 	cursor: pointer !important;
+	color: #0ff !important;
 }
 
 button:hover {
 	transition-duration: 0.1s !important;
 	transform: scale(1.1) skew(-5deg);
 	z-index: 999 !important;
-	border-style: solid !important;
-	border-width: 1px !important;
+	border-color: #0ff !important;
 	background: #000;
 	color: #0ff;
-	/*box-shadow:*/
-    /*0 0 6px 2px #fff,*/
-	/*0 0 10px 3px #f0f,*/
-    /*0 0 14px 4px #0ff !important;*/
+}
+
+button svg {
+	fill: #0ff;
 }
 
 input {
 	color: cyan !important;
 	background: black !important;
+	border-color: #077 !important;
+}
+
+input:hover {
+	border-color: #099 !important;
+}
+
+input:focus {
+	border-color: #0ff !important;
+}
+
+input[type=password] {
+	background: repeating-linear-gradient(
+		-45deg,
+		#200,
+		#200 10px,
+		#000 10px,
+		#000 20px
+	) !important;
 }
 
 code {
@@ -48,6 +83,17 @@ a {
 
 a:hover {
 	text-decoration: underline !important;
+	color: #f0f !important;
+}
+
+h1:after {
+	content: ' ]';
+	color: #f00;
+}
+
+h1:before {
+	content: '[ ';
+	color: #f00;
 }
 
 #mw-page-base {
@@ -57,3 +103,4 @@ a:hover {
 .vector-menu-tabs li {
 	background: #202;
 }
+
