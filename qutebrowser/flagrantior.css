@@ -17,7 +17,7 @@ header {
 	background:
 		repeating-linear-gradient(
 			-45deg, #202, #202 15px,
-			rgba(0,0,0,0) 15px, rgba(0,0,0,0) 30px
+			rgba(0,0,0, .7) 15px, rgba(0,0,0, .7) 30px
 		) !important;
 }
 
@@ -26,7 +26,7 @@ footer {
 	background:
 		repeating-linear-gradient(
 			45deg, #101, #101 15px,
-			rgba(0,0,0,0) 15px, rgba(0,0,0,0) 30px
+			rgba(0,0,0, .7) 15px, rgba(0,0,0, .7) 30px
 		) !important;
 }
 
@@ -93,20 +93,25 @@ a:hover {
 	text-shadow: 0 0 10px #f00 !important;
 }
 
-h1, h2 {
-	text-shadow: 0 0 8px #099;
+h1, h2, h3 {
+	text-shadow: 
+		0 0 2px #000,
+		0px -2px 3px rgba(0,255,255, .7),
+		0px 3px 3px rgba(255,0,255, .7);
 }
 
 h1:after {
 	content: ' ]';
 	color: #f00;
 	font-style: normal !important;
+	text-shadow: 3px 0 7px #f00;
 }
 
 h1:before {
 	content: '[ ';
 	color: #f00;
 	font-style: normal !important;
+	text-shadow: -3px 0 7px #f00;
 }
 
 #mw-page-base {
@@ -117,3 +122,10 @@ h1:before {
 	background: #202;
 }
 
+header {
+	transform: perspective(30em) rotate3d(1,0,0, -2deg);
+}
+
+footer {
+	transform: perspective(30em) rotate3d(1,0,0, 2deg);
+}
