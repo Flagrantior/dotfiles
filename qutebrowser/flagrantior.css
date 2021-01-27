@@ -13,15 +13,21 @@ body {
 }
 
 header {
-	/*background: black !important;*/
-	border-bottom: 4px #404 solid !important;
-	background: repeating-linear-gradient(
-	  -45deg,
-	  #202,
-	  #202 15px,
-	  #000 15px,
-	  #000 30px
-	) !important;
+	margin-bottom: 5px;
+	background:
+		repeating-linear-gradient(
+			-45deg, #202, #202 15px,
+			rgba(0,0,0,0) 15px, rgba(0,0,0,0) 30px
+		) !important;
+}
+
+footer {
+	margin-top: 5px;
+	background:
+		repeating-linear-gradient(
+			45deg, #101, #101 15px,
+			rgba(0,0,0,0) 15px, rgba(0,0,0,0) 30px
+		) !important;
 }
 
 main {
@@ -84,16 +90,23 @@ a {
 a:hover {
 	text-decoration: underline !important;
 	color: #f0f !important;
+	text-shadow: 0 0 10px #f00 !important;
+}
+
+h1, h2 {
+	text-shadow: 0 0 8px #099;
 }
 
 h1:after {
 	content: ' ]';
 	color: #f00;
+	font-style: normal !important;
 }
 
 h1:before {
 	content: '[ ';
 	color: #f00;
+	font-style: normal !important;
 }
 
 #mw-page-base {
