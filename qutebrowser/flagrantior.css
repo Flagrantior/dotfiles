@@ -13,7 +13,8 @@ body {
 }
 
 header {
-	margin-bottom: 5px;
+	transform: perspective(30em) rotate3d(1,0,0, -2deg);
+	box-shadow: 0 0 15px -5px #f0f !important;
 	background:
 		repeating-linear-gradient(
 			-45deg, #202, #202 15px,
@@ -22,6 +23,7 @@ header {
 }
 
 footer {
+	transform: perspective(30em) rotate3d(1,0,0, 2deg);
 	margin-top: 5px;
 	background:
 		repeating-linear-gradient(
@@ -60,22 +62,36 @@ input {
 }
 
 input:hover {
+	transition-duration: .2s !important;
+	box-shadow: 0 10px 15px -5px #0ff !important;
 	border-color: #099 !important;
+	transform: perspective(30em) scale(1.05) rotate3d(1,0,0, 20deg);
+	z-index: 666 !important;
 }
 
 input:focus {
+	transition-duration: .4s !important;
+	transform: scale(1.1);
 	border-color: #0ff !important;
+	z-index: 777 !important;
+	box-shadow: 0 0 15px -5px #0ff !important;
 }
 
 input[type=password] {
 	background: repeating-linear-gradient(
 		-45deg,
-		#200,
-		#200 10px,
+		#310,
+		#310 10px,
 		#000 10px,
 		#000 20px
 	) !important;
+	border-color: #960 !important;
 }
+
+input[type=password]:focus {
+	border-color: #fa0 !important;
+}
+
 
 code {
 	background: black !important;
@@ -85,12 +101,13 @@ a {
 	cursor: pointer !important;
 	color: #f0f !important;
 	text-transform: uppercase;
+	text-decoration: none !important;
 }
 
 a:hover {
-	text-decoration: underline !important;
-	color: #f0f !important;
-	text-shadow: 0 0 10px #f00 !important;
+	text-decoration: none !important;
+	color: #fff !important;
+	text-shadow: 0 0 7px #f00 !important;
 }
 
 h1, h2, h3 {
@@ -120,12 +137,4 @@ h1:before {
 
 .vector-menu-tabs li {
 	background: #202;
-}
-
-header {
-	transform: perspective(30em) rotate3d(1,0,0, -2deg);
-}
-
-footer {
-	transform: perspective(30em) rotate3d(1,0,0, 2deg);
 }
