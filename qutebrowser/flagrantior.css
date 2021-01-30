@@ -13,23 +13,37 @@ body {
 }
 
 header {
-	transform: perspective(30em) rotate3d(1,0,0, -2deg);
-	box-shadow: 0 0 15px -5px #f0f !important;
+	transform: perspective(30em) rotate3d(1,0,0, -6deg) scale(0.98);
+	box-shadow: 0 -3px 20px -7px #f0f !important;
 	background:
+		linear-gradient(90deg, #0ff .1%, rgba(0,0,0,0) .1%, rgba(0,0,0,0) 99.9%, #0ff 99.9%),
 		repeating-linear-gradient(
 			-45deg, #202, #202 15px,
 			rgba(0,0,0, .7) 15px, rgba(0,0,0, .7) 30px
 		) !important;
+	transition-duration: 0.2s !important;
+}
+
+header:hover {
+	transform: scale(1);
+	box-shadow: 0 0 20px -7px #f0f !important;
 }
 
 footer {
-	transform: perspective(30em) rotate3d(1,0,0, 2deg);
-	margin-top: 5px;
+	transform: perspective(30em) rotate3d(1,0,0, 6deg) scale(0.98);
+	box-shadow: 0 3px 20px -7px #f0f !important;
 	background:
+		linear-gradient(90deg, #0ff .1%, rgba(0,0,0,0) .1%, rgba(0,0,0,0) 99.9%, #0ff 99.9%),
 		repeating-linear-gradient(
 			45deg, #101, #101 15px,
 			rgba(0,0,0, .7) 15px, rgba(0,0,0, .7) 30px
 		) !important;
+	transition-duration: 0.2s !important;
+}
+
+footer:hover {
+	transform: scale(1);
+	box-shadow: 0 0 20px -7px #f0f !important;
 }
 
 main {
@@ -49,6 +63,7 @@ button:hover {
 	border-color: #0ff !important;
 	background: #000;
 	color: #0ff;
+	box-shadow: 0 0 15px -5px #0ff !important;
 }
 
 button svg {
@@ -59,10 +74,10 @@ input {
 	color: cyan !important;
 	background: black !important;
 	border-color: #077 !important;
+	transition-duration: .2s !important;
 }
 
 input:hover {
-	transition-duration: .2s !important;
 	box-shadow: 0 10px 15px -5px #0ff !important;
 	border-color: #099 !important;
 	transform: perspective(30em) scale(1.05) rotate3d(1,0,0, 20deg);
@@ -105,9 +120,9 @@ a {
 }
 
 a:hover {
-	text-decoration: none !important;
-	color: #fff !important;
-	text-shadow: 0 0 7px #f00 !important;
+	/*color: #fff !important;*/
+	text-decoration: underline !important;
+	/*text-shadow: 0 0 7px #f00 !important;*/
 }
 
 h1, h2, h3 {
@@ -138,3 +153,21 @@ h1:before {
 .vector-menu-tabs li {
 	background: #202;
 }
+
+ytd-grid-video-renderer {
+	transition: .05s !important;
+}
+
+ytd-grid-video-renderer:hover {
+	border-color: #099 !important;
+	background: #000;
+	transform: perspective(30em) scale(1.05) rotate3d(1,1,0, 5deg);
+	z-index: 666 !important;
+}
+
+ytd-grid-video-renderer:hover #details {
+	box-shadow: 0 10px 20px -15px #0ff !important;
+	transform: perspective(30em) scale(1.1) rotate3d(1,1,0, -10deg);
+	background: #000;
+}
+

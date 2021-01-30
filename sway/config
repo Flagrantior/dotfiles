@@ -88,9 +88,7 @@ bindsym $mod+KP_Subtract move scratchpad
 bindsym $mod+KP_Add scratchpad show
 
 # Killer
-bindsym --to-code $mod+k+t killall tg
-bindsym --to-code $mod+k+q killall qb
-bindsym --to-code $mod+k+s killall spotify
+bindsym --to-code $mod+Shift+k exec killall tg qb spotify
 
 # Resize
 bindsym $mod+Alt+Left resize shrink width 10px
@@ -176,14 +174,6 @@ exec mako --background-color \#000000FF --font "Hurmit Nerd Font 10" --actions 1
 
 #autotiling
 #exec autotiling
-
-# Apps
-bindsym --to-code $mod+Shift+n exec nemo
-bindsym --to-code $mod+Shift+q exec qb
-bindsym --to-code $mod+Shift+t exec tg
-#bindsym --to-code $mod+Shift+b exec primusrun blender
-#bindsym --to-code $mod+Shift+m exec primusrun mctlauncher
-#bindsym --to-code $mod+b exec alacritty -e watch -n0.5 acpi
 
 # Playerctl
 bindsym --to-code $mod+alt+KP_add exec playerctl next
