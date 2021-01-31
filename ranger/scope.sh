@@ -178,7 +178,7 @@ handle_mime() {
         image/*)
             ## Preview as text conversion
 			#img2txt --gamma=0.6 --width="${PV_WIDTH}" -- "${FILE_PATH}" && exit 4
-			chafa --size="${PV_WIDTH}x${PV_HEIGHT}" -c 2 --symbols=space+technical+half+solid+block -- "${FILE_PATH}"
+			chafa --size="${PV_WIDTH}x${PV_HEIGHT}" -c 2 --symbols=space+technical+half+solid+block+quad -- "${FILE_PATH}"
 			printf "\n"
             exiftool -- "${FILE_PATH}" && exit 5
 			#tiv -w "${PV_WIDTH}" "${FILE_PATH}"

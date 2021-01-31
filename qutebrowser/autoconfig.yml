@@ -6,6 +6,15 @@
 
 config_version: 2
 settings:
+  aliases:
+    global:
+      q: close
+      qa: quit
+      w: session-save
+      wq: quit --save
+      wqa: quit --save
+  auto_save.interval:
+    global: 15000
   auto_save.session:
     global: true
   backend:
@@ -75,6 +84,8 @@ settings:
     global: black
   colors.tabs.even.fg:
     global: '#009999'
+  colors.tabs.indicator.stop:
+    global: '#00aaaa'
   colors.tabs.odd.bg:
     global: black
   colors.tabs.odd.fg:
@@ -115,6 +126,11 @@ settings:
     global: true
   completion.height:
     global: 22%
+  completion.open_categories:
+    global:
+    - quickmarks
+    - bookmarks
+    - history
   content.autoplay:
     global: false
   content.geolocation:
@@ -213,6 +229,7 @@ settings:
       D: https://duckduckgo.com/?q={}
       DEFAULT: https://www.google.com/search?q={}
       I: https://www.instagram.com/{}
+      RT: https://rutracker.org/forum/tracker.php?nm={}
       T: https://translate.google.com/translate?sl=auto&tl=ru&u={}
       W: https://ru.wikipedia.org/wiki/{}
       We: https://en.wikipedia.org/wiki/{}

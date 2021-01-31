@@ -12,8 +12,9 @@ body {
 	/*background: black !important;*/
 }
 
-header {
-	transform: perspective(30em) rotate3d(1,0,0, -6deg) scale(0.98);
+header:not([role="banner"]) {
+	transform-origin: top;
+	transform: perspective(30em) rotate3d(1,0,0, -6deg);
 	box-shadow: 0 -3px 20px -7px #f0f !important;
 	background:
 		linear-gradient(90deg, #0ff .1%, rgba(0,0,0,0) .1%, rgba(0,0,0,0) 99.9%, #0ff 99.9%),
@@ -24,13 +25,14 @@ header {
 	transition-duration: 0.2s !important;
 }
 
-header:hover {
-	transform: scale(1);
-	box-shadow: 0 0 20px -7px #f0f !important;
+header:not([role="banner"]):hover {
+	transform: none;
+	box-shadow: 0 0 20px -7px #f0f, 30px 0 40px -35px #0ff, -30px 0 40px -35px #0ff !important;
 }
 
 footer {
-	transform: perspective(30em) rotate3d(1,0,0, 6deg) scale(0.98);
+	transform-origin: bottom;
+	transform: perspective(30em) rotate3d(1,0,0, 6deg);
 	box-shadow: 0 3px 20px -7px #f0f !important;
 	background:
 		linear-gradient(90deg, #0ff .1%, rgba(0,0,0,0) .1%, rgba(0,0,0,0) 99.9%, #0ff 99.9%),
@@ -114,7 +116,7 @@ code {
 
 a {
 	cursor: pointer !important;
-	color: #f0f !important;
+	/*color: #f0f !important;*/
 	text-transform: uppercase;
 	text-decoration: none !important;
 }
@@ -126,7 +128,8 @@ a:hover {
 }
 
 h1, h2, h3 {
-	text-shadow: 
+	/*color: #0ff !important;*/
+	text-shadow:
 		0 0 2px #000,
 		0px -2px 3px rgba(0,255,255, .7),
 		0px 3px 3px rgba(255,0,255, .7);
@@ -156,18 +159,39 @@ h1:before {
 
 ytd-grid-video-renderer {
 	transition: .05s !important;
+	background: #000;
+}
+
+ytd-grid-video-renderer #details {
+	transition: box-shadow .05s !important;
+	background: #000;
 }
 
 ytd-grid-video-renderer:hover {
 	border-color: #099 !important;
-	background: #000;
-	transform: perspective(30em) scale(1.05) rotate3d(1,1,0, 5deg);
+	border-top: 1px solid #0ff !important;
+	box-shadow: 0 -10px 20px -15px #0ff !important;
+	transform: perspective(30em) scale(1.09) rotate3d(1,1,0, 7deg);
 	z-index: 666 !important;
 }
 
 ytd-grid-video-renderer:hover #details {
+	border-bottom: 1px solid #0ff !important;
+	padding-left: 10px !important;
+	width: 170%;
 	box-shadow: 0 10px 20px -15px #0ff !important;
-	transform: perspective(30em) scale(1.1) rotate3d(1,1,0, -10deg);
+	transform: perspective(30em) scale(1.14) rotate3d(1,1,0, -14deg);
 	background: #000;
+}
+
+#SHORTCUT_FOCUSABLE_DIV .Post {
+	box-shadow: 17px 0 30px -30px #f0f, -17px 0 30px -30px #0ff !important;
+	transition: .3s;
+}
+
+#SHORTCUT_FOCUSABLE_DIV .Post:hover {
+	border-left-color: #0ff !important;
+	border-right-color: #f0f !important;
+	box-shadow: 30px 0 40px -35px #f0f, -30px 0 40px -35px #0ff !important;
 }
 
