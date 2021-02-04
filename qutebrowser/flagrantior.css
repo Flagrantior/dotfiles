@@ -116,13 +116,13 @@ code {
 
 a {
 	cursor: pointer !important;
-	/*color: #f0f !important;*/
+	color: #0ff !important;
 	text-transform: uppercase;
 	text-decoration: none !important;
 }
 
 a:hover {
-	/*color: #fff !important;*/
+	color: #fff !important;
 	text-decoration: underline !important;
 	/*text-shadow: 0 0 7px #f00 !important;*/
 }
@@ -157,32 +157,21 @@ h1:before {
 	background: #202;
 }
 
-ytd-grid-video-renderer {
-	transition: .05s !important;
-	background: #000;
-}
-
-ytd-grid-video-renderer #details {
-	transition: box-shadow .05s !important;
-	background: #000;
-}
+/*YouTube*/
 
 ytd-grid-video-renderer:hover {
-	border-color: #099 !important;
-	border-top: 1px solid #0ff !important;
 	box-shadow: 0 -10px 20px -15px #0ff !important;
-	transform: perspective(30em) scale(1.09) rotate3d(1,1,0, 7deg);
-	z-index: 666 !important;
 }
 
 ytd-grid-video-renderer:hover #details {
-	border-bottom: 1px solid #0ff !important;
-	padding-left: 10px !important;
-	width: 170%;
 	box-shadow: 0 10px 20px -15px #0ff !important;
-	transform: perspective(30em) scale(1.14) rotate3d(1,1,0, -14deg);
-	background: #000;
 }
+
+#masthead-ad {
+	display: none !important;
+}
+
+/*Reddit*/
 
 #SHORTCUT_FOCUSABLE_DIV .Post {
 	box-shadow: 17px 0 30px -30px #f0f, -17px 0 30px -30px #0ff !important;
@@ -193,5 +182,30 @@ ytd-grid-video-renderer:hover #details {
 	border-left-color: #0ff !important;
 	border-right-color: #f0f !important;
 	box-shadow: 30px 0 40px -35px #f0f, -30px 0 40px -35px #0ff !important;
+}
+
+div[data-before-content="advertisement"], .ad-banner, #COIN_PURCHASE_DROPDOWN_ID {
+	display: none;
+}
+
+header[data-redditstyle="true"] svg {
+	fill: #0ff;
+}
+
+/*Github+*/
+
+div[role="grid"] div[role="row"] {
+	background:
+		linear-gradient(90deg, #0ff .1%, rgba(0,0,0,0) .1%, rgba(0,0,0,0) 99.9%, #0ff 99.9%),
+		linear-gradient(15deg, #303, #000 20%, #000 80%, #303) !important;
+}
+
+div[role="grid"] div[role="row"]:hover {
+	background:
+		linear-gradient(90deg, #0ff .3%, rgba(0,0,0,0) .3%, rgba(0,0,0,0) 99.7%, #0ff 99.7%),
+		linear-gradient(15deg, #303, #000, #000, #303) !important;
+	box-shadow: 0 10px 20px -14px #f0f, 10px 0 10px -10px #0ff, -10px 0 10px -10px #0ff !important;
+	z-index: 666;
+	transform: scale(1.01);
 }
 

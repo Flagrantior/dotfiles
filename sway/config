@@ -115,9 +115,9 @@ input type:touchpad {
 }
 
 # Screenrecord
-bindsym --to-code $mod+Shift+s exec 'grim -g "$(slurp -b 00000055 -c ffffff -w 2 && sleep 1)" - | wl-copy'
+bindsym --to-code $mod+Shift+s exec 'grim -g "$(slurp -b 00000055 -c 00ffff -w 2 && sleep 1)" - | wl-copy'
 bindsym Print exec 'grim - | wl-copy'
-bindsym --to-code $mod+Shift+a exec wf-recorder -g "$(slurp -b 00000055 -c ffffff -w 2)"
+#bindsym --to-code $mod+Shift+a exec wf-recorder -g "$(slurp -b 00000055 -c ffffff -w 2)"
 bindsym --to-code $mod+Shift+d exec killall --signal 2 wf-recorder
 
 # Locker
@@ -168,6 +168,7 @@ bindsym XF86AudioMute exec --no-startup-id "pactl set-sink-mute 0 toggle"
 font [pango:] none 0
 titlebar_border_thickness 0
 titlebar_padding 0
+default_border none
 
 # Notifications
 exec mako --background-color \#000000FF --font "Hurmit Nerd Font 10" --actions 1 --max-visible 5 --border-color \#00FFFFFF --text-color \#00FFFFFF --border-size 2

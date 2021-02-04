@@ -119,7 +119,7 @@ settings:
   colors.webpage.darkmode.contrast:
     global: 1.0
   colors.webpage.darkmode.enabled:
-    global: true
+    global: false
   colors.webpage.darkmode.policy.images:
     global: never
   colors.webpage.prefers_color_scheme_dark:
@@ -133,15 +133,24 @@ settings:
     - history
   content.autoplay:
     global: false
+  content.blocking.adblock.lists:
+    global:
+    - https://easylist.to/easylist/easylist.txt
+    - https://easylist.to/easylist/easyprivacy.txt
+    - https://easylist-downloads.adblockplus.org/ruadlist+easylist.txt
+  content.blocking.enabled:
+    global: true
+  content.blocking.hosts.lists:
+    global:
+    - https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
+  content.blocking.method:
+    global: auto
+  content.blocking.whitelist:
+    global:
+    - analytics.google.com
   content.geolocation:
     https://tinder.com: true
     https://www.google.com: false
-  content.host_blocking.lists:
-    global:
-    - https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
-  content.host_blocking.whitelist:
-    global:
-    - analytics.google.com
   content.media.audio_capture:
     file://: true
   content.notifications:
@@ -160,7 +169,7 @@ settings:
   content.register_protocol_handler:
     https://mail.google.com?extsrc=mailto&url=%25s: true
   content.user_stylesheets:
-    global: flagrantior.css
+    global: null
   content.xss_auditing:
     global: true
   downloads.position:

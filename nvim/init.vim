@@ -38,10 +38,11 @@ let g:airline_theme='monochrome'
 
 map <C-t> :tabnew<CR>
 map <S-t> :tabclose<CR>
-nmap <C-x> NERDTreeToggle<CR>
+nmap <C-x> :NERDTreeToggle<CR>
 nmap <C-_> <Plug>NERDCommenterToggle
 nmap <Space> <Plug>(easymotion-overwin-f)
 
+set expandtab tabstop=4 shiftwidth=4 softtabstop=4
 set mouse=a
 set gdefault
 set guifont=Source\ Code\ Pro\ for\ Powerline:h15:cANSI
@@ -51,12 +52,12 @@ set incsearch
 set list listchars=tab:\ \ ,trail:_
 set showbreak=\\
 set noexpandtab
-set shiftwidth=4
 set smartcase
-set softtabstop=4
-set tabstop=4
 syntax on
 hi Comment ctermfg=DarkRed
+hi TabLineFill ctermfg=Black
+hi TabLine ctermfg=Cyan ctermbg=Black cterm=none
+hi TabLineSel ctermfg=Cyan cterm=underline
 
 "hi LineNr ctermfg=Black
 "set number
