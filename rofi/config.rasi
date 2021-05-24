@@ -1,7 +1,8 @@
 configuration {
-	display-run:                    ">";
+	display-run: ">";
 	show-icons: false;
 	scroll-method: 1;
+	font: "Hurmit Nerd Font 12";
 }
 
 * {
@@ -27,10 +28,9 @@ configuration {
     lightcyan:     #b0c4de;
     white:      #bbaa99;
     lightwhite:     #ddccbb;
-	highlight:     underline bold;
 
+	highlight:     underline bold;
     transparent: rgba(0,0,0,0);
-	font: "Hurmit Nerd Font 12";
 }
 
 #window {
@@ -43,7 +43,7 @@ configuration {
     spacing: 0;
     children:  [mainbox];
     orientation: horizontal;
-	width: 20em;
+	/*width: 20em;*/
 	border: 1px 1px 1px 1px;
 	border-color: #f0f;
 }
@@ -71,7 +71,7 @@ configuration {
 #listview {
 	padding: 8px 0 0 0;
     /*dynamic: false;*/
-    lines: 5;
+    /*lines: 5;*/
 }
 
 #element {
