@@ -4,7 +4,7 @@
 PS1='\[\033[1;35m\]>\[\033[0m\]'
 #source /usr/share/autojump/autojump.bash
 alias pacman='sudo pacman --color always'
-alias pingg='ping google.com'
+alias pingg='ping google.com | rg -oP "(?<=time=).*\ " --color=never'
 alias wifi='sudo wifi-menu'
 alias yay='yay --color always'
 alias ls='ls --color=auto'
