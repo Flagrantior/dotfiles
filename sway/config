@@ -1,7 +1,7 @@
 # Flagrantior config for sway
 set $mod Mod4
 set $term "swaymsg 'input type:keyboard xkb_switch_layout 0' && alacritty"
-set $menu rofi -show run -lines 5 -columns 1 -padding 10 -bw 1 -line-padding 0 -line-margin 0 -hide-scrollbar -color-normal "#000000, #ff00ff, #000000, #000000, #00ffff" -color-window "#000000, #ff00ff, #000000" -color-active "#ffffff, #ffffff, #ffffff, #ffffff, #ffffff" -font "Hurmit Nerd Font 12" -width 25 -scroll-method 1 -run-command 'sway exec {cmd}'
+set $menu rofi -show run -run-command 'sway exec {cmd}'
 
 ### Input configuration:
 #   input "2:14:SynPS/2_Synaptics_TouchPad" {
@@ -123,7 +123,7 @@ bindsym --to-code $mod+Shift+d exec killall --signal 2 wf-recorder
 # Locker
 set $locker swaylock -c 000000 --font "Hurmit Nerd Font Mono" --line-color ff00ff --ring-color ff00ff -n --key-hl-color 00ffff -l --inside-ver-color 000000 --ring-ver-color 000000 --indicator-thickness 10 --ring-color 000000 --inside-wrong-color 000000 --ring-wrong-color ff0000 --bs-hl-color ff0000 --inside-clear-color 000000 --ring-clear-color 00ffff -K
 bindsym --to-code $mod+Shift+x exec swaymsg "input type:keyboard xkb_switch_layout 0" && $locker -c 00000000
-bindsym --to-code $mod+x exec 'swaymsg "input type:keyboard xkb_switch_layout 0" && BR=$(cat /sys/class/backlight/radeon_bl0/brightness); echo 1 > /sys/class/backlight/radeon_bl0/brightness && $locker && echo $BR > /sys/class/backlight/radeon_bl0/brightness'
+bindsym --to-code $mod+x exec 'swaymsg "input type:keyboard xkb_switch_layout 0" && BR=$(light) && light -S 1 && $locker && light -S $BR'
 
 bindsym --to-code $mod+Shift+z exec swaymsg "input type:keyboard xkb_switch_layout 0" && systemctl suspend && $locker
 bindsym --to-code $mod+h exec swaymsg "input type:keyboard xkb_switch_layout 0" && systemctl hibernate && $locker
@@ -139,7 +139,7 @@ client.background       #000000
 #output * bg #000000 solid_color
 output * bg ~/.config/sway/wp.jpg fill
 seat seat0 xcursor_theme Dot-Dark
-seat seat0 hide_cursor 1000
+seat seat0 hide_cursor when-typing enable
 exec_always {
 	gsettings set org.gnome.desktop.interface cursor-theme Dot-Dark
 	gsettings set org.gnome.desktop.interface gtk-theme Flagrantior
@@ -153,14 +153,15 @@ bindsym XF86Launch1 exec "reboot"
 #bindsym Shift+XF86MonBrightnessUp exec --no-startup-id "light -s sysfs/backlight/intel_backlight -A 0.1"
 #bindsym XF86MonBrightnessDown exec --no-startup-id "light -s sysfs/backlight/intel_backlight -U 1"
 #bindsym Shift+XF86MonBrightnessDown exec --no-startup-id "light -s sysfs/backlight/intel_backlight -U 0.1"
-bindsym XF86MonBrightnessUp exec --no-startup-id "BR=$(cat /sys/class/backlight/radeon_bl0/brightness); echo $(($BR+10)) > /sys/class/backlight/radeon_bl0/brightness"
-bindsym XF86MonBrightnessDown exec --no-startup-id "BR=$(cat /sys/class/backlight/radeon_bl0/brightness); echo $(($BR-10)) > /sys/class/backlight/radeon_bl0/brightness"
+bindsym XF86MonBrightnessUp exec --no-startup-id "light -A 5"
+bindsym XF86MonBrightnessDown exec --no-startup-id "light -U 5"
 
 
 # Volume
 bindsym XF86AudioRaiseVolume exec --no-startup-id "pactl set-sink-volume 0 +5%"
 bindsym XF86AudioLowerVolume exec --no-startup-id "pactl set-sink-volume 0 -5%"
 bindsym XF86AudioMute exec --no-startup-id "pactl set-sink-mute 0 toggle"
+bindsym --to-code $mod+m exec --no-startup-id "pactl set-sink-mute 0 toggle"
 
 
 
@@ -181,3 +182,5 @@ bindsym --to-code $mod+alt+KP_add exec playerctl next
 bindsym --to-code $mod+alt+KP_subtract exec playerctl previous
 bindsym --to-code $mod+alt+KP_multiply exec playerctl play-pause
 
+# rotate
+bindsym --to-code $mod+r exec swaymsg output LVDS-1 transform 90 anticlockwise

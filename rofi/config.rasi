@@ -1,0 +1,126 @@
+configuration {
+	display-run:                    ">";
+	show-icons: false;
+	scroll-method: 1;
+}
+
+* {
+    foreground:  #ffeedd;
+    backlight:   #ccffeedd;
+    background-color:  transparent;
+    dark: #222;
+    black:       #000;
+    lightblack:  #111;
+    tlightblack:  #554444cc;
+    red:         #cd5c5c;
+    lightred:    #cc5533;
+    green:       #86af80;
+    lightgreen:  #88cc22;
+    yellow:      #e8ae5b;
+    lightyellow:     #ffa75d;
+    blue:      #6495ed;
+    lightblue:     #87ceeb;
+    magenta:      #f0f;
+    lightmagenta:     #996600;
+    cyan:      #b0c4de;
+    tcyan:      #ccb0c4de;
+    lightcyan:     #b0c4de;
+    white:      #bbaa99;
+    lightwhite:     #ddccbb;
+	highlight:     underline bold;
+
+    transparent: rgba(0,0,0,0);
+	font: "Hurmit Nerd Font 12";
+}
+
+#window {
+    location: center;
+    anchor: center;
+	padding: 10px;
+    border-radius: 0;
+    color: #f0f;
+	background-color: #000;
+    spacing: 0;
+    children:  [mainbox];
+    orientation: horizontal;
+	width: 20em;
+	border: 1px 1px 1px 1px;
+	border-color: #f0f;
+}
+
+#mainbox {
+    spacing: 0;
+	children: [ inputbar, message, listview ];
+}
+
+/*#message {}*/
+
+#inputbar {
+    color: #f0f;
+}
+
+#entry,prompt,case-indicator {
+    text-font: inherit;
+    text-color:inherit;
+}
+
+#prompt {
+    /*margin:     0px 0.3em 0em 0em ;*/
+}
+
+#listview {
+	padding: 8px 0 0 0;
+    /*dynamic: false;*/
+    lines: 5;
+}
+
+#element {
+	background-color: transparent;
+	color: #f0f;
+	padding: 0;
+	margin: -1px;
+}
+#element selected.normal {
+	color: #0ff;
+}
+/*#element normal active {}*/
+/*#element normal urgent {}*/
+/*#element alternate normal {}*/
+/*#element alternate active {}*/
+/*#element alternate urgent {}*/
+/*#element selected active {}*/
+/*#element selected urgent {}*/
+/*#element normal normal {}*/
+
+#vertb {
+    expand: false;
+    children: [ dummy0, mode-switcher, dummy1  ];
+}
+#dummy0,  dummy1 {
+    expand: true;
+}
+
+#mode-switcher {
+    expand: false;
+    orientation: vertical;
+    spacing: 0px;
+    border: 0px 0px 0px 0px;
+}
+/*#button {
+	font: "FontAwesome 22";
+	padding: 6px;
+	border: 2px 0px 2px 2px;
+	border-radius: 4px 0px 0px 4px;
+	background-color: @tlightblack;
+	border-color: @foreground;
+	color: #0ff;
+	horizontal-align: 0.5;
+}
+#button selected normal {
+    color: @dark;
+    border: 2px 0px 2px 2px;
+    background-color: @backlight;
+    border-color: @foreground;
+}*/
+ 
+//show run -lines 5 -columns 1 -padding 10 -bw 1 -line-padding 0 -line-margin 0 -hide-scrollbar -color-normal "#000000, #ff00ff, #000000, #000000, #00ffff" -color-window "#000000, #ff00ff, #000000" -color-active "#ffffff, #ffffff, #ffffff, #ffffff, #ffffff" -font "Hurmit Nerd Font 12" -width 25 -scroll-method 1 -run-command 'sway exec {cmd}'
