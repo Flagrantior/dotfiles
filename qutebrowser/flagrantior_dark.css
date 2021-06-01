@@ -1,9 +1,9 @@
 * {
-	border-top-color: #222 !important;
-	border-bottom-color: #222 !important;
-	border-left-color: #aaa !important;
-	border-right-color: #aaa !important;
-	/*color: #fff !important;*/
+	border-top-color: #011 !important;
+	border-bottom-color: #011 !important;
+	border-left-color: #0aa !important;
+	border-right-color: #0aa !important;
+	color: #fff;
 	/*background-color: #000 !important;*/
 	box-shadow: none !important;
 	font-family: Roboto;
@@ -16,12 +16,10 @@ body {
 	background-color: black !important;
 }
 
-
-
 header:not([role="banner"]) {
 	transform-origin: top;
 	transform: perspective(30em) rotate3d(1,0,0, -6deg);
-	background: linear-gradient(90deg, #fff .1%, rgba(0,0,0,0) .1%, rgba(0,0,0,0) 99.9%, #fff 99.9%) !important;
+	/*background: linear-gradient(90deg, #fff .1%, rgba(0,0,0,0) .1%, rgba(0,0,0,0) 99.9%, #fff 99.9%) !important;*/
 	transition-duration: 0.2s !important;
 }
 
@@ -68,7 +66,7 @@ button svg {
 }
 
 input {
-	color: #bbb !important;
+	color: #0ff !important;
 	background: #000 !important;
 	border-color: #777 !important;
 	transition-duration: .2s !important;
@@ -160,12 +158,14 @@ ytd-grid-video-renderer:hover #details {
 /*Reddit*/
 
 #SHORTCUT_FOCUSABLE_DIV .Post {
-	box-shadow: 17px 0 30px -30px #fff, -17px 0 30px -30px #fff !important;
-	transition: .3s;
+    box-shadow: 17px 0 30px -30px #f0f, -17px 0 30px -30px #0ff !important;
+    transition: .3s;
 }
 
 #SHORTCUT_FOCUSABLE_DIV .Post:hover {
-	box-shadow: 30px 0 40px -35px #fff, -30px 0 40px -35px #fff !important;
+    border-left-color: #0ff !important;
+    border-right-color: #f0f !important;
+    box-shadow: 30px 0 40px -35px #f0f, -30px 0 40px -35px #0ff !important;
 }
 
 div[data-before-content="advertisement"], .ad-banner, #COIN_PURCHASE_DROPDOWN_ID {
