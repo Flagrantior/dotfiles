@@ -39,6 +39,10 @@ alias sctl='sudo systemctl'
 alias netctl='sudo netctl'
 alias nmr='nmcli n of && sleep 1 && nmcli n on'
 alias feh='feh -B black -Z -.'
+alias trm='transmission-remote'
+alias mpvd='mpv --vf=negate --hue=100'
+alias tor1='sudo systemctl start tor-router.service'
+alias tor0='sudo systemctl stop tor-router.service'
 
 reset-cursor() {
 	printf '\[\033[3 q\]'

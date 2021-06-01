@@ -1,51 +1,46 @@
 * {
-	border-color: darkmagenta !important;
-	color: #0fd;
+	border-top-color: #222 !important;
+	border-bottom-color: #222 !important;
+	border-left-color: #aaa !important;
+	border-right-color: #aaa !important;
+	/*color: #fff !important;*/
+	/*background-color: #000 !important;*/
 	box-shadow: none !important;
-	font-family: Hermit Nerd Font !important;
+	font-family: Roboto;
 	/*border-radius: 0 !important;*/
-	font-style: italic !important;
+	/*font-style: italic !important;*/
 }
 
 body {
 	background-image: none !important;
-	/*background: black !important;*/
+	background-color: black !important;
 }
+
+
 
 header:not([role="banner"]) {
 	transform-origin: top;
 	transform: perspective(30em) rotate3d(1,0,0, -6deg);
-	box-shadow: 0 -3px 20px -7px #f0f !important;
-	background:
-		linear-gradient(90deg, #0ff .1%, rgba(0,0,0,0) .1%, rgba(0,0,0,0) 99.9%, #0ff 99.9%),
-		repeating-linear-gradient(
-			-45deg, #202, #202 15px,
-			rgba(0,0,0, .7) 15px, rgba(0,0,0, .7) 30px
-		) !important;
+	background: linear-gradient(90deg, #fff .1%, rgba(0,0,0,0) .1%, rgba(0,0,0,0) 99.9%, #fff 99.9%) !important;
 	transition-duration: 0.2s !important;
 }
 
 header:not([role="banner"]):hover {
 	transform: none;
-	box-shadow: 0 0 20px -7px #f0f, 30px 0 40px -35px #0ff, -30px 0 40px -35px #0ff !important;
+	box-shadow: 30px 0 40px -35px #fff, -30px 0 40px -35px #fff !important;
 }
 
 footer {
 	transform-origin: bottom;
 	transform: perspective(30em) rotate3d(1,0,0, 6deg);
-	box-shadow: 0 3px 20px -7px #f0f !important;
 	background:
-		linear-gradient(90deg, #0ff .1%, rgba(0,0,0,0) .1%, rgba(0,0,0,0) 99.9%, #0ff 99.9%),
-		repeating-linear-gradient(
-			45deg, #101, #101 15px,
-			rgba(0,0,0, .7) 15px, rgba(0,0,0, .7) 30px
-		) !important;
+		linear-gradient(90deg, #fff .1%, rgba(0,0,0,0) .1%, rgba(0,0,0,0) 99.9%, #fff 99.9%) !important;
 	transition-duration: 0.2s !important;
 }
 
 footer:hover {
 	transform: scale(1);
-	box-shadow: 0 0 20px -7px #f0f !important;
+	/*box-shadow: 0 0 20px -7px #fff !important;*/
 }
 
 main {
@@ -53,45 +48,44 @@ main {
 }
 
 button {
-	border-color: #022 !important;
+	border-color: #222 !important;
 	cursor: pointer !important;
-	color: #0ff !important;
+	color: #fff !important;
 }
 
 button:hover {
 	transition-duration: 0.1s !important;
 	transform: scale(1.1) skew(-5deg);
 	z-index: 999 !important;
-	border-color: #0ff !important;
+	border-color: #bbb !important;
 	background: #000;
-	color: #0ff;
-	box-shadow: 0 0 15px -5px #0ff !important;
+	color: #fff;
+	box-shadow: 0 0 15px -5px #fff !important;
 }
 
 button svg {
-	fill: #0ff;
+	fill: #fff;
 }
 
 input {
-	color: cyan !important;
-	background: black !important;
-	border-color: #077 !important;
+	color: #bbb !important;
+	background: #000 !important;
+	border-color: #777 !important;
 	transition-duration: .2s !important;
 }
 
 input:hover {
-	box-shadow: 0 10px 15px -5px #0ff !important;
-	border-color: #099 !important;
-	transform: perspective(30em) scale(1.05) rotate3d(1,0,0, 20deg);
+	box-shadow: 0 0 10px -5px #fff !important;
+	border-color: #999 !important;
 	z-index: 666 !important;
 }
 
 input:focus {
 	transition-duration: .4s !important;
-	transform: scale(1.1);
-	border-color: #0ff !important;
+	transform: scale(1.04);
+	border-color: #ccc !important;
 	z-index: 777 !important;
-	box-shadow: 0 0 15px -5px #0ff !important;
+	box-shadow: 0 0 15px -5px #fff !important;
 }
 
 input[type=password] {
@@ -116,7 +110,7 @@ code {
 
 a {
 	cursor: pointer !important;
-	color: #0ff !important;
+	color: #fff !important;
 	text-transform: uppercase;
 	text-decoration: none !important;
 }
@@ -125,14 +119,6 @@ a:hover {
 	color: #fff !important;
 	text-decoration: underline !important;
 	/*text-shadow: 0 0 7px #f00 !important;*/
-}
-
-h1, h2, h3 {
-	/*color: #0ff !important;*/
-	text-shadow:
-		0 0 2px #000,
-		0px -2px 3px rgba(0,255,255, .7),
-		0px 3px 3px rgba(255,0,255, .7);
 }
 
 h1:after {
@@ -154,17 +140,17 @@ h1:before {
 }
 
 .vector-menu-tabs li {
-	background: #202;
+	background: #222;
 }
 
 /*YouTube*/
 
 ytd-grid-video-renderer:hover {
-	box-shadow: 0 -10px 20px -15px #0ff !important;
+	box-shadow: 0 -10px 20px -15px #fff !important;
 }
 
 ytd-grid-video-renderer:hover #details {
-	box-shadow: 0 10px 20px -15px #0ff !important;
+	box-shadow: 0 10px 20px -15px #fff !important;
 }
 
 #masthead-ad {
@@ -174,14 +160,12 @@ ytd-grid-video-renderer:hover #details {
 /*Reddit*/
 
 #SHORTCUT_FOCUSABLE_DIV .Post {
-	box-shadow: 17px 0 30px -30px #f0f, -17px 0 30px -30px #0ff !important;
+	box-shadow: 17px 0 30px -30px #fff, -17px 0 30px -30px #fff !important;
 	transition: .3s;
 }
 
 #SHORTCUT_FOCUSABLE_DIV .Post:hover {
-	border-left-color: #0ff !important;
-	border-right-color: #f0f !important;
-	box-shadow: 30px 0 40px -35px #f0f, -30px 0 40px -35px #0ff !important;
+	box-shadow: 30px 0 40px -35px #fff, -30px 0 40px -35px #fff !important;
 }
 
 div[data-before-content="advertisement"], .ad-banner, #COIN_PURCHASE_DROPDOWN_ID {
@@ -189,22 +173,22 @@ div[data-before-content="advertisement"], .ad-banner, #COIN_PURCHASE_DROPDOWN_ID
 }
 
 header[data-redditstyle="true"] svg {
-	fill: #0ff;
+	fill: #fff;
 }
 
 /*Github+*/
 
 div[role="grid"] div[role="row"] {
 	background:
-		linear-gradient(90deg, #0ff .1%, #000 .1%, rgba(0,0,0,0) 99.9%, #0ff 99.9%),
+		linear-gradient(90deg, #fff .1%, #000 .1%, rgba(0,0,0,0) 99.9%, #fff 99.9%),
 		linear-gradient(15deg, #303, #000 20%, #000 80%, #303) !important;
 }
 
 div[role="grid"] div[role="row"]:hover {
 	background:
-		linear-gradient(90deg, #0ff .3%, rgba(0,0,0,0) .3%, rgba(0,0,0,0) 99.7%, #0ff 99.7%),
+		linear-gradient(90deg, #fff .3%, rgba(0,0,0,0) .3%, rgba(0,0,0,0) 99.7%, #fff 99.7%),
 		linear-gradient(15deg, #303, #000, #000, #303) !important;
-	box-shadow: 0 10px 20px -14px #f0f, 10px 0 10px -10px #0ff, -10px 0 10px -10px #0ff !important;
+	box-shadow: 0 10px 20px -14px #fff, 10px 0 10px -10px #fff, -10px 0 10px -10px #fff !important;
 	z-index: 666;
 	transform: scale(1.01);
 }

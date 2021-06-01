@@ -14,11 +14,9 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 
 #BlackArch
 curl -O https://blackarch.org/strap.sh
-if [[ $(echo 9c15f5d3d6f3f8ad63a6927ba78ed54f1a52176b strap.sh | sha1sum -c) = "strap.sh: OK" ]]; then
-	chmod +x strap.sh
-	sudo ./strap.sh
-	sudo pacman -Syu
-fi
+chmod +x strap.sh
+sudo ./strap.sh
+sudo pacman -Syu
 
 echo -e "[Icon Theme]\nInherits=TheDOT-dark" | sudo tee /usr/share/icons/default/index.theme
 
@@ -33,3 +31,9 @@ shopt -s histverify
 
 cp qutebrowser.desktop ~/.local/share/applications/qutebrowser.desktop
 xdg-settings set default-web-browser qutebrowser.desktop
+
+export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
+ --color=fg:#00ffff,bg:#000000,hl:#ff00ff
+ --color=fg+:#ffffff,bg+:#000000,hl+:#ff00ff
+ --color=info:#afaf87,prompt:#00ff00,pointer:#ff00ff
+ --color=marker:#ff0000,spinner:#ff0000,header:#ff00ff'

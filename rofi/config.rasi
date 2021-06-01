@@ -61,15 +61,15 @@ configuration {
 
 #entry,prompt,case-indicator {
     text-font: inherit;
-    text-color:inherit;
+    text-color: inherit;
 }
 
 #prompt {
-    /*margin:     0px 0.3em 0em 0em ;*/
+	margin: 0 0.3em 0 0;
 }
 
 #listview {
-	padding: 8px 0 0 0;
+	padding: 4px 0 0 0;
     /*dynamic: false;*/
     /*lines: 5;*/
 }
@@ -80,9 +80,11 @@ configuration {
 	padding: 0;
 	margin: -1px;
 }
+
 #element selected.normal {
 	color: #0ff;
 }
+
 /*#element normal active {}*/
 /*#element normal urgent {}*/
 /*#element alternate normal {}*/
@@ -96,6 +98,7 @@ configuration {
     expand: false;
     children: [ dummy0, mode-switcher, dummy1  ];
 }
+
 #dummy0,  dummy1 {
     expand: true;
 }
@@ -106,6 +109,7 @@ configuration {
     spacing: 0px;
     border: 0px 0px 0px 0px;
 }
+
 /*#button {
 	font: "FontAwesome 22";
 	padding: 6px;
@@ -116,6 +120,7 @@ configuration {
 	color: #0ff;
 	horizontal-align: 0.5;
 }
+
 #button selected normal {
     color: @dark;
     border: 2px 0px 2px 2px;
