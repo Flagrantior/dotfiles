@@ -50,6 +50,10 @@ main {
 	background: black !important;
 }
 
+input[type="submit"] {
+	border-color: #099 !important;
+}
+
 button {
 	border-color: #222 !important;
 	cursor: pointer !important;

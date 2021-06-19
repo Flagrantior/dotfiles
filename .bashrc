@@ -2,6 +2,7 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 PS1='\[\033[1;35m\]>\[\033[0m\]'
+source <(cod init $$ bash)
 #source /usr/share/autojump/autojump.bash
 alias pacman='sudo pacman --color always'
 alias pingg='ping google.com | rg -oP "(?<=time=).*\ " --color=never'
@@ -23,6 +24,7 @@ alias grep='rg'
 alias ls='exa -a'
 alias ll='exa -la'
 alias off='systemctl poweroff'
+alias che='cheat-sh'
 alias hiber='systemctl hibernate'
 alias susp='systemctl suspend'
 #alias sway='--my-next-gpu-wont-be-nvidia'
@@ -43,7 +45,8 @@ alias trm='transmission-remote'
 alias mpvd='mpv --vf=negate --hue=100'
 alias tor1='sudo systemctl start tor-router.service'
 alias tor0='sudo systemctl stop tor-router.service'
-
+alias mic1='pactl set-source-mute alsa_input.pci-0000_00_14.2.analog-stereo false'
+alias mic0='pactl set-source-mute alsa_input.pci-0000_00_14.2.analog-stereo true'
 reset-cursor() {
 	printf '\[\033[3 q\]'
 }

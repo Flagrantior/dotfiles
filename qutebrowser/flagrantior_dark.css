@@ -158,6 +158,8 @@ ytd-grid-video-renderer:hover #details {
 /*Reddit*/
 
 #SHORTCUT_FOCUSABLE_DIV .Post {
+    border-left-color: #0ff !important;
+    border-right-color: #f0f !important;
     box-shadow: 17px 0 30px -30px #f0f, -17px 0 30px -30px #0ff !important;
     transition: .3s;
 }

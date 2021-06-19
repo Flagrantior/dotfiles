@@ -6,6 +6,8 @@
     min-height: 0;
     background: #000;
     color: #0cf;
+	padding-bottom: 0;
+	margin-bottom: 0;
 }
 
 window#waybar.hidded {
@@ -18,6 +20,7 @@ window#waybar.hidded {
 
 #workspaces button {
 	color: #0df;
+	padding-left: 1.3em;
 }
 
 #workspaces button:hover {
@@ -25,15 +28,12 @@ window#waybar.hidded {
 	box-shadow: inherit;
 }
 
-#workspaces button.focused {
-}
+/*#workspaces button.focused {}*/
+/*#tray {}*/
 
 #clock, #battery, #temperature, #backlight, #pulseaudio, #memory, #cpu, #disk {
 	font-style: italic;
-    padding: 0 10px;
-}
-
-#tray {
+    padding: 1px 10px ;
 }
 
 #battery.warning {

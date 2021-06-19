@@ -153,8 +153,10 @@ bindsym XF86Launch1 exec "reboot"
 #bindsym Shift+XF86MonBrightnessUp exec --no-startup-id "light -s sysfs/backlight/intel_backlight -A 0.1"
 #bindsym XF86MonBrightnessDown exec --no-startup-id "light -s sysfs/backlight/intel_backlight -U 1"
 #bindsym Shift+XF86MonBrightnessDown exec --no-startup-id "light -s sysfs/backlight/intel_backlight -U 0.1"
-bindsym XF86MonBrightnessUp exec --no-startup-id "light -A 5"
-bindsym XF86MonBrightnessDown exec --no-startup-id "light -U 5"
+bindsym XF86MonBrightnessUp exec --no-startup-id "light -A 1"
+bindsym XF86MonBrightnessDown exec --no-startup-id "light -U 1"
+bindsym Shift+XF86MonBrightnessUp exec --no-startup-id "light -A 7"
+bindsym Shift+XF86MonBrightnessDown exec --no-startup-id "light -U 7"
 
 
 # Volume
