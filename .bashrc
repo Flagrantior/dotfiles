@@ -2,7 +2,6 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 PS1='\[\033[1;35m\]>\[\033[0m\]'
-source <(cod init $$ bash)
 #source /usr/share/autojump/autojump.bash
 alias pacman='sudo pacman --color always'
 alias pingg='ping google.com | rg -oP "(?<=time=).*\ " --color=never'
@@ -16,6 +15,7 @@ alias mount='sudo mount'
 alias umount='sudo umount'
 alias pyserv='python -m http.server'
 alias wttr='curl wttr.in/Spb?0 --silent --max-time 3'
+alias gpgimport='gpg --keyserver keyserver.ubuntu.com --receive-keys '
 alias wttr1='curl wttr.in/Spb?1 --silent --max-time 3'
 alias wttr2='curl wttr.in/Spb?2 --silent --max-time 3'
 alias wttr3='curl wttr.in/Spb?3 --silent --max-time 3'
@@ -47,6 +47,7 @@ alias tor1='sudo systemctl start tor-router.service'
 alias tor0='sudo systemctl stop tor-router.service'
 alias mic1='pactl set-source-mute alsa_input.pci-0000_00_14.2.analog-stereo false'
 alias mic0='pactl set-source-mute alsa_input.pci-0000_00_14.2.analog-stereo true'
+alias sudo='sudo -E'
 reset-cursor() {
 	printf '\[\033[3 q\]'
 }

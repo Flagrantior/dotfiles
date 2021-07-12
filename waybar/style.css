@@ -31,7 +31,7 @@ window#waybar.hidded {
 /*#workspaces button.focused {}*/
 /*#tray {}*/
 
-#clock, #battery, #temperature, #backlight, #pulseaudio, #memory, #cpu, #disk {
+#network, #clock, #battery, #temperature, #backlight, #pulseaudio, #memory, #cpu, #disk {
 	font-style: italic;
     padding: 1px 10px ;
 }
