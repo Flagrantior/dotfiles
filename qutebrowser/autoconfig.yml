@@ -113,7 +113,7 @@ settings:
   colors.tabs.selected.odd.fg:
     global: '#00ffff'
   colors.webpage.bg:
-    global: black
+    global: white
   colors.webpage.darkmode.algorithm:
     global: lightness-hsl
   colors.webpage.darkmode.contrast:
@@ -122,8 +122,10 @@ settings:
     global: false
   colors.webpage.darkmode.policy.images:
     global: never
-  colors.webpage.prefers_color_scheme_dark:
-    global: true
+  colors.webpage.darkmode.threshold.text:
+    global: 256
+  colors.webpage.preferred_color_scheme:
+    global: dark
   completion.height:
     global: 22%
   completion.open_categories:
@@ -144,7 +146,7 @@ settings:
     global:
     - https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
   content.blocking.method:
-    global: auto
+    global: both
   content.blocking.whitelist:
     global:
     - analytics.google.com
@@ -153,10 +155,18 @@ settings:
     https://www.google.com: false
   content.media.audio_capture:
     file://: true
-  content.notifications:
+    https://flagrantior.art: true
+  content.notifications.enabled:
     global: ask
+    https://aliexpress.ru: true
+    https://beta.protonmail.com: true
+    https://calendar.protonmail.com: true
+    https://mail.protonmail.com: true
     https://ru-mi.com: false
+    https://spb.hh.ru: true
     https://tinder.com: true
+    https://webk.telegram.org: true
+    https://www.fenfenwz.com: false
     https://www.instagram.com: true
     https://www.reddit.com: true
     https://www.youtube.com: true
@@ -184,21 +194,21 @@ settings:
     - -c
     - normal {line}G{column0}l
   fonts.default_family:
-    global: null
+    global: Hurmit Nerd Font
   fonts.default_size:
     global: 11pt
   fonts.prompts:
     global: default_size default_family
   fonts.web.family.cursive:
-    global: Hurmit Nerd Font
+    global: Hermit Nerd Font
   fonts.web.family.fixed:
-    global: Hurmit Nerd Font
+    global: Hermit Nerd Font
   fonts.web.family.sans_serif:
-    global: Hurmit Nerd Font
+    global: Hermit Nerd Font
   fonts.web.family.serif:
-    global: Hurmit Nerd Font
+    global: Hermit Nerd Font
   fonts.web.family.standard:
-    global: Hurmit Nerd Font
+    global: Hermit Nerd Font
   hints.border:
     global: '1px solid #ff00ff'
   hints.chars:
@@ -240,6 +250,7 @@ settings:
       I: https://www.instagram.com/{}
       RT: https://rutracker.org/forum/tracker.php?nm={}
       T: https://translate.google.com/translate?sl=auto&tl=ru&u={}
+      VKM: https://vk.com/feed?obj={}&q=&section=mentions
       W: https://ru.wikipedia.org/wiki/{}
       We: https://en.wikipedia.org/wiki/{}
       Y: https://www.youtube.com/results?search_query={}
