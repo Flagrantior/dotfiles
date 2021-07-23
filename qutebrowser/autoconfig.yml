@@ -193,6 +193,8 @@ settings:
     - '{file}'
     - -c
     - normal {line}G{column0}l
+  fonts.completion.category:
+    global: default_size default_family
   fonts.default_family:
     global: Hurmit Nerd Font
   fonts.default_size:
@@ -200,15 +202,15 @@ settings:
   fonts.prompts:
     global: default_size default_family
   fonts.web.family.cursive:
-    global: Hermit Nerd Font
+    global: Hurmit Nerd Font
   fonts.web.family.fixed:
-    global: Hermit Nerd Font
+    global: Hurmit Nerd Font
   fonts.web.family.sans_serif:
-    global: Hermit Nerd Font
+    global: Hurmit Nerd Font
   fonts.web.family.serif:
-    global: Hermit Nerd Font
+    global: Hurmit Nerd Font
   fonts.web.family.standard:
-    global: Hermit Nerd Font
+    global: Hurmit Nerd Font
   hints.border:
     global: '1px solid #ff00ff'
   hints.chars:
