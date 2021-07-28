@@ -4,7 +4,7 @@ cd $(dirname "$0")
 
 pacman -Syu
 pacman -S yay
-yay -S base base-devel networkmanager neovim exa autojump ripgrep wayland xwayland sway waybar alacritty rofi-lbonn-wayland-git slurp wl-clipboard grim nemo xcursor-thedot
+yay -S base base-devel networkmanager neovim exa autojump ripgrep wayland xwayland sway waybar alacritty rofi-lbonn-wayland-git slurp wl-clipboard grim nemo xcursor-thedot nerd-fonts-hermit
 
 cp .bashrc ~/.bashrc
 cp .bash_profile ~/.bash_profile
@@ -37,3 +37,4 @@ export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
  --color=fg+:#ffffff,bg+:#000000,hl+:#ff00ff
  --color=info:#afaf87,prompt:#00ff00,pointer:#ff00ff
  --color=marker:#ff0000,spinner:#ff0000,header:#ff00ff'
+export PATH=/home/flagrantior/.config/scripts:$PATH
