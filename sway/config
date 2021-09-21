@@ -138,6 +138,7 @@ client.background       #000000
 # Appearance
 #output * bg #000000 solid_color
 output * bg ~/.config/sway/wp.jpg fill
+#output * bg ~/.config/sway/wp_faye.jpg fill
 seat seat0 xcursor_theme Dot-Dark
 seat seat0 hide_cursor when-typing enable
 exec_always {
@@ -183,7 +184,7 @@ bindsym --to-code $mod+alt+KP_subtract exec playerctl previous
 bindsym --to-code $mod+alt+KP_multiply exec playerctl play-pause
 
 # Rotate
-bindsym --to-code $mod+r exec swaymsg output LVDS-1 transform 90 anticlockwise
+bindsym --to-code $mod+r exec swaymsg output eDP-1 transform 90 anticlockwise
 
 # Apps
 bindsym --to-code $mod+b exec 'B="$(exa --color=never ~/Documents/Books | rofi -dmenu -i -p Book:)"; if [[ $B != "" ]]; then zathura "~/Documents/Books/$B"; fi'

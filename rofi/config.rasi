@@ -1,7 +1,7 @@
 configuration {
 	display-run: ">";
 	show-icons: false;
-	scroll-method: 1;
+	/*scroll-method: 1;*/
 	font: "Hurmit Nerd Font 12";
 }
 
@@ -43,7 +43,7 @@ configuration {
     spacing: 0;
     children:  [mainbox];
     orientation: horizontal;
-	/*width: 20em;*/
+	width: 20em;
 	border: 1px 1px 1px 1px;
 	border-color: #f0f;
 }
@@ -53,15 +53,22 @@ configuration {
 	children: [ inputbar, message, listview ];
 }
 
+textbox-prompt-colon {
+	expand: false;
+	str: "";
+}
+
 /*#message {}*/
 
 #inputbar {
     color: #f0f;
+	num-rows: "";
 }
 
 #entry,prompt,case-indicator {
     text-font: inherit;
     text-color: inherit;
+	placeholder: "";
 }
 
 #prompt {
@@ -70,11 +77,20 @@ configuration {
 
 #listview {
 	padding: 4px 0 0 0;
-    /*dynamic: false;*/
-    /*lines: 5;*/
+	border: none;
+	/*dynamic: false;*/
+	lines: 5;
+	scrollbar: false;
 }
 
-#element {
+#element normal.normal {
+	background-color: transparent;
+	color: #f0f;
+	padding: 0;
+	margin: -1px;
+}
+
+#element alternate.normal {
 	background-color: transparent;
 	color: #f0f;
 	padding: 0;
@@ -82,6 +98,7 @@ configuration {
 }
 
 #element selected.normal {
+	background-color: transparent;
 	color: #0ff;
 }
 
@@ -127,5 +144,3 @@ configuration {
     background-color: @backlight;
     border-color: @foreground;
 }*/
- 
-//show run -lines 5 -columns 1 -padding 10 -bw 1 -line-padding 0 -line-margin 0 -hide-scrollbar -color-normal "#000000, #ff00ff, #000000, #000000, #00ffff" -color-window "#000000, #ff00ff, #000000" -color-active "#ffffff, #ffffff, #ffffff, #ffffff, #ffffff" -font "Hurmit Nerd Font 12" -width 25 -scroll-method 1 -run-command 'sway exec {cmd}'

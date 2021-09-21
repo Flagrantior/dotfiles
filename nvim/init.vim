@@ -40,7 +40,8 @@ map <C-t> :tabnew<CR>
 map <S-t> :tabclose<CR>
 nmap <C-x> :NERDTreeToggle<CR>
 nmap <C-_> <Plug>NERDCommenterToggle
-nmap <Space> <Plug>(easymotion-overwin-f)
+map <Space> <Plug>(easymotion-overwin-f)
+nnoremap <CR> :noh<CR><CR>
 
 set expandtab tabstop=4 shiftwidth=4 softtabstop=4
 set mouse=a
@@ -55,10 +56,11 @@ set noexpandtab
 set smartcase
 syntax on
 hi Comment ctermfg=DarkRed
-hi TabLineFill ctermfg=Black
-hi TabLine ctermfg=Cyan ctermbg=Black cterm=none
+hi TabLineFill ctermfg=none ctermbg=none cterm=none
+hi TabLine ctermfg=Cyan ctermbg=none cterm=none
 hi TabLineSel ctermfg=Cyan cterm=underline
-hi StatusLine ctermfg=16 ctermbg=Cyan
+"hi StatusLine ctermfg=16 ctermbg=Cyan
+hi StatusLine ctermbg=none cterm=bold
 
 set statusline=
 "set statusline+=%#PmenuSel#

@@ -1,5 +1,15 @@
 set guioptions ''
 set default-bg "#000000"
+set default-fg "#00FFFF"
 set recolor true
 set recolor-lightcolor "#000000"
 set recolor-darkcolor "#00FFFF"
+set font "Hurmit Nert Font 12"
+set statusbar-fg "#00FFFF"
+set statusbar-bg "#000000"
+set inputbar-fg "#00FFFF"
+set inputbar-bg "#000000"
+set notification-warning-bg "#FF0000"
+set notification-warning-fg "#FFFFFF"
+set highlight-color "#00FFFF"
+set highlight-active-color "#FF0000"
