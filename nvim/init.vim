@@ -59,7 +59,7 @@ call plug#begin('~/.vim/plugged')
 	Plug 'saadparwaiz1/cmp_luasnip'
 	Plug 'L3MON4D3/LuaSnip'
 	Plug 'yuezk/vim-js'
-	Plug 'maxmellon/vim-jsx-pretty'
+	"Plug 'maxmellon/vim-jsx-pretty'
 call plug#end()
 
 

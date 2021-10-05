@@ -5,7 +5,7 @@
 //	"width": 1280, // Waybar width
 //	"modules-left": ["tray", "network"],
     "modules-left": ["sway/workspaces"],
-    "modules-right": ["pulseaudio", "backlight", "cpu", "memory", "disk", "battery", "clock"],
+    "modules-right": ["network", "pulseaudio", "backlight", "cpu", "memory", "disk", "battery", "clock"],
     "sway/workspaces": {
         "disable-scroll": true,
         "all-outputs": true,
@@ -77,14 +77,14 @@
 		"format-full": "pF"
     },
     "network": {
-		"interface": "wlp3s0", // (Optional) To force the use of this interface
+//		"interface": "wlan0", // (Optional) To force the use of this interface
 //		"format-wifi": "{signalStrength} {essid} {ipaddr}",
-        "format-wifi": "{signalStrength}: {ipaddr}",
+        "format-wifi": "w{signalStrength}",
         "format-ethernet": "{ifname}: {ipaddr}/{cidr}",
 //		"format-linked": "{ifname} [NONE]",
 		"format-linked": "\\\\",
-        "format-disconnected": "DISCONNECTED",
-//		"on-click": "alacritty -e sudo wifi-menu"
+        "format-disconnected": "//",
+//		"on-click": "alacritty -e nmr"
     },
     "pulseaudio": {
 //		"scroll-step": 1, // %, can be a float
