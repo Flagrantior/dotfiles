@@ -1,0 +1,32 @@
+[Default Applications]
+application/octet-stream=mousepad.desktop
+application/pdf=qpdfview.desktop
+application/pdf=qpdfview.desktop
+application/x-gettext-translation=mousepad.desktop
+application/xml=mousepad.desktop
+application/x-wine-extension-ini=mousepad.desktop
+image/gif=viewnior.desktop;gimp.desktop
+image/gif=viewnior.desktop;gimp.desktop
+image/jpeg=org.nomacs.ImageLounge.desktop
+image/png=viewnior.desktop;gimp.desktop
+text/plain=mousepad.desktop
+video/mp4=vlc.desktop
+video/ogg=vlc.desktop
+video/x-flv=vlc.desktop
+video/x-ms-wmv=vlc.desktop
+video/x-ogm+ogg=vlc.desktop
+video/x-theora+ogg=vlc.desktop
+x-scheme-handler/tg=userapp-Telegram Desktop-CC1450.desktop
+text/html=org.qutebrowser.qutebrowser.desktop
+x-scheme-handler/http=org.qutebrowser.qutebrowser.desktop
+x-scheme-handler/https=org.qutebrowser.qutebrowser.desktop
+x-scheme-handler/about=org.qutebrowser.qutebrowser.desktop
+x-scheme-handler/unknown=org.qutebrowser.qutebrowser.desktop
+application/zip=xarchiver.desktop
+
+[Added Associations]
+application/x-bittorrent=tixati.desktop;
+x-scheme-handler/tg=userapp-Telegram Desktop-AD6TU0.desktop;userapp-Telegram Desktop-CC1450.desktop;
+image/jpeg=org.nomacs.ImageLounge.desktop;
+application/pdf=org.pwmt.zathura-pdf-mupdf.desktop;
+application/zip=xarchiver.desktop;
