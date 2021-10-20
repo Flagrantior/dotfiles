@@ -123,7 +123,7 @@ bindsym --to-code $mod+Shift+d exec killall --signal 2 wf-recorder
 # Locker
 set $locker swaylock -c 000000 --font "Hurmit Nerd Font Mono" --line-color ff00ff --ring-color ff00ff -n --key-hl-color 00ffff -l --inside-ver-color 000000 --ring-ver-color 000000 --indicator-thickness 10 --ring-color 000000 --inside-wrong-color 000000 --ring-wrong-color ff0000 --bs-hl-color ff0000 --inside-clear-color 000000 --ring-clear-color 00ffff -K
 bindsym --to-code $mod+Shift+x exec swaymsg "input type:keyboard xkb_switch_layout 0" && $locker -c 00000000
-bindsym --to-code $mod+x exec 'swaymsg "input type:keyboard xkb_switch_layout 0" && BR=$(light) && light -S 1 && $locker && light -S $BR'
+bindsym --to-code $mod+x exec 'swaymsg "input type:keyboard xkb_switch_layout 0" && BR=$(light) && light -S 0 && $locker && light -S $BR'
 
 bindsym --to-code $mod+Shift+z exec swaymsg "input type:keyboard xkb_switch_layout 0" && systemctl suspend && $locker
 bindsym --to-code $mod+h exec swaymsg "input type:keyboard xkb_switch_layout 0" && systemctl hibernate && $locker
@@ -150,21 +150,28 @@ exec_always {
 bindsym XF86Launch1 exec "reboot"
 
 # Brightness
-#bindsym XF86MonBrightnessUp exec --no-startup-id "light -s sysfs/backlight/intel_backlight -A 1"
-#bindsym Shift+XF86MonBrightnessUp exec --no-startup-id "light -s sysfs/backlight/intel_backlight -A 0.1"
-#bindsym XF86MonBrightnessDown exec --no-startup-id "light -s sysfs/backlight/intel_backlight -U 1"
-#bindsym Shift+XF86MonBrightnessDown exec --no-startup-id "light -s sysfs/backlight/intel_backlight -U 0.1"
+#bindsym XF86MonBrightnessUp exec --no-startup-id "light -s sysfs/backlight/amdgpu_bl1 -A 1"
+#bindsym Shift+XF86MonBrightnessUp exec --no-startup-id "light -s sysfs/backlight/amdgpu_bl1 -A 0.1"
+#bindsym XF86MonBrightnessDown exec --no-startup-id "light -s sysfs/backlight/amdgpu_bl1 -U 1"
+#bindsym Shift+XF86MonBrightnessDown exec --no-startup-id "light -s sysfs/backlight/amdgpu_bl1 -U 0.1"
 bindsym XF86MonBrightnessUp exec --no-startup-id "light -A 1"
 bindsym XF86MonBrightnessDown exec --no-startup-id "light -U 1"
 bindsym Shift+XF86MonBrightnessUp exec --no-startup-id "light -A 7"
 bindsym Shift+XF86MonBrightnessDown exec --no-startup-id "light -U 7"
-
+bindsym XF86AudioPlay exec "light -A 1"
+bindsym XF86AudioStop exec "light -U 1"
+bindsym Shift+XF86AudioPlay exec "light -A 10"
+bindsym Shift+XF86AudioStop exec "light -U 10"
 
 # Volume
 bindsym XF86AudioRaiseVolume exec --no-startup-id "pactl set-sink-volume 0 +5%"
 bindsym XF86AudioLowerVolume exec --no-startup-id "pactl set-sink-volume 0 -5%"
 bindsym XF86AudioMute exec --no-startup-id "pactl set-sink-mute 0 toggle"
 bindsym --to-code $mod+m exec --no-startup-id "pactl set-sink-mute 0 toggle"
+bindsym XF86AudioNext exec "pactl set-sink-volume 0 +1%"
+bindsym XF86AudioPrev exec "pactl set-sink-volume 0 -1%"
+bindsym Shift+XF86AudioNext exec "pactl set-sink-volume 0 +10%"
+bindsym Shift+XF86AudioPrev exec "pactl set-sink-volume 0 -10%"
 
 # Disable titlebar
 font [pango:] none 0
