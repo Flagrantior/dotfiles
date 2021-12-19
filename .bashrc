@@ -5,7 +5,7 @@ PS1='\[\033[1;35m\]>\[\033[0m\]'
 source /usr/share/autojump/autojump.bash
 alias pacman='sudo pacman --color always'
 alias pingg='ping google.com'
-alias wifi='sudo wifi-menu'
+alias wifi='nmcli d w r; nmcli d w'
 alias yay='yay --color always'
 alias ls='ls --color=auto'
 alias pyserv='python -m http.server'
@@ -27,7 +27,6 @@ alias off='systemctl poweroff'
 alias hiber='systemctl hibernate'
 alias susp='systemctl suspend'
 #alias sway='--my-next-gpu-wont-be-nvidia'
-alias minecraft='mctlauncher'
 alias prime='primusrun'
 alias wioff='sudo ip link set wlp3s0 down'
 alias widown='sudo ip link set wlp3s0 down'
@@ -39,7 +38,7 @@ alias btr='watch -n0.5 acpi'
 alias sctl='sudo systemctl'
 alias netctl='sudo netctl'
 alias nmr='nmcli n of && sleep 1 && nmcli n on'
-alias feh='feh -B black -Z -.'
+alias feh='feh -B black -Z --recursive -.'
 alias trm='transmission-remote'
 alias mpvd='mpv --vf=negate --hue=100'
 alias tor1='sudo systemctl start tor-router.service'
@@ -47,10 +46,13 @@ alias tor0='sudo systemctl stop tor-router.service'
 alias gpgimport='gpg --keyserver keyserver.ubuntu.com --receive-keys '
 alias pref='QT_QPA_PLATFORM=xcb PureRef'
 alias sudo='sudo -E'
+alias instaloader='instaloader --no-metadata-json --no-captions'
+alias teamviewer='QT_QPA_PLATFORM=xcb teamviewer'
 
 reset-cursor() {
 	printf '\[\033[3 q\]'
 }
 export PS1="$(reset-cursor)$PS1"
+export PATH=~/.scripts/:$PATH
 
 #source /home/flagrantior/.config/broot/launcher/bash/br
