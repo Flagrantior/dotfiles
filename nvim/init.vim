@@ -1,3 +1,20 @@
+call plug#begin('~/.vim/plugged')
+	Plug 'easymotion/vim-easymotion'
+	Plug 'jiangmiao/auto-pairs'
+	Plug 'kien/ctrlp.vim'
+	Plug 'mattn/emmet-vim'
+	Plug 'preservim/nerdtree', {'on': 'NERDTreeToggle'}
+	Plug 'preservim/nerdcommenter'
+	Plug 'ap/vim-css-color'
+	Plug 'terryma/vim-multiple-cursors'
+	Plug 'preservim/tagbar'
+	Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
+	Plug 'prettier/vim-prettier'
+	Plug 'junegunn/fzf'
+	"Plug 'yuezk/vim-js'
+	"Plug 'maxmellon/vim-jsx-pretty'
+call plug#end()
+
 "set number
 "set colorcolumn=79
 set encoding=utf-8
@@ -46,34 +63,29 @@ hi TabLineSel ctermfg=Cyan cterm=underline
 hi StatusLine ctermbg=none cterm=bold
 hi VertSplit cterm=NONE
 hi Pmenu ctermfg=cyan ctermbg=black gui=bold
-hi PmenuSel ctermfg=black ctermbg=darkcyan
+hi PmenuSel ctermfg=black ctermbg=cyan
+hi SignColumn ctermbg=black
 "hi StatusLine ctermfg=16 ctermbg=Cyan
 
 map <C-t> :tabnew<CR>
 map <S-t> :tabclose<CR>
 nmap <C-x> :NERDTreeToggle<CR>
 nmap <C-_> <Plug>NERDCommenterToggle
-map <Space> <Plug>(easymotion-overwin-f)
+map <Space> <Plug>(easymotion-bd-f)
+nmap <Space> <Plug>(easymotion-overwin-f)
 nnoremap <CR> :noh<CR><CR>
 nnoremap <Space><Space><Space> :nohlsearch<CR>
 inoremap jk <esc>
-
-call plug#begin('~/.vim/plugged')
-	Plug 'easymotion/vim-easymotion'
-	Plug 'jiangmiao/auto-pairs'
-	Plug 'kien/ctrlp.vim'
-	Plug 'mattn/emmet-vim'
-	Plug 'preservim/nerdtree', {'on': 'NERDTreeToggle'}
-	Plug 'preservim/nerdcommenter'
-	Plug 'ap/vim-css-color'
-	Plug 'terryma/vim-multiple-cursors'
-	Plug 'preservim/tagbar'
-	Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
-	"Plug 'yuezk/vim-js'
-	"Plug 'maxmellon/vim-jsx-pretty'
-call plug#end()
+nnoremap <S-u> :redo<CR>
 
 " Run current script with python3 by CTRL+R in command and insert mode
 autocmd FileType python map <buffer> <C-r> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
 autocmd FileType python imap <buffer> <C-r> <esc>:w<CR>:exec '!python3' shellescape(@%, 1)<CR>
-autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Emmet
+let g:user_emmet_mode='in'
+imap <C-y> <Plug>(emmet-expand-abbr)
+"let g:user_emmet_install_global = 0
+"let g:user_emmet_expandabbr_key='<Tab>'
+"imap <buffer> <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
+
