@@ -1,0 +1,17 @@
+color "type=INPUT fg=CYAN bg=DEFAULT_COLOR"
+color "type=NORMAL fg=CYAN bg=DEFAULT_COLOR"
+color "type=WELCOME fg=BLACK bg=DEFAULT_COLOR"
+color "type=CELL_SELECTION fg=BLACK bg=CYAN"
+color "type=CELL_SELECTION_SC fg=BLACK bg=CYAN"
+color "type=MODE fg=BLACK bg=DEFAULT_COLOR"
+color "type=HEADINGS fg=CYAN bg=BLACK"
+color "type=HEADINGS_ODD fg=CYAN bg=BLACK"
+color "type=NUMB fg=WHITE bg=BLACK"
+color "type=CELL_ID fg=MAGENTA bg=BLACK"
+
+set autocalc
+set numeric
+set numeric_decimal=0
+set overlap
+set xlsx_readformulas
+

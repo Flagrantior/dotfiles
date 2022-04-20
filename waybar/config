@@ -70,16 +70,17 @@
             "warning": 30,
             "critical": 15
         },
-        "format": "p{capacity}",
+        "format": "DISCHARGING p{capacity}",
         "format-charging": "p{capacity}+",
         "format-alt": "{time}",
+		"format-time": "~p{H}.{M}",
 //		"format-good": "", // An empty format will hide the module
 		"format-full": "pF"
     },
     "network": {
 //		"interface": "wlan0", // (Optional) To force the use of this interface
 //		"format-wifi": "{signalStrength} {essid} {ipaddr}",
-        "format-wifi": "w{signalStrength}",
+        "format-wifi": "w{signalStrength} {essid}",
         "format-ethernet": "{ifname}: {ipaddr}/{cidr}",
 //		"format-linked": "{ifname} [NONE]",
 		"format-linked": "\\\\",

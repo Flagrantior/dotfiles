@@ -1,7 +1,7 @@
 call plug#begin('~/.vim/plugged')
 	Plug 'easymotion/vim-easymotion'
 	Plug 'jiangmiao/auto-pairs'
-	Plug 'kien/ctrlp.vim'
+	Plug 'ctrlpvim/ctrlp.vim'
 	Plug 'mattn/emmet-vim'
 	Plug 'preservim/nerdtree', {'on': 'NERDTreeToggle'}
 	Plug 'preservim/nerdcommenter'
@@ -70,13 +70,15 @@ hi SignColumn ctermbg=black
 map <C-t> :tabnew<CR>
 map <S-t> :tabclose<CR>
 nmap <C-x> :NERDTreeToggle<CR>
-nmap <C-_> <Plug>NERDCommenterToggle
+map <C-_> <Plug>NERDCommenterToggle
 map <Space> <Plug>(easymotion-bd-f)
 nmap <Space> <Plug>(easymotion-overwin-f)
 nnoremap <CR> :noh<CR><CR>
 nnoremap <Space><Space><Space> :nohlsearch<CR>
 inoremap jk <esc>
 nnoremap <S-u> :redo<CR>
+nnoremap ZZ :q!<cr>
+nnoremap ZW :wq<cr>
 
 " Run current script with python3 by CTRL+R in command and insert mode
 autocmd FileType python map <buffer> <C-r> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>

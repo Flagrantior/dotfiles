@@ -3,7 +3,7 @@
 [[ $- != *i* ]] && return
 PS1='\[\033[1;35m\]>\[\033[0m\]'
 source /usr/share/autojump/autojump.bash
-alias pacman='sudo pacman --color always'
+#alias pacman='sudo pacman --color always'
 alias pingg='ping google.com'
 alias wifi='nmcli d w r; nmcli d w'
 alias yay='yay --color always'
@@ -11,9 +11,7 @@ alias ls='ls --color=auto'
 alias pyserv='python -m http.server'
 alias py='python'
 #alias factorio='~/Games/Factorio/run.sh'
-alias mount='sudo mount'
 alias che='cheat-sh'
-alias umount='sudo umount'
 alias pyserv='python -m http.server'
 alias wttr='curl wttr.in/Spb?0 --silent --max-time 3'
 alias wttr1='curl wttr.in/Spb?1 --silent --max-time 3'
@@ -23,9 +21,11 @@ alias ableton='wine64 ~/.wine/drive_c/ProgramData/Ableton/Live\ 10\ Suite/Progra
 alias grep='rg'
 alias ls='exa -a'
 alias ll='exa -la'
-alias off='systemctl poweroff'
-alias hiber='systemctl hibernate'
-alias susp='systemctl suspend'
+alias off='loginctl poweroff'
+alias rb='loginctl reboot'
+alias reboot='loginctl reboot'
+#alias hiber='systemctl hibernate'
+#alias susp='systemctl suspend'
 #alias sway='--my-next-gpu-wont-be-nvidia'
 alias prime='primusrun'
 alias wioff='sudo ip link set wlp3s0 down'
@@ -37,22 +37,33 @@ alias fzf='fzf --color=16,hl:#ffffff,fg+:#ff00ff,hl+:#ffffff,prompt:#00ffff,poin
 alias btr='watch -n0.5 acpi'
 alias sctl='sudo systemctl'
 alias netctl='sudo netctl'
-alias nmr='nmcli n of && sleep 1 && nmcli n on'
+alias nmr='nmcli n of && nmcli n on && nmcli d w r'
 alias feh='feh -B black -Z --recursive -.'
 alias trm='transmission-remote'
 alias mpvd='mpv --vf=negate --hue=100'
 alias tor1='sudo systemctl start tor-router.service'
 alias tor0='sudo systemctl stop tor-router.service'
 alias gpgimport='gpg --keyserver keyserver.ubuntu.com --receive-keys '
-alias pref='QT_QPA_PLATFORM=xcb PureRef'
-alias sudo='sudo -E'
-alias instaloader='instaloader --no-metadata-json --no-captions'
-alias teamviewer='QT_QPA_PLATFORM=xcb teamviewer'
+#alias instaloader='instaloader --no-metadata-json --no-captions'
+#alias teamviewer='QT_QPA_PLATFORM=xcb teamviewer'
+alias rscp='rsync -aP --'
+alias rsmv='rsync -aP --remove-source-files --'
+alias myip='curl https://api.db-ip.com/v2/free/self'
+alias rustrepl='evcxr'
+alias Plasma='XDG_SESSION_TYPE=wayland dbus-run-session startplasma-wayland'
+alias ranger='TERM=alacritty ranger'
+alias inst='cd ~/Pictures/INST/ && instaloader --no-captions --no-metadata-json --no-compress-json --no-profile-pic --no-video-thumbnails'
+alias js='deno'
+alias twt='taskwarrior-tui'
+alias trans='trans -t ru'
+alias vpn1='sudo -E protonvpn c -f'
+alias vpn0='sudo -E protonvpn d'
+alias ncdu='sudo -E ncdu --color off'
+
+#shopt -s globstar
 
 reset-cursor() {
 	printf '\[\033[3 q\]'
 }
 export PS1="$(reset-cursor)$PS1"
-export PATH=~/.scripts/:$PATH
-
-#source /home/flagrantior/.config/broot/launcher/bash/br
+export PATH=~/.local/bin/:$PATH

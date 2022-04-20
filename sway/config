@@ -1,15 +1,17 @@
 # Flagrantior config for sway
 set $mod Mod4
-set $term "swaymsg 'input type:keyboard xkb_switch_layout 0' && alacritty"
+set $term "swaymsg 'input type:keyboard xkb_switch_layout 0' && foot"
 set $menu rofi -show run -lines 5 -width 20 -run-command 'sway exec {cmd}'
 
 ### Input configuration:
-#   input "2:14:SynPS/2_Synaptics_TouchPad" {
-#       dwt enabled
-#       tap enabled
-#       natural_scroll enabled
-#       middle_emulation enabled
-#   }
+#input "1267:12632:ELAN050A:00_04F3:3158_Touchpad" {
+	#map_to_output eDP-1
+	#calibration_matrix 0 -1 1 1 0 0
+	#dwt enabled
+	#tap enabled
+	#natural_scroll enabled
+	#middle_emulation enabled
+#}
 
 # Main hotkeys
 bindsym --to-code $mod+Return exec $term
@@ -142,7 +144,7 @@ client.background       #000000
 output * bg ~/.config/sway/wp.jpg fill
 seat seat0 xcursor_theme Dot-Dark
 #seat seat0 hide_cursor when-typing enable
-seat * hide_cursor 3000
+#seat * hide_cursor 3000
 exec_always {
 	gsettings set org.gnome.desktop.interface cursor-theme Dot-Dark
 	gsettings set org.gnome.desktop.interface gtk-theme Flagrantior
