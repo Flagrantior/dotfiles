@@ -41,6 +41,7 @@ alias nmr='nmcli n of && nmcli n on && nmcli d w r'
 alias feh='feh -B black -Z --recursive -.'
 alias trm='transmission-remote'
 alias mpvd='mpv --vf=negate --hue=100'
+alias mpv='mpv --audio-display=no'
 alias tor1='sudo systemctl start tor-router.service'
 alias tor0='sudo systemctl stop tor-router.service'
 alias gpgimport='gpg --keyserver keyserver.ubuntu.com --receive-keys '
@@ -52,13 +53,15 @@ alias myip='curl https://api.db-ip.com/v2/free/self'
 alias rustrepl='evcxr'
 alias Plasma='XDG_SESSION_TYPE=wayland dbus-run-session startplasma-wayland'
 alias ranger='TERM=alacritty ranger'
-alias inst='cd ~/Pictures/INST/ && instaloader --no-captions --no-metadata-json --no-compress-json --no-profile-pic --no-video-thumbnails'
+alias ns='export {http,https,ftp}_proxy="http://192.168.49.1:8282"'
+alias inst='cd ~/Pictures/INST/ && instaloader --no-captions --no-metadata-json --no-compress-json --no-profile-pic --no-video-thumbnails --login flagrantior'
 alias js='deno'
 alias twt='taskwarrior-tui'
 alias trans='trans -t ru'
 alias vpn1='sudo -E protonvpn c -f'
 alias vpn0='sudo -E protonvpn d'
 alias ncdu='sudo -E ncdu --color off'
+alias yt-mp3='yt-dlp --extract-audio --audio-format mp3'
 
 #shopt -s globstar
 
@@ -66,4 +69,8 @@ reset-cursor() {
 	printf '\[\033[3 q\]'
 }
 export PS1="$(reset-cursor)$PS1"
-export PATH=~/.local/bin/:$PATH
+export PATH=~/.local/bin/:~/.cargo/bin/:$PATH
+
+#source /home/flagrantior/.config/broot/launcher/bash/br
+
+source /home/flagrantior/.config/broot/launcher/bash/br

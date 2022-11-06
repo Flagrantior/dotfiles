@@ -8,6 +8,8 @@ config_version: 2
 settings:
   aliases:
     global:
+      dark: jseval document.querySelectorAll(`*:not(img)`).forEach(node => {node.style.color=`cyan`;
+        node.style.background=`black`})
       q: close
       qa: quit
       w: session-save
@@ -150,28 +152,17 @@ settings:
   content.blocking.whitelist:
     global:
     - analytics.google.com
+  content.fullscreen.window:
+    global: true
   content.geolocation:
-    https://tinder.com: true
     https://www.google.com: false
+  content.headers.referer:
+    global: same-domain
   content.media.audio_capture:
     file://: true
     https://flagrantior.art: true
   content.notifications.enabled:
     global: ask
-    https://aliexpress.ru: true
-    https://beta.protonmail.com: true
-    https://calendar.protonmail.com: true
-    https://mail.protonmail.com: true
-    https://ru-mi.com: false
-    https://spb.hh.ru: true
-    https://tinder.com: true
-    https://webk.telegram.org: true
-    https://www.fenfenwz.com: false
-    https://www.instagram.com: true
-    https://www.reddit.com: true
-    https://www.youtube.com: true
-    https://xi.express: false
-    https://yakadr.ru: false
   content.plugins:
     global: true
   content.proxy:
@@ -233,14 +224,14 @@ settings:
     global: always
   tabs.padding:
     global:
-      bottom: 1
+      bottom: 0
       left: 0
-      right: 15
+      right: 10
       top: 0
   tabs.position:
     global: top
   tabs.show:
-    global: multiple
+    global: switching
   tabs.show_switching_delay:
     global: 800
   tabs.title.alignment:
@@ -254,6 +245,7 @@ settings:
       D: https://duckduckgo.com/?q={}
       DEFAULT: https://www.google.com/search?q={}
       I: https://www.instagram.com/{}
+      R: https://www.reddit.com/search/?q={}&type=sr&include_over_18=1
       RT: https://rutracker.org/forum/tracker.php?nm={}
       T: https://translate.google.com/translate?sl=auto&tl=ru&u={}
       VKM: https://vk.com/feed?obj={}&q=&section=mentions

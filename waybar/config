@@ -40,7 +40,7 @@
 //		"timezone": "Europe/Moscow",
 		"format": "{:%H%M}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><big>{calendar}</big></tt>",
-        "format-alt": "{:%d:%w/%m}"
+		"format-alt": "{:%b %d:%w  }"
     },
     "cpu": {
         "format": "c{usage}",
@@ -79,8 +79,8 @@
     },
     "network": {
 //		"interface": "wlan0", // (Optional) To force the use of this interface
-//		"format-wifi": "{signalStrength} {essid} {ipaddr}",
-        "format-wifi": "w{signalStrength} {essid}",
+//		"format-wifi": "w{signalStrength} {essid} {ipaddr}",
+		"format-wifi": "w{signalStrength}",
         "format-ethernet": "{ifname}: {ipaddr}/{cidr}",
 //		"format-linked": "{ifname} [NONE]",
 		"format-linked": "\\\\",

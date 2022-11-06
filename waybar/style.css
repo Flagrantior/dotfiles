@@ -1,11 +1,11 @@
 * {
     border: none;
     border-radius: 0;
-    font-family: Hurmit Nerd Font Mono;
+	font-family: Hurmit Nerd Font Mono;
     font-size: 13px;
     min-height: 0;
     background: #000;
-    color: #0cf;
+	color: #0cf;
 	padding-bottom: 0;
 	margin-bottom: 0;
 }
@@ -44,3 +44,5 @@ window#waybar.hidded {
 #battery.critical {
 	color: red;
 }
+
+label { all: unset; }

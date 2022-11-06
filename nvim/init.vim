@@ -1,6 +1,6 @@
 call plug#begin('~/.vim/plugged')
 	Plug 'easymotion/vim-easymotion'
-	Plug 'jiangmiao/auto-pairs'
+	"Plug 'jiangmiao/auto-pairs'
 	Plug 'ctrlpvim/ctrlp.vim'
 	Plug 'mattn/emmet-vim'
 	Plug 'preservim/nerdtree', {'on': 'NERDTreeToggle'}
@@ -39,7 +39,7 @@ set statusline+=%f\
 set statusline+=%m\ 
 set statusline+=%=%r%=
 set statusline+=\ %y
-set statusline+=\ %c:%l/%L
+set statusline+=\ %l:%c/%L
 set fillchars+=vert:\|,stlnc:-
 "set statusline+=%#PmenuSel#
 "set statusline+=%#CursorColumn#
@@ -70,7 +70,7 @@ hi SignColumn ctermbg=black
 map <C-t> :tabnew<CR>
 map <S-t> :tabclose<CR>
 nmap <C-x> :NERDTreeToggle<CR>
-map <C-_> <Plug>NERDCommenterToggle
+map <C-/> <Plug>NERDCommenterToggle
 map <Space> <Plug>(easymotion-bd-f)
 nmap <Space> <Plug>(easymotion-overwin-f)
 nnoremap <CR> :noh<CR><CR>
