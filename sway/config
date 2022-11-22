@@ -1,7 +1,7 @@
 # Flagrantior's config for sway
 set $mod Mod4
 set $term "swaymsg 'input type:keyboard xkb_switch_layout 0' && foot"
-set $menu rofi -show run -lines 5 -width 20 -run-command 'sway exec {cmd}'
+set $menu rofi -show run -lines 5 -width 20 -run-command 'sway exec {cmd}' -run-shell-command 'foot bash -c \\"{cmd}; read -n 1 -s"'
 
 ### Input configuration:
 #input "1267:12632:ELAN050A:00_04F3:3158_Touchpad" {
