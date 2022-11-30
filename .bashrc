@@ -21,10 +21,10 @@ alias pyserv='python -m http.server'
 alias py='python'
 alias che='cheat-sh'
 alias pyserv='python -m http.server'
-alias wttr='curl wttr.in/Spb?0 --silent --max-time 3'
-alias wttr1='curl wttr.in/Spb?1 --silent --max-time 3'
-alias wttr2='curl wttr.in/Spb?2 --silent --max-time 3'
-alias wttr3='curl wttr.in/Spb?3 --silent --max-time 3'
+alias wttr='curl wttr.in/Spb?0Fq --silent --max-time 3'
+alias wttr1='curl wttr.in/Spb?1Fq --silent --max-time 3'
+alias wttr2='curl wttr.in/Spb?2Fq --silent --max-time 3'
+alias wttr3='curl wttr.in/Spb?3Fq --silent --max-time 3'
 alias ableton='wine64 ~/.wine/drive_c/ProgramData/Ableton/Live\ 10\ Suite/Program/Ableton\ Live\ 10\ Suite.exe'
 alias grep='rg'
 alias ls='exa -a'
@@ -33,9 +33,9 @@ alias off='loginctl poweroff'
 alias rb='loginctl reboot'
 alias reboot='loginctl reboot'
 alias wfup='sudo ip link set wlp3s0 up'
-alias wfidown='sudo ip link set wlp3s0 down'
+alias wfdown='sudo ip link set wlp3s0 down'
 alias wfon='sudo ip link set wlp3s0 up'
-alias wfioff='sudo ip link set wlp3s0 down'
+alias wfoff='sudo ip link set wlp3s0 down'
 alias vim='nvim'
 alias fzf='fzf --color=16,hl:#ffffff,fg+:#ff00ff,hl+:#ffffff,prompt:#00ffff,pointer:#ffff00,spinner:#ff00ff,info:#ff0000 -m'
 alias btr='watch -n0.5 acpi'
@@ -69,5 +69,9 @@ reset-cursor() {
 }
 export PS1="$(reset-cursor)$PS1"
 export PATH=~/.local/bin/:~/.cargo/bin/:$PATH
+
+function cdc {
+  cd "$(llama "$@")"
+}
 
 #source /home/flagrantior/.config/broot/launcher/bash/br
