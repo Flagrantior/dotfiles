@@ -40,7 +40,7 @@
 //		"timezone": "Europe/Moscow",
 		"format": "{:%H%M}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><big>{calendar}</big></tt>",
-		"format-alt": "{:%b %d:%w  }"
+		"format-alt": "{:%b %d:%w}"
     },
     "cpu": {
         "format": "c{usage}",
