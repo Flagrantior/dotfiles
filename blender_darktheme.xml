@@ -48,7 +48,7 @@
         </wcol_regular>
         <wcol_tool>
           <ThemeWidgetColors
-            outline="#5c5c5c"
+            outline="#465e60"
             inner="#000000ff"
             inner_sel="#006969ff"
             item="#ffffffff"
@@ -78,7 +78,7 @@
         </wcol_toolbar_item>
         <wcol_radio>
           <ThemeWidgetColors
-            outline="#3b3b3b"
+            outline="#630060"
             inner="#000000ff"
             inner_sel="#007b69e6"
             item="#ffffffff"
@@ -108,7 +108,7 @@
         </wcol_text>
         <wcol_option>
           <ThemeWidgetColors
-            outline="#313131"
+            outline="#272727"
             inner="#000000ff"
             inner_sel="#007b69e6"
             item="#ffffffff"
