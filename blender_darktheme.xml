@@ -24,7 +24,7 @@
         gizmo_b="#a33535"
         icon_scene="#00d5dbff"
         icon_collection="#ffffffff"
-        icon_object="#fffc6cff"
+        icon_object="#00e1b7ff"
         icon_object_data="#89e689ff"
         icon_modifier="#29b1ffff"
         icon_shading="#ff6060ff"
@@ -36,7 +36,7 @@
             outline="#3e3e3e"
             inner="#000000ff"
             inner_sel="#007b69e6"
-            item="#89246bff"
+            item="#910f75ff"
             text="#d9d9d9"
             text_sel="#ffffff"
             show_shaded="FALSE"
@@ -63,7 +63,7 @@
         </wcol_tool>
         <wcol_toolbar_item>
           <ThemeWidgetColors
-            outline="#600028"
+            outline="#000000"
             inner="#000000ff"
             inner_sel="#006e61ff"
             item="#ffffff8f"
@@ -78,7 +78,7 @@
         </wcol_toolbar_item>
         <wcol_radio>
           <ThemeWidgetColors
-            outline="#630060"
+            outline="#000000"
             inner="#000000ff"
             inner_sel="#007b69e6"
             item="#ffffffff"
@@ -93,7 +93,7 @@
         </wcol_radio>
         <wcol_text>
           <ThemeWidgetColors
-            outline="#006b6f"
+            outline="#204a43"
             inner="#000000ff"
             inner_sel="#007b69ff"
             item="#000000ff"
@@ -138,7 +138,7 @@
         </wcol_toggle>
         <wcol_num>
           <ThemeWidgetColors
-            outline="#00473d"
+            outline="#224a3e"
             inner="#000000ff"
             inner_sel="#0098b366"
             item="#000000ff"
@@ -455,7 +455,7 @@
             tab_active="#000000"
             tab_inactive="#000000"
             tab_back="#000000ff"
-            tab_outline="#3f5890"
+            tab_outline="#373737"
             >
             <gradients>
               <ThemeGradientColors
@@ -810,7 +810,7 @@
     </image_editor>
     <sequence_editor>
       <ThemeSequenceEditor
-        grid="#404040"
+        grid="#3a3a3a"
         window_sliders="#a0a0a0"
         movie_strip="#516987"
         movieclip_strip="#20208f"
