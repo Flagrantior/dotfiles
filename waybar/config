@@ -5,7 +5,8 @@
 //	"width": 1280, // Waybar width
 //	"modules-left": ["tray", "network"],
     "modules-left": ["sway/workspaces"],
-    "modules-right": ["network", "pulseaudio", "backlight", "cpu", "memory", "disk", "battery", "clock"],
+//	"modules-right": ["network", "pulseaudio", "backlight", "cpu", "memory", "disk", "battery", "clock"],
+	"modules-right": ["network", "pulseaudio", "backlight", "cpu", "memory", "battery", "clock"],
     "sway/workspaces": {
         "disable-scroll": true,
         "all-outputs": true,
@@ -70,7 +71,7 @@
             "warning": 30,
             "critical": 15
         },
-        "format": "DISCHARGING p{capacity}",
+        "format": "p{capacity}-",
         "format-charging": "p{capacity}+",
         "format-alt": "{time}",
 		"format-time": "~p{H}.{M}",

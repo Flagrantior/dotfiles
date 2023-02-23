@@ -20,7 +20,6 @@ alias ls='ls --color=auto'
 alias pyserv='python -m http.server'
 alias py='python'
 alias che='cheat-sh'
-alias pyserv='python -m http.server'
 alias wttr='curl wttr.in/Spb?0Fq --silent --max-time 3'
 alias wttr1='curl wttr.in/Spb?1Fq --silent --max-time 3'
 alias wttr2='curl wttr.in/Spb?2Fq --silent --max-time 3'
@@ -75,3 +74,4 @@ function cdc {
 }
 
 #source /home/flagrantior/.config/broot/launcher/bash/br
+#eval "$(thefuck --alias)"

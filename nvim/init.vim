@@ -1,18 +1,22 @@
 call plug#begin('~/.vim/plugged')
 	Plug 'easymotion/vim-easymotion'
-	"Plug 'jiangmiao/auto-pairs'
-	Plug 'ctrlpvim/ctrlp.vim'
-	Plug 'mattn/emmet-vim'
 	Plug 'preservim/nerdtree', {'on': 'NERDTreeToggle'}
 	Plug 'preservim/nerdcommenter'
 	Plug 'ap/vim-css-color'
 	Plug 'terryma/vim-multiple-cursors'
 	Plug 'preservim/tagbar'
-	Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
 	Plug 'prettier/vim-prettier'
-	Plug 'junegunn/fzf'
+	Plug 'neoclide/coc.nvim', {'branch': 'master'}
 	"Plug 'yuezk/vim-js'
 	"Plug 'maxmellon/vim-jsx-pretty'
+	"Plug 'jiangmiao/auto-pairs'
+	"Plug 'mattn/emmet-vim'
+	"Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
+	"Plug 'neovim/nvim-lspconfig'
+	"Plug 'hrsh7th/nvim-cmp'
+	"Plug 'hrsh7th/cmp-nvim-lsp'
+	"Plug 'saadparwaiz1/cmp_luasnip'
+	"Plug 'L3MON4D3/LuaSnip'
 call plug#end()
 
 "set number
@@ -56,13 +60,15 @@ map <M-3> 3gt
 map <M-4> 4gt
 map <M-5> 5gt
 
-hi Comment ctermfg=DarkRed
+hi Comment ctermfg=darkred
 hi TabLineFill ctermfg=none ctermbg=none cterm=none
-hi TabLine ctermfg=Cyan ctermbg=none cterm=none
-hi TabLineSel ctermfg=Cyan cterm=underline
+hi TabLine ctermfg=cyan ctermbg=none cterm=none
+hi TabLineSel ctermfg=cyan cterm=underline
 hi StatusLine ctermbg=none cterm=bold
-hi VertSplit cterm=NONE
-hi Pmenu ctermfg=cyan ctermbg=black gui=bold
+hi VertSplit cterm=none
+hi Pmenu ctermfg=13 ctermbg=black
+hi PmenuThumb ctermbg=23
+hi PmenuSbar ctermbg=black
 hi PmenuSel ctermfg=black ctermbg=cyan
 hi SignColumn ctermbg=black
 "hi StatusLine ctermfg=16 ctermbg=Cyan
@@ -71,8 +77,11 @@ map <C-t> :tabnew<CR>
 map <S-t> :tabclose<CR>
 nmap <C-x> :NERDTreeToggle<CR>
 map <C-/> <Plug>NERDCommenterToggle
+let g:EasyMotion_smartcase = 1
 map <Space> <Plug>(easymotion-bd-f)
 nmap <Space> <Plug>(easymotion-overwin-f)
+let user_emmet_mode = 'in'
+imap <C-y> <Plug>(emmet-expand-abbr)
 nnoremap <CR> :noh<CR><CR>
 nnoremap <Space><Space><Space> :nohlsearch<CR>
 inoremap jk <esc>
@@ -80,14 +89,25 @@ nnoremap <S-u> :redo<CR>
 nnoremap ZZ :q!<cr>
 nnoremap ZW :wq<cr>
 
-" Run current script with python3 by CTRL+R in command and insert mode
-autocmd FileType python map <buffer> <C-r> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
-autocmd FileType python imap <buffer> <C-r> <esc>:w<CR>:exec '!python3' shellescape(@%, 1)<CR>
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+nnoremap <silent> <C-i> :call <SID>show_documentation()<CR>
+inoremap <silent><expr> <Tab> coc#pum#visible() ? coc#pum#next(1) : <SID>check_back_space() ? "\<Tab>" : coc#refresh()
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#_select_confirm() : "\<CR>"
+inoremap <expr> <S-Tab> coc#pum#visible() ? coc#pum#prev(1) : "\<S-Tab>"
 
-" Emmet
-let g:user_emmet_mode='in'
-imap <C-y> <Plug>(emmet-expand-abbr)
-"let g:user_emmet_install_global = 0
-"let g:user_emmet_expandabbr_key='<Tab>'
-"imap <buffer> <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+	execute 'h '.expand('<cword>')
+  else
+	call CocAction('doHover')
+  endif
+endfunction
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
 

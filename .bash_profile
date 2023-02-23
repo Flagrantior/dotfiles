@@ -13,7 +13,7 @@ export MOZ_ENABLE_WAYLAND=1
 export XDG_CURRENT_DESKTOP=us
 export PAGER=less
 export MANPAGER=less
-export GDK_BACKEND=wayland
+#export GDK_BACKEND=wayland
 export _JAVA_AWT_WM_NONREPARENTING=1
 export CLUTTER_BACKEND=wayland
 export QT_QPA_PLATFORM=wayland
@@ -28,4 +28,4 @@ if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
 	exec sway
 fi
 
-export PATH=~/.local/bin/:$PATH
+export PATH=~/.local/bin/:~/.cargo/bin:$PATH

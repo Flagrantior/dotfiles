@@ -195,7 +195,7 @@ bindsym Shift+XF86AudioNext exec "pactl set-sink-volume 0 +10%"
 bindsym Shift+XF86AudioPrev exec "pactl set-sink-volume 0 -10%"
 
  #Disable titlebar
-font [pango:] none 0
+#font [pango:] none 0
 titlebar_border_thickness 0
 titlebar_padding 0
 default_border none
