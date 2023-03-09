@@ -71,6 +71,12 @@ hi PmenuThumb ctermbg=23
 hi PmenuSbar ctermbg=black
 hi PmenuSel ctermfg=black ctermbg=cyan
 hi SignColumn ctermbg=black
+hi CocInlayHint ctermfg=8
+hi CocGitAddedSign ctermbg=none ctermfg=green
+hi CocGitChangeRemovedSign ctermbg=none ctermfg=magenta
+hi CocGitChangedSign ctermbg=none ctermfg=magenta
+hi CocGitRemovedSign ctermbg=none ctermfg=red
+hi CocGitTopRemovedSign ctermbg=none ctermfg=magenta
 "hi StatusLine ctermfg=16 ctermbg=Cyan
 
 map <C-t> :tabnew<CR>
@@ -80,8 +86,8 @@ map <C-/> <Plug>NERDCommenterToggle
 let g:EasyMotion_smartcase = 1
 map <Space> <Plug>(easymotion-bd-f)
 nmap <Space> <Plug>(easymotion-overwin-f)
-let user_emmet_mode = 'in'
-imap <C-y> <Plug>(emmet-expand-abbr)
+"let user_emmet_mode = 'in'
+"imap <C-y> <Plug>(emmet-expand-abbr)
 nnoremap <CR> :noh<CR><CR>
 nnoremap <Space><Space><Space> :nohlsearch<CR>
 inoremap jk <esc>
