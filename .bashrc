@@ -59,7 +59,10 @@ alias vpn1='sudo -E protonvpn c -f'
 alias vpn0='sudo -E protonvpn d'
 alias ncdu='sudo -E ncdu --color off'
 alias yt-mp3='yt-dlp --extract-audio --audio-format mp3'
+alias yt='cd ~/Videos/youtube && yt-dlp -f 22 --'
 alias ports='sudo netstat -tulpn | rg LISTEN'
+alias haskellrepl='ghci'
+alias chmox='chmod +x'
 
 #shopt -s globstar
 

@@ -45,6 +45,8 @@ set statusline+=%=%r%=
 set statusline+=\ %y
 set statusline+=\ %l:%c/%L
 set fillchars+=vert:\|,stlnc:-
+set nofoldenable
+set foldlevel=99
 "set statusline+=%#PmenuSel#
 "set statusline+=%#CursorColumn#
 "set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
@@ -77,6 +79,8 @@ hi CocGitChangeRemovedSign ctermbg=none ctermfg=magenta
 hi CocGitChangedSign ctermbg=none ctermfg=magenta
 hi CocGitRemovedSign ctermbg=none ctermfg=red
 hi CocGitTopRemovedSign ctermbg=none ctermfg=magenta
+hi Folded ctermbg=17
+hi FoldColumn ctermbg=0
 "hi StatusLine ctermfg=16 ctermbg=Cyan
 
 map <C-t> :tabnew<CR>
@@ -103,6 +107,11 @@ nnoremap <silent> <C-i> :call <SID>show_documentation()<CR>
 inoremap <silent><expr> <Tab> coc#pum#visible() ? coc#pum#next(1) : <SID>check_back_space() ? "\<Tab>" : coc#refresh()
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#_select_confirm() : "\<CR>"
 inoremap <expr> <S-Tab> coc#pum#visible() ? coc#pum#prev(1) : "\<S-Tab>"
+
+augroup vimrc
+  au BufReadPre * setlocal foldmethod=indent
+  au BufWinEnter * if &fdm == 'indent' | setlocal foldmethod=manual | endif
+augroup END
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)

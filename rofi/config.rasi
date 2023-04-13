@@ -2,7 +2,7 @@ configuration {
 	display-run: ">";
 	show-icons: false;
 	/*scroll-method: 1;*/
-	font: "Hurmit Nerd Font 12";
+	font: "Flagrantior 12";
 }
 
 * {

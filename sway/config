@@ -132,11 +132,12 @@ input type:pointer {
 bindsym --to-code $mod+Shift+s exec 'grim -g "$(slurp -b 00000055 -c 00ffff -w 2 && sleep 1)" - | wl-copy'
 bindsym Print exec 'grim - | wl-copy'
 #bindsym --to-code $mod+Shift+a exec wf-recorder -g "$(slurp -b 00000055 -c ffffff -w 2)"
-#bindsym --to-code $mod+Shift+d exec killall --signal 2 wf-recorder
+bindsym --to-code $mod+Shift+d exec yes | wf-recorder
+bindsym --to-code $mod+Control+d exec killall --signal 2 wf-recorder
 
 # Locker
 set $locker swaylock -c 000000 --font "Hurmit Nerd Font Mono" --line-color ff00ff --ring-color ff00ff -n --key-hl-color 00ffff -l --inside-ver-color 000000 --ring-ver-color 000000 --indicator-thickness 10 --ring-color 000000 --inside-wrong-color 000000 --ring-wrong-color ff0000 --bs-hl-color ff0000 --inside-clear-color 00000055 --ring-clear-color 00ffff -K
-bindsym --to-code $mod+Control+x exec swaymsg "input type:keyboard xkb_switch_layout 0" && $locker -c 00000000
+bindsym --to-code $mod+Control+x exec 'swaymsg "input type:keyboard xkb_switch_layout 0" && $locker -c 00000000'
 bindsym --to-code $mod+Shift+x exec 'swaymsg "input type:keyboard xkb_switch_layout 0" && BR=$(light) && light -S 0 && $locker && light -S $BR'
 bindsym --to-code $mod+x exec 'swaymsg "input type:keyboard xkb_switch_layout 0" && BR=$(light) && light -S 0 && loginctl suspend && $locker && light -S $BR'
 
@@ -153,8 +154,8 @@ client.background       #000000
 
 # Appearance
 #output * scale 1.2
-#output * bg #000000 solid_color
-output * bg ~/.config/sway/wp.jpg fill
+output * bg #000000 solid_color
+#output * bg ~/.config/sway/wp.jpg fill
 seat seat0 xcursor_theme Dot-Dark
 #seat seat0 hide_cursor when-typing enable
 #seat * hide_cursor 10000
