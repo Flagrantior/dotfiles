@@ -10,6 +10,7 @@ settings:
     global:
       dark: jseval document.querySelectorAll(`*:not(img)`).forEach(node => {node.style.color=`cyan`;
         node.style.background=`black`})
+      ns: set content.proxy http://192.168.49.1:8282
       q: close
       qa: quit
       w: session-save
@@ -129,12 +130,16 @@ settings:
   colors.webpage.preferred_color_scheme:
     global: dark
   completion.height:
-    global: 22%
+    global: 23%
   completion.open_categories:
     global:
     - quickmarks
     - bookmarks
     - history
+  completion.scrollbar.padding:
+    global: 2
+  completion.show:
+    global: always
   content.autoplay:
     global: false
   content.blocking.adblock.lists:
@@ -175,6 +180,8 @@ settings:
     global: true
   downloads.location.directory:
     global: ~/Downloads/
+  downloads.location.suggestion:
+    global: path
   downloads.position:
     global: bottom
   downloads.remove_finished:
@@ -189,7 +196,7 @@ settings:
   fonts.completion.category:
     global: default_size default_family
   fonts.default_family:
-    global: Hurmit Nerd Font
+    global: Flagrantior
   fonts.default_size:
     global: 11pt
   fonts.prompts:
@@ -210,10 +217,26 @@ settings:
     global: frdaswqezxc
   hints.mode:
     global: letter
+  hints.padding:
+    global:
+      bottom: 0
+      left: 3
+      right: 3
+      top: 0
+  input.insert_mode.auto_leave:
+    global: true
   prompt.radius:
     global: 0
   qt.highdpi:
-    global: false
+    global: true
+  statusbar.padding:
+    global:
+      bottom: 0
+      left: 1
+      right: 10
+      top: 5
+  statusbar.position:
+    global: bottom
   statusbar.show:
     global: in-mode
   tabs.background:
