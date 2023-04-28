@@ -83,6 +83,7 @@ hi Folded ctermbg=17
 hi FoldColumn ctermbg=0
 "hi StatusLine ctermfg=16 ctermbg=Cyan
 
+map ; :
 map <C-t> :tabnew<CR>
 map <S-t> :tabclose<CR>
 nmap <C-x> :NERDTreeToggle<CR>
