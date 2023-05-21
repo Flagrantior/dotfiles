@@ -1,48 +1,27 @@
-* {
-    border: none;
-    border-radius: 0;
-	font-family: Hurmit Nerd Font Mono;
-    font-size: 13px;
-    min-height: 0;
-    background: #000;
-	color: #0cf;
-	padding-bottom: 0;
-	margin-bottom: 0;
-}
-
-window#waybar.hidded {
-    opacity: 0.0;
-}
-
-#network {
-	padding-left: 20px;
-}
-
-#workspaces button {
-	color: #0df;
-	padding-left: 1.3em;
-}
-
-#workspaces button:hover {
-	background: black;
-	box-shadow: inherit;
-}
-
-/*#workspaces button.focused {}*/
-/*#tray {}*/
-
+* { border:none; border-radius:0; font-family:Flagrantior; font-size:13px;
+    min-height:0; background:#000; color:#0cf; padding-bottom:0; margin-bottom:0 }
+window#waybar.hidded { opacity:0.0 }
 #network, #clock, #battery, #temperature, #backlight, #pulseaudio, #memory, #cpu, #disk {
-	font-style: italic;
-    padding: 1px 10px ;
+	padding:1px .4em; font-size:1.1em }
+#network { padding-left:20px }
+#workspaces button { color:#0df; padding-left:1.3em }
+#workspaces button:hover { background:black; box-shadow:inherit }
+#battery.charging { color:#0cf }
+#battery { color:#d0d }
+#pulseaudio.muted { color:#d0d }
+#cpu.warning { color:red }
+label { all:unset }
+@keyframes blink { to { color:#000 } }
+#battery.warning:not(.charging) { color: #ff0;
+    animation-name:blink; animation-duration:.7s;
+    animation-timing-function:linear;
+    animation-iteration-count:infinite;
+    animation-direction:alternate;
+}
+#battery.critical:not(.charging) { color: #f00;
+    animation-name:blink; animation-duration:.1s;
+    animation-timing-function:linear;
+    animation-iteration-count:infinite;
+    animation-direction:alternate;
 }
 
-#battery.warning {
-	background: black;
-	color: yellow;
-}
-
-#battery.critical {
-	color: red;
-}
-
-label { all: unset; }

@@ -1,97 +1,98 @@
 {
-    "layer": "top", // Waybar at top layer
-    "position": "bottom", // Waybar position (top|bottom|left|right)
-//	"height": 20, // Waybar height (to be removed for auto height)
-//	"width": 1280, // Waybar width
-//	"modules-left": ["tray", "network"],
-    "modules-left": ["sway/workspaces"],
-//	"modules-right": ["network", "pulseaudio", "backlight", "cpu", "memory", "disk", "battery", "clock"],
-	"modules-right": ["network", "pulseaudio", "backlight", "cpu", "memory", "battery", "clock"],
-    "sway/workspaces": {
-        "disable-scroll": true,
-        "all-outputs": true,
-        "format": "{icon}",
-        "format-icons": {
-            "1": "\\",
-            "2": "\\\\",
-            "3": "\\\\\\",
-            "4": "\\\\\\\\",
-            "5": "V",
-			"6": "V\\",
-			"7": "V\\\\",
-			"8": "\\\\X",
-			"9": "\\X",
-			"10": "X",
-            "urgent": "!"
-        }
-    },
-	"sway/mode": {
-    "format": "{}",
-    "max-length": 50
+
+"layer": "top", // Waybar at top layer
+"position": "bottom", // Waybar position (top|bottom|left|right)
+	"modules-left": ["sway/workspaces"],
+	"modules-right": ["pulseaudio", "backlight", "cpu", "memory", "battery", "clock"],
+	"sway/workspaces": {
+	"disable-scroll": true,
+	"all-outputs": true,
+	"format": "{icon}",
+	"format-icons": {
+		"1": "\\",
+		"2": "\\\\",
+		"3": "\\\\\\",
+		"4": "\\\\\\\\",
+		"5": "V",
+		"6": "V\\",
+		"7": "V\\\\",
+		"8": "\\\\X",
+		"9": "\\X",
+		"10": "X",
+		"urgent": "!"
+	}
+},
+"sway/mode": {
+	"format": "{}",
+	"max-length": 50
+},
+"sway/language": {
+	"format": "{short}"
+},
+"disk": {
+	"interval": 30,
+	"format": "d{percentage_used}"
+},
+"tray": {
+	"icon-size": 21,
+	"spacing": 10
+},
+"clock": {
+	"format": "{:%H%M}",
+	"tooltip-format": "<big>{:%Y %B}</big>\n<tt><big>{calendar}</big></tt>",
+	"format-alt": "{:%b %d:%w }"
+},
+"cpu": {
+	"interval": 1,
+	"format": "{icon}",
+	"format-icons": ["🭻", "🭺", "🭹", "🭸", "🭷", "🭶"],
+	"on-double-click": "foot -e btop",
+	"tooltip": true,
+	//"format": "{icon0}{icon1}{icon2}{icon3}{icon4}{icon5}{icon6}{icon7}",
+},
+"memory": {
+	"format": "{icon}",
+	"format-icons": ["🭻", "🭺", "🭹", "🭸", "🭷", "🭶"],
+},
+"temperature": {
+	"critical-threshold": 80,
+	"format": "t{temperatureC}"
+},
+"backlight": {
+	"device": "radeon_b10",
+	"format": "{icon}",
+	"format-icons": ["🭻", "🭺", "🭹", "🭸", "🭷", "🭶"],
+	"on-scroll-up": "light -A 1",
+	"on-scroll-down": "light -U 1",
+	//"on-scroll-up": "BR=$(cat /sys/class/backlight/intel_backlight/brightness); echo $(($BR+10)) > /sys/class/backlight/intel_backlight/brightness",
+	//"on-scroll-down": "BR=$(cat /sys/class/backlight/intel_backlight/brightness); echo $(($BR-10)) > /sys/class/backlight/intel_backlight/brightness"
+},
+"battery": {
+	"states": {
+		"warning": 30,
+		"critical": 15
 	},
-	"disk": {
-//		"interval": 30,
-		"format": "d{percentage_used}"
-	},
-    "tray": {
-//		"icon-size": 21,
-        "spacing": 10
-    },
-    "clock": {
-//		"timezone": "Europe/Moscow",
-		"format": "{:%H%M}",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><big>{calendar}</big></tt>",
-		"format-alt": "{:%b %d:%w }"
-    },
-    "cpu": {
-        "format": "c{usage}",
-        "tooltip": false
-    },
-    "memory": {
-        "format": "r{}"
-    },
-    "temperature": {
-//	"thermal-zone": 2,
-//		"hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
-        "critical-threshold": 80,
-//		"format-critical": "{temperatureC}°C",
-        "format": "t{temperatureC}"
-    },
-	"backlight": {
-		"device": "radeon_b10",
-		"format": "b{percent}",
-//		"on-scroll-up": "BR=$(cat /sys/class/backlight/intel_backlight/brightness); echo $(($BR+10)) > /sys/class/backlight/intel_backlight/brightness",
-		"on-scroll-up": "light -A 1",
-		"on-scroll-down": "light -U 1",
-//		"on-scroll-down": "BR=$(cat /sys/class/backlight/intel_backlight/brightness); echo $(($BR-10)) > /sys/class/backlight/intel_backlight/brightness"
-	},
-    "battery": {
-        "states": {
-//			"good": 95,
-            "warning": 30,
-            "critical": 15
-        },
-        "format": "p{capacity}-",
-        "format-charging": "p{capacity}+",
-        "format-alt": "{time}",
-		"format-time": "~p{H}.{M}",
-//		"format-good": "", // An empty format will hide the module
-		"format-full": "pF"
-    },
-    "network": {
-//		"interface": "wlan0", // (Optional) To force the use of this interface
-//		"format-wifi": "w{signalStrength} {essid} {ipaddr}",
-		"format-wifi": "w{signalStrength}",
-        "format-ethernet": "{ifname}: {ipaddr}/{cidr}",
-//		"format-linked": "{ifname} [NONE]",
-		"format-linked": "\\\\",
-        "format-disconnected": "//",
-//		"on-click": "alacritty -e nmr"
-    },
-    "pulseaudio": {
-//		"scroll-step": 1, // %, can be a float
-        "format": "v{volume}",
-		"format-muted": "vM",
-        "on-click": "pavucontrol"
-    }
+	"format-charging": "{icon}",
+	"format-time": "~{H}:{M}",
+	"format": "{icon}", //🗲
+	"format-icons": ["🭻", "🭺", "🭹", "🭸", "🭷", "🭶"],
+	//"format-alt": "{time}"
+},
+"network": {
+	"format-wifi": "w{signalStrength} {essid} {ipaddr}",
+	"format": "N{icon}",
+	"format-ethernet": "{ifname}: {ipaddr}/{cidr}",
+	"format-linked": "\\\\",
+	"format-disconnected": "//",
+	"tooltip": false
+	//"format-linked": "{ifname} [NONE]",
+},
+"pulseaudio": {
+	"format": "{icon}",
+	"format-icons": ["🭻", "🭺", "🭹", "🭸", "🭷", "🭶"],
+	"on-click": "pavucontrol",
+	"tooltip": true,
+	"tooltip-format": "{volume}"
+}
+
 }
