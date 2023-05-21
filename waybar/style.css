@@ -5,8 +5,8 @@ window#waybar.hidded { opacity:.0 }
 	padding-right:.5em; font-size:1.1em; margin:-.1em 0 -.2em 0  }
 #network { padding-left:20px }
 #workspaces button { color:#0df; padding-left:1.3em; margin:-.4em 0 -.3em 0 }
-#battery.charging { color:#0df }
-#battery:not(.full) { color:#d0d }
+#battery.charging, #battery.full { color:#0df }
+#battery { color:#d0d }
 #pulseaudio.muted { color:#d0d }
 #cpu.warning { color:red }
 label { all:unset }
