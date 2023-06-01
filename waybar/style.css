@@ -10,17 +10,7 @@ window#waybar.hidded { opacity:.0 }
 #pulseaudio.muted { color:#d0d }
 #cpu.warning { color:red }
 label { all:unset }
-@keyframes blink { to { color:#000 } }
-#battery.warning:not(.charging) { color: #ff0;
-    animation-name:blink; animation-duration:.7s;
-    animation-timing-function:linear;
-    animation-iteration-count:infinite;
-    animation-direction:alternate;
-}
-#battery.critical:not(.charging) { color: #f00;
-    animation-name:blink; animation-duration:.1s;
-    animation-timing-function:linear;
-    animation-iteration-count:infinite;
-    animation-direction:alternate;
-}
+@keyframes blink { 55%{opacity:1} 100%{opacity:0} }
+#battery.warning:not(.charging),  #memory.warning,  #cpu.warning  { color: #ff0; animation: blink 1.2s linear infinite }
+#battery.critical:not(.charging), #memory.critical, #cpu.critical { color: #f00; animation: blink 0.3s linear infinite }
 

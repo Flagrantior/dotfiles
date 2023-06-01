@@ -49,10 +49,18 @@
 	"on-double-click": "foot -e btop",
 	"tooltip": true,
 	//"format": "{icon0}{icon1}{icon2}{icon3}{icon4}{icon5}{icon6}{icon7}",
+	"states": {
+		"warning": 70,
+		"critical": 95
+	}
 },
 "memory": {
 	"format": "{icon}",
 	"format-icons": ["🭻", "🭺", "🭹", "🭸", "🭷", "🭶"],
+	"states": {
+		"warning": 70,
+		"critical": 95
+	}
 },
 "temperature": {
 	"critical-threshold": 80,
