@@ -3,6 +3,8 @@ configuration {
 	show-icons: false;
 	/*scroll-method: 1;*/
 	font: "Flagrantior 12";
+
+	steal-focus: true;
 }
 
 * {
@@ -63,6 +65,7 @@ textbox-prompt-colon {
 #inputbar {
     color: #f0f;
 	num-rows: "";
+	children: [prompt, entry];
 }
 
 #entry,prompt,case-indicator {

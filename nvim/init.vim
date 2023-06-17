@@ -7,6 +7,9 @@ call plug#begin('~/.vim/plugged')
 	Plug 'preservim/tagbar'
 	Plug 'prettier/vim-prettier'
 	Plug 'neoclide/coc.nvim', {'branch': 'master'}
+	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+	Plug 'puremourning/vimspector'
+	"Plug 'jackMort/ChatGPT.nvim'
 	"Plug 'yuezk/vim-js'
 	"Plug 'maxmellon/vim-jsx-pretty'
 	"Plug 'jiangmiao/auto-pairs'
@@ -72,7 +75,7 @@ hi Pmenu ctermfg=13 ctermbg=black
 hi PmenuThumb ctermbg=23
 hi PmenuSbar ctermbg=black
 hi PmenuSel ctermfg=black ctermbg=cyan
-hi SignColumn ctermbg=black
+hi SignColumn ctermbg=none
 hi CocInlayHint ctermfg=8
 hi CocGitAddedSign ctermbg=none ctermfg=green
 hi CocGitChangeRemovedSign ctermbg=none ctermfg=magenta
@@ -89,6 +92,7 @@ map <S-t> :tabclose<CR>
 nmap <C-x> :NERDTreeToggle<CR>
 map <C-/> <Plug>NERDCommenterToggle
 let g:EasyMotion_smartcase = 1
+let g:vimspector_enable_mappings = 'HUMAN'
 map <Space> <Plug>(easymotion-bd-f)
 nmap <Space> <Plug>(easymotion-overwin-f)
 "let user_emmet_mode = 'in'

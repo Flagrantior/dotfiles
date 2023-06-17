@@ -39,7 +39,8 @@
 },
 "clock": {
 	"format": "{:%H%M}",
-	"tooltip-format": "<big>{:%Y %B}</big>\n<tt><big>{calendar}</big></tt>",
+	//"tooltip-format": "<big>{:%Y %B}</big>\n<tt><big>{calendar}</big></tt>",
+	"tooltip-format": "<tt><big>{calendar}</big></tt>",
 	"format-alt": "{:%b %d:%w }"
 },
 "cpu": {
@@ -81,10 +82,10 @@
 		"critical": 15
 	},
 	"format-charging": "{icon}",
-	"format-time": "~{H}:{M}",
+	"format-time": "~{H}:{m}",
 	"format": "{icon}", //🗲
 	"format-icons": ["🭻", "🭺", "🭹", "🭸", "🭷", "🭶"],
-	//"format-alt": "{time}"
+	"format-alt": "{time} {capacity}%"
 },
 "network": {
 	"format-wifi": "w{signalStrength} {essid} {ipaddr}",

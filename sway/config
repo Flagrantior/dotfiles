@@ -100,6 +100,11 @@ bindsym $mod+KP_Add scratchpad show
 # Killer
 #bindsym --to-code $mod+Shift+k exec killall tg qb spotify
 
+# Notifications
+#exec swaync
+#bindsym $mod+n exec swaync-client -t -sw
+exec mako
+
 # Resize
 bindsym $mod+Alt+Left resize shrink width 10px
 bindsym $mod+Alt+Down resize grow height 10px
@@ -114,7 +119,7 @@ bar {
 # Input layouts
 input type:keyboard {
 	xkb_layout us,ru
-	xkb_options grp:alt_shift_toggle
+	xkb_options grp:alt_shift_toggle,caps:none
 	xkb_numlock enabled
 }
 input type:touchpad {
@@ -138,19 +143,20 @@ bindsym --to-code $mod+Control+d exec killall --signal 2 wf-recorder
 # Locker
 set $locker swaylock -c 000000 --font "Hurmit Nerd Font Mono" --line-color ff00ff --ring-color ff00ff -n --key-hl-color 00ffff -l --inside-ver-color 000000 --ring-ver-color 000000 --indicator-thickness 10 --ring-color 000000 --inside-wrong-color 000000 --ring-wrong-color ff0000 --bs-hl-color ff0000 --inside-clear-color 00000055 --ring-clear-color 00ffff -K
 bindsym --to-code $mod+Control+x exec 'swaymsg "input type:keyboard xkb_switch_layout 0" && $locker -c 00000000'
-bindsym --to-code $mod+Shift+x exec 'swaymsg "input type:keyboard xkb_switch_layout 0" && BR=$(light) && light -S 0 && $locker && light -S $BR'
-bindsym --to-code $mod+x exec 'swaymsg "input type:keyboard xkb_switch_layout 0" && BR=$(light) && light -S 0 && loginctl suspend && $locker && light -S $BR'
+bindsym --to-code $mod+x exec 'swaymsg "input type:keyboard xkb_switch_layout 0" && BR=$(light) && light -S 0 && $locker && light -S $BR'
+#bindsym --to-code $mod+Shift+x exec 'swaymsg "input type:keyboard xkb_switch_layout 0" && BR=$(light) && light -S 0 && loginctl suspend && $locker && light -S $BR'
 
 #bindsym --to-code $mod+Shift+z exec swaymsg "input type:keyboard xkb_switch_layout 0" && systemctl suspend && $locker
 #bindsym --to-code $mod+h exec swaymsg "input type:keyboard xkb_switch_layout 0" && systemctl hibernate && $locker
 
 # class                 border  bg      text    indictr chld_brd
-client.focused          #000000 #000000 #ffffff #000000 #000000
-client.focused_inactive #000000 #000000 #ffffff #000000 #000000
-client.unfocused        #000000 #000000 #888888 #000000 #000000
+client.focused          #000000 #000000 #00ffff #000000 #000000
+client.focused_inactive #000000 #000000 #00ffff #000000 #000000
+client.unfocused        #000000 #000000 #880088 #000000 #000000
 client.urgent           #2f343a #900000 #ffffff #900000 #900000
 client.background       #000000
 #client.placeholder      #2f343a #900000 #ffffff #900000 #90000f
+default_border none
 
 # Appearance
 #output * scale 1.2
@@ -197,9 +203,8 @@ bindsym Shift+XF86AudioPrev exec "pactl set-sink-volume 0 -10%"
 
  #Disable titlebar
 #font [pango:] none 0
-titlebar_border_thickness 0
-titlebar_padding 0
-default_border none
+#titlebar_border_thickness 0
+#titlebar_padding 0
 
 #autotiling
 #exec autotiling
