@@ -5,14 +5,15 @@ window { background:rgba(0,0,0,1);}
 #network, #clock, #battery, #temperature, #backlight, #pulseaudio, #memory, #cpu, #disk {
 	padding-right:.5em; font-size:1.1em; margin:-.1em 0 -.2em 0  }
 #network { padding-left:20px }
-#workspaces button { color:#0df; padding-left:1em; padding-right:1em; margin:-.4em 0 -.3em 0 }
-#workspaces button:hover { background-color:#033 }
+#workspaces button { color:#0df; padding-left:1em; padding-right:1em; margin:-.4em 0 -.3em 0; font-weight:bold }
+#workspaces button.focused { background:linear-gradient(black 80%, rgba(0,0,0,0) 80%), linear-gradient(90deg, #000 30%, #0ff 30%, #0ff 80%, #000 80%) }
+#workspaces button:hover:not(.focused) { background:linear-gradient(black 80%, rgba(0,0,0,0) 80%), linear-gradient(90deg, #000 40%, #0ff 40%, #0ff 70%, #000 70%) }
 #battery.charging, #battery.full { color:#0df }
 #battery { color:#d0d }
 #pulseaudio.muted { color:#d0d }
 #cpu.warning { color:red }
 label { all:unset }
 @keyframes blink { 55%{opacity:1} 100%{opacity:0} }
-#battery.warning:not(.charging),  #memory.warning,  #cpu.warning  { color: #ff0; animation: blink 1.2s linear infinite }
-#battery.critical:not(.charging), #memory.critical, #cpu.critical { color: #f00; animation: blink 0.3s linear infinite }
+#battery.warning:not(.charging),  #memory.warning,  #cpu.warning  { color:#ff0; animation:blink 1.2s linear infinite }
+#battery.critical:not(.charging), #memory.critical, #cpu.critical { color:#f00; animation:blink 0.3s linear infinite }
 
