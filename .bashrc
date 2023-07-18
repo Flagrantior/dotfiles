@@ -20,7 +20,7 @@ alias ls='ls --color=auto'
 alias pyserv='python -m http.server'
 alias py='python'
 alias che='cheat-sh'
-alias wttr='curl wttr.in/Spb?0Fq --silent --max-time 3'
+alias wttr='curl v2d.wttr.in/Spb --silent --max-time 3'
 alias wttr1='curl wttr.in/Spb?1Fq --silent --max-time 3'
 alias wttr2='curl wttr.in/Spb?2Fq --silent --max-time 3'
 alias wttr3='curl wttr.in/Spb?3Fq --silent --max-time 3'
@@ -40,11 +40,14 @@ alias fzf='fzf --color=16,hl:#ffffff,fg+:#ff00ff,hl+:#ffffff,prompt:#00ffff,poin
 alias btr='watch -n0.5 acpi'
 alias netctl='sudo netctl'
 alias nmr='nmcli n of && nmcli n on && nmcli d w r'
-alias feh='feh -B black -Z --recursive -.'
+alias feh='feh -B black -Z --recursive --force-aliasing -.'
 alias trm='transmission-remote'
-alias mpvd='mpv --vf=negate --hue=100'
+alias mpva='mpv --no-video'
+alias mpvn='mpv --vf=negate --hue=100'
 alias mpv='mpv --audio-display=no'
-alias gpgimport='gpg --keyserver keyserver.ubuntu.com --receive-keys '
+alias mpvt='mpv --vo=tct --really-quiet'
+alias mpvs='mpv --vo=sixel --really-quiet'
+alias gpgimport='gpg --keyserver keyserver.ubuntu.com --receive-keys'
 alias rscp='rsync -aP --'
 alias rsmv='rsync -aP --remove-source-files --'
 alias myip='curl https://api.db-ip.com/v2/free/self'
@@ -55,14 +58,19 @@ alias inst='cd ~/Pictures/INST/ && instaloader --no-captions --no-metadata-json 
 alias js='deno'
 alias twt='taskwarrior-tui'
 alias trans='trans -t ru'
+alias transi='trans -t ru -I -b'
 alias vpn1='sudo -E protonvpn c -f'
 alias vpn0='sudo -E protonvpn d'
 alias ncdu='sudo -E ncdu --color off'
-alias yt-mp3='yt-dlp --extract-audio --audio-format mp3'
-alias yt='cd ~/Videos/youtube && yt-dlp -f 22 --'
+alias ytm='yt-dlp --extract-audio --audio-format mp3 -P "~/Music/"'
+alias yt='cd ~/Videos/yt && yt-dlp -f 22 --'
+alias ytfzf='ytfzf -f'
 alias ports='sudo netstat -tulpn | rg LISTEN'
 alias haskellrepl='ghci'
 alias chmox='chmod +x'
+alias drag='ripdrag'
+alias typespeed='thokr'
+alias surf='GDK_BACKEND=x11 surf'
 
 #shopt -s globstar
 
@@ -75,6 +83,8 @@ export PATH=~/.local/bin/:~/.cargo/bin/:$PATH
 function cdc {
   cd "$(llama "$@")"
 }
+
+#[[ $- == *i* ]] && source /usr/share/blesh/ble.sh
 
 #source /home/flagrantior/.config/broot/launcher/bash/br
 #eval "$(thefuck --alias)"

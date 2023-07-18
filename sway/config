@@ -123,7 +123,7 @@ input type:keyboard {
 	xkb_numlock enabled
 }
 input type:touchpad {
-	dwt enabled
+	dwt disabled
 	tap enabled
 	middle_emulation enabled
 	tap_button_map lrm
@@ -138,6 +138,7 @@ bindsym --to-code $mod+Shift+s exec 'grim -g "$(slurp -b 00000055 -c 00ffff -w 2
 bindsym Print exec 'grim - | wl-copy'
 #bindsym --to-code $mod+Shift+a exec wf-recorder -g "$(slurp -b 00000055 -c ffffff -w 2)"
 bindsym --to-code $mod+Shift+d exec yes | wf-recorder
+bindsym --to-code $mod+Shift+d+a exec yes | wf-recorder --audio=alsa_output.pci-0000_05_00.6.analog-stereo.monitor
 bindsym --to-code $mod+Control+d exec killall --signal 2 wf-recorder
 
 # Locker

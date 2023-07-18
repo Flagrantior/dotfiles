@@ -3,12 +3,13 @@ call plug#begin('~/.vim/plugged')
 	Plug 'preservim/nerdtree', {'on': 'NERDTreeToggle'}
 	Plug 'preservim/nerdcommenter'
 	Plug 'ap/vim-css-color'
-	Plug 'terryma/vim-multiple-cursors'
+	Plug 'mg979/vim-visual-multi'
 	Plug 'preservim/tagbar'
 	Plug 'prettier/vim-prettier'
 	Plug 'neoclide/coc.nvim', {'branch': 'master'}
 	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 	Plug 'puremourning/vimspector'
+	"Plug 'https://github.com/nvim-tree/nvim-tree.lua'
 	"Plug 'jackMort/ChatGPT.nvim'
 	"Plug 'yuezk/vim-js'
 	"Plug 'maxmellon/vim-jsx-pretty'
@@ -89,7 +90,7 @@ hi FoldColumn ctermbg=0
 map ; :
 map <C-t> :tabnew<CR>
 map <S-t> :tabclose<CR>
-nmap <C-x> :NERDTreeToggle<CR>
+nmap <C-tab> :NERDTreeToggle<CR>
 map <C-/> <Plug>NERDCommenterToggle
 let g:EasyMotion_smartcase = 1
 let g:vimspector_enable_mappings = 'HUMAN'
