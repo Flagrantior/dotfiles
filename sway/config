@@ -43,6 +43,9 @@ bindsym $mod+Shift+k move up
 bindsym $mod+Shift+Right move right
 bindsym $mod+Shift+l move right
 
+bindsym $mod+Control+Shift+Right move workspace to output right
+bindsym $mod+Control+Shift+Left move workspace to output left
+
 # Switch to workspace
 bindsym $mod+tab workspace back_and_forth
 bindsym alt+tab workspace back_and_forth
@@ -130,15 +133,20 @@ input type:touchpad {
 }
 input type:pointer {
 	accel_profile "flat"
-	pointer_accel -0.2
+	pointer_accel 0.43
 }
+# input "1133:45890:Keyboard_K380_Keyboard" {
+	# map_to_output HDMI-A-1
+    # xkb_layout us,ru
+	# xkb_options grp:alt_shift_toggle,caps:none
+# }
 
 # Screenrecord
 bindsym --to-code $mod+Shift+s exec 'grim -g "$(slurp -b 00000055 -c 00ffff -w 2 && sleep 1)" - | wl-copy'
 bindsym Print exec 'grim - | wl-copy'
-#bindsym --to-code $mod+Shift+a exec wf-recorder -g "$(slurp -b 00000055 -c ffffff -w 2)"
-bindsym --to-code $mod+Shift+d exec yes | wf-recorder
-bindsym --to-code $mod+Shift+d+a exec yes | wf-recorder --audio=alsa_output.pci-0000_05_00.6.analog-stereo.monitor
+# bindsym --to-code $mod+Shift+a exec wf-recorder -f rec.mp4 -g "$(slurp -b 00000055 -c ffffff -w 2)"
+bindsym --to-code $mod+Shift+d exec yes | wf-recorder -f rec.mp4
+bindsym --to-code $mod+Shift+d+a exec yes | wf-recorder -f rec.mp4 --audio=alsa_output.pci-0000_05_00.6.analog-stereo.monitor
 bindsym --to-code $mod+Control+d exec killall --signal 2 wf-recorder
 
 # Locker
@@ -164,8 +172,8 @@ default_border none
 output * bg #000000 solid_color
 #output * bg ~/.config/sway/wp.jpg fill
 seat seat0 xcursor_theme Dot-Dark
+seat * hide_cursor 8000
 #seat seat0 hide_cursor when-typing enable
-#seat * hide_cursor 10000
 exec_always {
 	gsettings set org.gnome.desktop.interface cursor-theme Dot-Dark
 	gsettings set org.gnome.desktop.interface gtk-theme Flagrantior

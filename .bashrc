@@ -9,7 +9,6 @@ source /usr/share/autojump/autojump.bash
 #alias susp='systemctl suspend'
 #alias sway='--my-next-gpu-wont-be-nvidia'
 #alias instaloader='instaloader --no-metadata-json --no-captions'
-#alias teamviewer='QT_QPA_PLATFORM=xcb teamviewer'
 #alias tor1='sudo systemctl start tor-router.service'
 #alias tor0='sudo systemctl stop tor-router.service'
 #alias sctl='sudo systemctl'
@@ -24,7 +23,6 @@ alias wttr='curl v2d.wttr.in/Spb --silent --max-time 3'
 alias wttr1='curl wttr.in/Spb?1Fq --silent --max-time 3'
 alias wttr2='curl wttr.in/Spb?2Fq --silent --max-time 3'
 alias wttr3='curl wttr.in/Spb?3Fq --silent --max-time 3'
-alias ableton='wine64 ~/.wine/drive_c/ProgramData/Ableton/Live\ 10\ Suite/Program/Ableton\ Live\ 10\ Suite.exe'
 alias grep='rg'
 alias ls='exa -a'
 alias ll='exa -la'
@@ -42,7 +40,8 @@ alias netctl='sudo netctl'
 alias nmr='nmcli n of && nmcli n on && nmcli d w r'
 alias feh='feh -B black -Z --recursive --force-aliasing -.'
 alias trm='transmission-remote'
-alias mpva='mpv --no-video'
+alias mpva='mpv --no-video --shuffle'
+alias mpvv='mpv --no-video --force-window'
 alias mpvn='mpv --vf=negate --hue=100'
 alias mpv='mpv --audio-display=no'
 alias mpvt='mpv --vo=tct --really-quiet'
@@ -53,8 +52,6 @@ alias rsmv='rsync -aP --remove-source-files --'
 alias myip='curl https://api.db-ip.com/v2/free/self'
 alias rustrepl='evcxr'
 alias ranger='TERM=alacritty ranger'
-alias ns='export {http,https,ftp}_proxy="http://192.168.49.1:8282"'
-alias inst='cd ~/Pictures/INST/ && instaloader --no-captions --no-metadata-json --no-compress-json --no-profile-pic --no-video-thumbnails --login flagrantior'
 alias js='deno'
 alias twt='taskwarrior-tui'
 alias trans='trans -t ru'
@@ -71,6 +68,10 @@ alias chmox='chmod +x'
 alias drag='ripdrag'
 alias typespeed='thokr'
 alias surf='GDK_BACKEND=x11 surf'
+alias wr='sudo ip link set wlan0 down ; sudo ip link set wlan0 up'
+alias ns='export {http,https,ftp}_proxy="http://192.168.49.1:8282"'
+alias prox+='export {HTTP,HTTPS}_PROXY=socks5://localhost:1080; export {http,https}_proxy=socks5://localhost:1080'
+alias prox-='unset {HTTP,HTTPS}_PROXY; unset {http,https}_proxy'
 
 #shopt -s globstar
 
@@ -84,7 +85,7 @@ function cdc {
   cd "$(llama "$@")"
 }
 
-#[[ $- == *i* ]] && source /usr/share/blesh/ble.sh
+eval "$(zoxide init bash)"
 
-#source /home/flagrantior/.config/broot/launcher/bash/br
+#source ~/.config/broot/launcher/bash/br
 #eval "$(thefuck --alias)"

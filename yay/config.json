@@ -1,7 +1,7 @@
 {
 	"aururl": "https://aur.archlinux.org",
-	"buildDir": "/home/flagrantior/.cache/yay",
-	"absdir": "/home/flagrantior/.cache/yay/abs",
+	"buildDir": "~/.cache/yay",
+	"absdir": "~/.cache/yay/abs",
 	"editor": "",
 	"editorflags": "",
 	"makepkgbin": "makepkg",

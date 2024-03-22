@@ -3,12 +3,17 @@ call plug#begin('~/.vim/plugged')
 	Plug 'preservim/nerdtree', {'on': 'NERDTreeToggle'}
 	Plug 'preservim/nerdcommenter'
 	Plug 'ap/vim-css-color'
-	Plug 'mg979/vim-visual-multi'
 	Plug 'preservim/tagbar'
 	Plug 'prettier/vim-prettier'
 	Plug 'neoclide/coc.nvim', {'branch': 'master'}
 	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 	Plug 'puremourning/vimspector'
+	Plug 'francoiscabrol/ranger.vim'
+	Plug 'rbgrouleff/bclose.vim'
+
+	Plug 'godlygeek/tabular'
+	Plug 'preservim/vim-markdown'
+	"Plug 'mg979/vim-visual-multi'
 	"Plug 'https://github.com/nvim-tree/nvim-tree.lua'
 	"Plug 'jackMort/ChatGPT.nvim'
 	"Plug 'yuezk/vim-js'
@@ -37,8 +42,8 @@ set guifont=Source\ Code\ Pro\ for\ Powerline:h15:cANSI
 set hlsearch
 set ignorecase
 set incsearch
-set list listchars=tab:\ \ ,trail:_
-set showbreak=\\
+set list listchars=tab:\ \ ,trail:_,precedes:-,extends:-
+"set showbreak=\\
 set noexpandtab
 set smartcase
 set statusline=
@@ -48,13 +53,21 @@ set statusline+=%m\
 set statusline+=%=%r%=
 set statusline+=\ %y
 set statusline+=\ %l:%c/%L
-set fillchars+=vert:\|,stlnc:-
+set fillchars+=vert:\|
+"set fillchars+=vert:\|,stlnc:-
 set nofoldenable
 set foldlevel=99
+set cmdheight=0
 "set statusline+=%#PmenuSel#
 "set statusline+=%#CursorColumn#
 "set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
 "set statusline+=\[%{&fileformat}\]
+au BufNewFile,BufRead *.md set conceallevel=2
+let g:vim_markdown_edit_url_in = 'tab'
+"au BufNewFile,BufRead *.md hi AsteriskBold ctermfg=Magenta cterm=bold
+"au BufNewFile,BufRead *.md syn match Asterisks contained "**" conceal
+"au BufNewFile,BufRead *.md syn match AsteriskBold "\*\*.*\*\*" contains=Asterisks
+
 filetype indent on
 syntax on
 
@@ -85,13 +98,14 @@ hi CocGitRemovedSign ctermbg=none ctermfg=red
 hi CocGitTopRemovedSign ctermbg=none ctermfg=magenta
 hi Folded ctermbg=17
 hi FoldColumn ctermbg=0
+hi MatchParen cterm=bold ctermbg=none ctermbg=darkmagenta
 "hi StatusLine ctermfg=16 ctermbg=Cyan
 
 map ; :
-map <C-t> :tabnew<CR>
-map <S-t> :tabclose<CR>
+map <C-t> :RangerNewTab<CR>
 nmap <C-tab> :NERDTreeToggle<CR>
 map <C-/> <Plug>NERDCommenterToggle
+let NERDTreeShowHidden=1
 let g:EasyMotion_smartcase = 1
 let g:vimspector_enable_mappings = 'HUMAN'
 map <Space> <Plug>(easymotion-bd-f)
@@ -105,11 +119,14 @@ nnoremap <S-u> :redo<CR>
 nnoremap ZZ :q!<cr>
 nnoremap ZW :wq<cr>
 
+"hide dos ^M
+"match Ignore /\r$/
+
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
-nnoremap <silent> <C-i> :call <SID>show_documentation()<CR>
+nnoremap <silent> gh :call <SID>show_documentation()<CR>
 inoremap <silent><expr> <Tab> coc#pum#visible() ? coc#pum#next(1) : <SID>check_back_space() ? "\<Tab>" : coc#refresh()
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#_select_confirm() : "\<CR>"
 inoremap <expr> <S-Tab> coc#pum#visible() ? coc#pum#prev(1) : "\<S-Tab>"

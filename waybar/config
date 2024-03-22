@@ -19,9 +19,19 @@
 		"8": "\\\\X",
 		"9": "\\X",
 		"10": "X",
-		"urgent": "!"
 	}
 },
+
+//echo "{\"text\":\""$text"\", \"tooltip\":\""$tooltip"\"}"
+"custom/test": {
+	"exec" : "echo '{\"text\":\"text\", \"tooltip\":\"$(cal)\"}'",
+	"return-type": "json",
+	"interval": 1,
+	"format": "A {} A",
+	"tooltip-format": "A {tooltip} A"
+},
+
+		//"urgent": "!"
 "sway/mode": {
 	"format": "{}",
 	"max-length": 50
@@ -31,7 +41,7 @@
 },
 "disk": {
 	"interval": 30,
-	"format": "d{percentage_used}"
+	"format": "{free}"
 },
 "tray": {
 	"icon-size": 21,
@@ -41,7 +51,7 @@
 	"format": "{:%H%M}",
 	//"tooltip-format": "<big>{:%Y %B}</big>\n<tt><big>{calendar}</big></tt>",
 	"tooltip-format": "<tt><big>{calendar}</big></tt>",
-	"format-alt": "{:%b %d:%w }"
+	"format-alt": "{:%b %d:%w  }"
 },
 "cpu": {
 	"interval": 1,
@@ -77,6 +87,7 @@
 	//"on-scroll-down": "BR=$(cat /sys/class/backlight/intel_backlight/brightness); echo $(($BR-10)) > /sys/class/backlight/intel_backlight/brightness"
 },
 "battery": {
+	"interval": 1,
 	"states": {
 		"warning": 30,
 		"critical": 15
