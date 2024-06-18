@@ -2,7 +2,7 @@
 
 [[ $- != *i* ]] && return
 PS1='\[\033[1;35m\]>\[\033[0m\]'
-source /usr/share/autojump/autojump.bash
+# source /usr/share/autojump/autojump.bash
 #alias pacman='sudo pacman --color always'
 #alias factorio='~/Games/Factorio/run.sh'
 #alias hiber='systemctl hibernate'
@@ -15,7 +15,6 @@ source /usr/share/autojump/autojump.bash
 alias pingg='ping google.com'
 alias wifi='nmcli d w r; nmcli d w'
 alias yay='yay --color always'
-alias ls='ls --color=auto'
 alias pyserv='python -m http.server'
 alias py='python'
 alias che='cheat-sh'
@@ -24,8 +23,8 @@ alias wttr1='curl wttr.in/Spb?1Fq --silent --max-time 3'
 alias wttr2='curl wttr.in/Spb?2Fq --silent --max-time 3'
 alias wttr3='curl wttr.in/Spb?3Fq --silent --max-time 3'
 alias grep='rg'
-alias ls='exa -a'
-alias ll='exa -la'
+alias ls='eza -a'
+alias ll='eza -la'
 alias off='loginctl poweroff'
 alias rb='loginctl reboot'
 alias reboot='loginctl reboot'
@@ -41,6 +40,7 @@ alias nmr='nmcli n of && nmcli n on && nmcli d w r'
 alias feh='feh -B black -Z --recursive --force-aliasing -.'
 alias trm='transmission-remote'
 alias mpva='mpv --no-video --shuffle'
+alias mpva1='mpv --no-video --shuffle --directory-mode=ignore'
 alias mpvv='mpv --no-video --force-window'
 alias mpvn='mpv --vf=negate --hue=100'
 alias mpv='mpv --audio-display=no'
@@ -72,6 +72,7 @@ alias wr='sudo ip link set wlan0 down ; sudo ip link set wlan0 up'
 alias ns='export {http,https,ftp}_proxy="http://192.168.49.1:8282"'
 alias prox+='export {HTTP,HTTPS}_PROXY=socks5://localhost:1080; export {http,https}_proxy=socks5://localhost:1080'
 alias prox-='unset {HTTP,HTTPS}_PROXY; unset {http,https}_proxy'
+alias yaysize='yay -Qi | rg "(Name.*:|Installed Size.*:)" | cut -f2 -d":" | paste - - | rg "MiB$" | sed "s/ MiB$//" | awk "{print \$4,\$2}" | column -t | sort -n'
 
 #shopt -s globstar
 
@@ -88,4 +89,5 @@ function cdc {
 eval "$(zoxide init bash)"
 
 #source ~/.config/broot/launcher/bash/br
-#eval "$(thefuck --alias)"
+# eval "$(thefuck --alias)"
+eval "$(zoxide init bash)"

@@ -18,7 +18,7 @@ chmod +x strap.sh
 sudo ./strap.sh
 sudo pacman -Syu
 
-echo -e "[Icon Theme]\nInherits=TheDOT-dark" | sudo tee /usr/share/icons/default/index.theme
+# echo -e "[Icon Theme]\nInherits=TheDOT-dark" | sudo tee /usr/share/icons/default/index.theme
 
 mkdir ~/Projects
 

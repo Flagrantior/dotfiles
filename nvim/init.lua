@@ -12,7 +12,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-  { "folke/neoconf.nvim", cmd = "Neoconf" },
+  -- { "folke/neoconf.nvim", cmd = "Neoconf" },
   { "folke/neodev.nvim" },
   { "nvim-treesitter/nvim-treesitter" },
   { "neovim/nvim-lspconfig" },
@@ -83,14 +83,17 @@ require("lazy").setup({
   { "hrsh7th/vim-vsnip" }, --- ???
   { "hrsh7th/vim-vsnip-integ" }, --- ???
   { "renerocksai/telekasten.nvim",
-    dependencies = { "renerocksai/calendar-vim" }
+    dependencies = { "renerocksai/calendar-vim"	}
   },
   { "nvim-telescope/telescope.nvim",
 	dependencies = { 'nvim-lua/plenary.nvim' }
   },
+  { "nvim-telescope/telescope-media-files.nvim" },
+  { "Exafunction/codeium.vim", event = 'BufEnter' },
 })
 
 
+vim.g.codeium_enabled = false
 
 -- MAP
 vim.keymap.set('n', '<M-1>', '1gt')
@@ -109,6 +112,7 @@ vim.keymap.set({'n', 'x'}, ' ', '<cmd>HopChar1<CR>', { silent = true })
 vim.keymap.set('n', ';', ':')
 vim.keymap.set('', '<C-t>', ':tabnew<CR>')
 vim.keymap.set('n', '<S-u>' , ':redo<CR>')
+vim.keymap.set('n', '<C-k>', ':Telekasten<CR>')
 vim.api.nvim_create_user_command('Hex', ':set bin | %!xxd', {})
 vim.api.nvim_create_user_command('Hexr', ':%!xxd -r', {})
 
@@ -116,6 +120,8 @@ vim.api.nvim_create_user_command('Hexr', ':%!xxd -r', {})
 -- COLORS
 -- vim.api.nvim_set_hl(0, "ColorColumn", { ctermbg=0, bg=LightGrey })
 vim.cmd([[
+	colorscheme vim
+	set notermguicolors
 	hi Comment ctermfg=darkred
 	hi TabLineFill ctermfg=none ctermbg=none cterm=none
 	hi TabLine ctermfg=cyan ctermbg=none cterm=none
@@ -366,7 +372,8 @@ vim.cmd([[
 	    lualine_z = {}
 	  },
 	  tabline = {},
-	  winbar = {},
+	  winbar = {},  • Default color scheme has been updated to be "Nvim branded" and accessible.
+    Use `:colorscheme vim` to revert to the old legacy color scheme.
 	  inactive_winbar = {},
 	  extensions = {}
 	} ]]

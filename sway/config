@@ -133,7 +133,9 @@ input type:touchpad {
 }
 input type:pointer {
 	accel_profile "flat"
-	pointer_accel 0.43
+	# Mouse speed
+	pointer_accel .15625
+	#.43
 }
 # input "1133:45890:Keyboard_K380_Keyboard" {
 	# map_to_output HDMI-A-1
@@ -171,7 +173,7 @@ default_border none
 #output * scale 1.2
 output * bg #000000 solid_color
 #output * bg ~/.config/sway/wp.jpg fill
-seat seat0 xcursor_theme Dot-Dark
+# seat seat0 xcursor_theme Dot-Dark
 seat * hide_cursor 8000
 #seat seat0 hide_cursor when-typing enable
 exec_always {
@@ -195,7 +197,7 @@ bindsym XF86AudioPlay exec "light -A 1"
 bindsym XF86AudioStop exec "light -U 1"
 bindsym Shift+XF86AudioPlay exec "light -A 10"
 bindsym shift+xf86audiostop exec "light -U 10"
-bindsym $mod+i exec wl-gammactl -c -1 -b 2 -g 1 &>/dev/null
+# bindsym $mod+i exec wl-gammactl -c -1 -b 2 -g 1 &>/dev/null
 bindsym $mod+Shift+KP_Add exec redshifter 75
 bindsym $mod+Shift+KP_Subtract exec redshifter -75
 bindsym $mod+Shift+KP_Multiply exec "killall redshift ; echo 3000 > /tmp/redshifter_value"
