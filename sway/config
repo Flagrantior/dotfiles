@@ -2,6 +2,7 @@
 set $mod Mod4
 set $term "swaymsg 'input type:keyboard xkb_switch_layout 0' && foot"
 set $menu swaymsg 'input type:keyboard xkb_switch_layout 0' && rofi -show run -lines 5 -width 20 -run-command 'sway exec {cmd}' -run-shell-command 'foot bash -c \\"{cmd}; read -n 1 -s"'
+# set $menu swaymsg 'input type:keyboard xkb_switch_layout 0' && rofi -show run -lines 5 -width 20 -run-command 'sway exec {cmd}' -run-shell-command 'foot zsh -c \\"{cmd}; read -n 1 -s"'
 
 ### Input configuration:
 #input "1267:12632:ELAN050A:00_04F3:3158_Touchpad" {
@@ -92,6 +93,7 @@ bindsym $mod+space floating toggle
 
 # Swap focus between tliing and floating area
 bindsym $mod+Shift+space focus mode_toggle
+bindsym alt+space focus mode_toggle
 
 # Move focus to the parent
 #bindsym $mod+a focus parent
@@ -134,9 +136,13 @@ input type:touchpad {
 input type:pointer {
 	accel_profile "flat"
 	# Mouse speed
-	pointer_accel .15625
+	pointer_accel -0.12
 	#.43
 }
+#input type:tablet_tool {
+#    scroll_button 331
+#	natural_scroll enabled
+#}
 # input "1133:45890:Keyboard_K380_Keyboard" {
 	# map_to_output HDMI-A-1
     # xkb_layout us,ru

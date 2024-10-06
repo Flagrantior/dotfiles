@@ -1,0 +1,14 @@
+# Base16 Flagrantior for pyradio
+# By Flagrantior (https://flagrantior.art)
+
+Stations            #00ffff #000000
+Border              #330033
+Active Station      #ff00ff
+Status Bar          #ff00ff #000000
+Normal Cursor       #00ffff #002222
+Active Cursor       #ff00ff #002222
+Edit Cursor         #000000 #ffff00
+Extra Func          #ffff00
+PyRadio URL         #aa00aa
+Messages Border     #aa00aa
+transparency        2

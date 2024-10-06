@@ -10,9 +10,8 @@ settings:
     global:
       dark: jseval document.querySelectorAll(`*:not(img)`).forEach(node => {node.style.color=`cyan`;
         node.style.background=`black`})
-      proxy_no: set content.proxy system
-      proxy_ns: set content.proxy http://192.168.49.1:8282
-      proxy_ss: set content.proxy socks://localhost:1080
+      p0: set content.proxy system
+      p1: set content.proxy socks://localhost:1080
       q: close
       qa: quit
       w: session-save
@@ -29,7 +28,7 @@ settings:
       normal:
         <Ctrl+i>: hint images download
         M: hint links spawn -d mpv --force-window=immediate {hint-url}
-        W: open -w
+        W: cmd-set-text -s :open -w
         tr: spawn --userscript translate
   colors.completion.category.bg:
     global: black
@@ -169,6 +168,7 @@ settings:
   content.geolocation:
     https://366.ru: true
     https://www.google.com: false
+    https://www.ozon.ru: false
   content.headers.referer:
     global: same-domain
   content.media.audio_capture:
@@ -177,7 +177,10 @@ settings:
   content.notifications.enabled:
     global: ask
     https://lemmy.ml: false
+    https://stopgame.ru: true
+    https://web.tolstoycomments.com: false
     https://www.adspower.com: false
+    https://www.binance.com: true
   content.plugins:
     global: true
   content.proxy:
@@ -190,6 +193,8 @@ settings:
     global: true
   downloads.location.directory:
     global: ~/Downloads/
+  downloads.location.prompt:
+    global: true
   downloads.location.suggestion:
     global: path
   downloads.position:
@@ -235,12 +240,18 @@ settings:
       top: 0
   input.insert_mode.auto_leave:
     global: true
+  input.insert_mode.plugins:
+    global: true
   messages.timeout:
     global: 5000
   prompt.radius:
     global: 0
   qt.highdpi:
     global: true
+  scrolling.bar:
+    global: when-searching
+  scrolling.smooth:
+    global: false
   statusbar.padding:
     global:
       bottom: 0
@@ -258,8 +269,10 @@ settings:
   tabs.favicons.show:
     global: always
   tabs.focus_stack_size:
-    global: -1
+    global: 256
   tabs.new_position.related:
+    global: next
+  tabs.new_position.unrelated:
     global: next
   tabs.padding:
     global:
@@ -269,6 +282,8 @@ settings:
       top: 0
   tabs.position:
     global: top
+  tabs.select_on_remove:
+    global: last-used
   tabs.show:
     global: switching
   tabs.show_switching_delay:
@@ -278,7 +293,7 @@ settings:
   tabs.title.format:
     global: '{audio}{current_title}'
   url.default_page:
-    global: https://www.google.com
+    global: file:///home/flagrantior/.config/qutebrowser/startpage/index.html
   url.searchengines:
     global:
       D: https://duckduckgo.com/?q={}
@@ -291,8 +306,9 @@ settings:
       W: https://ru.wikipedia.org/wiki/{}
       We: https://en.wikipedia.org/wiki/{}
       Y: https://www.youtube.com/results?search_query={}
+      YM: https://music.youtube.com/search?q={}
   url.start_pages:
-    global: https://www.google.com
+    global: https://start.duckduckgo.com
   window.hide_decoration:
     global: true
   window.transparent:

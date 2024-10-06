@@ -40,6 +40,13 @@ require("lazy").setup({
     },
   },
   { "numToStr/Comment.nvim", lazy = false },
+  { "nvim-tree/nvim-tree.lua",
+    requires = { "nvim-tree/nvim-web-devicons", opt = true },
+	config = function()
+    require("nvim-tree").setup {}
+	end,
+  },
+  -- { "sidebar-nvim/sidebar.nvim" },
   --[[ { "nvim-lualine/lualine.nvim",
     requires = { "nvim-tree/nvim-web-devicons", opt = true }
   }, ]]
@@ -69,6 +76,12 @@ require("lazy").setup({
       }
     end,
   }, ]]
+  { 'windwp/nvim-autopairs',
+    event = "InsertEnter",
+    config = true
+    -- use opts = {} for passing setup options
+    -- this is equalent to setup({}) function
+  },
   { "lewis6991/gitsigns.nvim" },
   { "windwp/nvim-ts-autotag" },
   { "phaazon/hop.nvim",
@@ -86,14 +99,18 @@ require("lazy").setup({
     dependencies = { "renerocksai/calendar-vim"	}
   },
   { "nvim-telescope/telescope.nvim",
-	dependencies = { 'nvim-lua/plenary.nvim' }
+	dependencies = {
+	  'nvim-lua/plenary.nvim',
+	  -- 'nvim-lua/popup.nvim',
+	},
   },
-  { "nvim-telescope/telescope-media-files.nvim" },
-  { "Exafunction/codeium.vim", event = 'BufEnter' },
+  { "slint-ui/vim-slint" },
+  -- { "Exafunction/codeium.vim", event = 'BufEnter' },
+  { "sbdchd/neoformat" },
 })
 
 
-vim.g.codeium_enabled = false
+-- vim.g.codeium_enabled = false
 
 -- MAP
 vim.keymap.set('n', '<M-1>', '1gt')
@@ -106,7 +123,9 @@ vim.keymap.set('n', '<M-7>', '7gt')
 vim.keymap.set('n', '<M-8>', '8gt')
 vim.keymap.set('n', '<M-9>', '9gt')
 vim.keymap.set('n', 'ZZ', ':q!<CR>')
+vim.keymap.set('i', 'jj', '<esc>')
 vim.keymap.set('i', 'jk', '<esc>')
+vim.keymap.set('i', 'kj', '<esc>')
 -- vim.keymap.set({'n', 'x', 'v'}, ' ', '<cmd>HopChar1<CR>', { silent = true })
 vim.keymap.set({'n', 'x'}, ' ', '<cmd>HopChar1<CR>', { silent = true })
 vim.keymap.set('n', ';', ':')
@@ -116,8 +135,14 @@ vim.keymap.set('n', '<C-k>', ':Telekasten<CR>')
 vim.api.nvim_create_user_command('Hex', ':set bin | %!xxd', {})
 vim.api.nvim_create_user_command('Hexr', ':%!xxd -r', {})
 
+local builtin = require('telescope.builtin')
+vim.keymap.set('n', 'ff', builtin.find_files, {})
+vim.keymap.set('n', 'fg', builtin.live_grep, {})
+vim.keymap.set('n', 'fb', builtin.buffers, {})
+vim.keymap.set('n', 'fh', builtin.help_tags, {})
 
--- COLORS
+
+-- COLORS/SETS
 -- vim.api.nvim_set_hl(0, "ColorColumn", { ctermbg=0, bg=LightGrey })
 vim.cmd([[
 	colorscheme vim
@@ -133,29 +158,24 @@ vim.cmd([[
 	hi PmenuSbar ctermbg=black
 	hi PmenuSel ctermfg=black ctermbg=cyan
 	hi SignColumn ctermbg=none
-	hi CocInlayHint ctermfg=8
-	hi CocGitAddedSign ctermbg=none ctermfg=green
-	hi CocGitChangeRemovedSign ctermbg=none ctermfg=magenta
-	hi CocGitChangedSign ctermbg=none ctermfg=magenta
-	hi CocGitRemovedSign ctermbg=none ctermfg=red
-	hi CocGitTopRemovedSign ctermbg=none ctermfg=magenta
 	hi Folded ctermbg=17
 	hi FoldColumn ctermbg=0
 	hi MatchParen cterm=bold ctermbg=none ctermbg=darkmagenta
-	hi! link GitSignsAdd CocGitAddedSign
-	hi! link GitSignsChange CocGitChangedSign
-	hi! link GitSignsDelete CocGitRemovedSign
-]])
+	" hi CocInlayHint ctermfg=8
+	" hi CocGitAddedSign ctermbg=none ctermfg=green
+	" hi CocGitChangeRemovedSign ctermbg=none ctermfg=magenta
+	" hi CocGitChangedSign ctermbg=none ctermfg=magenta
+	" hi CocGitRemovedSign ctermbg=none ctermfg=red
+	" hi CocGitTopRemovedSign ctermbg=none ctermfg=magenta
+	" hi! link GitSignsAdd CocGitAddedSign
+	" hi! link GitSignsChange CocGitChangedSign
+	" hi! link GitSignsDelete CocGitRemovedSign
 
-
-
--- SETS
-vim.cmd([[
 	set encoding=utf-8
 	set noswapfile
 	set scrolloff=7
 	set autoindent
-	set fileformat=unix
+	" set fileformat=unix
 	set expandtab tabstop=4 shiftwidth=4 softtabstop=4
 	set mouse=a
 	set gdefault
@@ -173,14 +193,40 @@ vim.cmd([[
 	set statusline+=%=%r%=
 	set statusline+=\ %y
 	set statusline+=\ %l:%c/%L
-	set fillchars+=vert:\|
+	set fillchars+=vert:\ 
 	set nofoldenable
 	set foldlevel=99
 	set cmdheight=0
 	au BufNewFile,BufRead *.md set conceallevel=2
+
 	let g:vim_markdown_edit_url_in = 'tab'
+
+	nmap <silent> <A-k> :wincmd k<CR>
+	nmap <silent> <A-j> :wincmd j<CR>
+	nmap <silent> <A-h> :wincmd h<CR>
+	nmap <silent> <A-l> :wincmd l<CR>
+	nmap <silent> <A-Up> :wincmd k<CR>
+	nmap <silent> <A-Down> :wincmd j<CR>
+	nmap <silent> <A-Left> :wincmd h<CR>
+	nmap <silent> <A-Right> :wincmd l<CR>
+
+	noremap <C-Tab>     :NvimTreeToggle<CR>
+	vnoremap <C-Tab>    <C-C>:NvimTreeToggle<CR>
+	inoremap <C-Tab>    <Esc>:NvimTreeToggle<CR>gi
+
+	noremap <C-S>       :update<CR>
+	vnoremap <C-S>      <C-C>:update<CR>
+	inoremap <C-S>      <Esc>:update<CR>gi
 ]])
 	-- set statusline+=%{get(b:,'gitsigns_status','')}
+
+
+-- restore cursor
+vim.api.nvim_create_autocmd('VimLeave', {
+  callback = function()
+    vim.opt.guicursor = 'a:hor25-blinkon175'
+  end,
+})
 
 -- COMMENT
 	require('Comment').setup({
@@ -191,7 +237,7 @@ vim.cmd([[
 	local capabilities = vim.lsp.protocol.make_client_capabilities()
 	capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 	local lspconfig = require('lspconfig')
-	lspconfig.tsserver.setup {}
+	lspconfig.ts_ls.setup {}
 	lspconfig.eslint.setup {}
 	lspconfig.pyright.setup {}
 	lspconfig.html.setup {}
@@ -236,6 +282,14 @@ vim.cmd([[
 	vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
 	vim.keymap.set('n', '<leader>ld', vim.diagnostic.setloclist)
 
+	vim.o.updatetime = 250
+	vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+	  group = vim.api.nvim_create_augroup("float_diagnostic", { clear = true }),
+	  callback = function ()
+		vim.diagnostic.open_float(nil, {focus=false})
+	  end
+})
+
 	-- Use LspAttach autocommand to only map the following keys
 	-- after the language server attaches to the current buffer
 	vim.api.nvim_create_autocmd('LspAttach', {
@@ -248,7 +302,7 @@ vim.cmd([[
 		vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
 		vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
 		vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
-		vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
+		-- vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
 		-- vim.keymap
 		--     .set('n', '<Leader>sa', vim.lsp.buf.add_workspace_folder, opts)
 		-- vim.keymap.set('n', '<Leader>sr', vim.lsp.buf.remove_workspace_folder,
@@ -273,8 +327,8 @@ vim.cmd([[
 	  snippet = {
 	    -- REQUIRED - you must specify a snippet engine
 	    expand = function(args)
-	      vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-	      -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+	      -- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+	      require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
 	      -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
 	      -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
 	    end,
@@ -292,8 +346,8 @@ vim.cmd([[
 	  }),
 	  sources = cmp.config.sources({
 	    { name = 'nvim_lsp' },
-	    { name = 'vsnip' }, -- For vsnip users.
-	    -- { name = 'luasnip' }, -- For luasnip users.
+	    -- { name = 'vsnip' }, -- For vsnip users. ?
+	    { name = 'luasnip' }, -- For luasnip users.
 	    -- { name = 'ultisnips' }, -- For ultisnips users.
 	    -- { name = 'snippy' }, -- For snippy users.
 	  }, {
@@ -331,64 +385,92 @@ vim.cmd([[
 	-- Set up lspconfig.
 	local capabilities = require('cmp_nvim_lsp').default_capabilities()
 	-- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
-	require('lspconfig')['tsserver'].setup {
+	require('lspconfig')['ts_ls'].setup {
 	  capabilities = capabilities
 	}
 
 -- LUALINE
-	--[[ require('lualine').setup {
-	  options = {
-	    icons_enabled = true,
-	    theme = 'auto',
-	    component_separators = { left = '', right = ''},
-	    section_separators = { left = '', right = ''},
-	    disabled_filetypes = {
-	      statusline = {},
-	      winbar = {},
-	    },
-	    ignore_focus = {},
-	    always_divide_middle = true,
-	    globalstatus = false,
-	    refresh = {
-	      statusline = 1000,
-	      tabline = 1000,
-	      winbar = 1000,
-	    }
-	  },
-	  sections = {
-	    lualine_a = {'mode'},
-	    lualine_b = {'branch', 'diff', 'diagnostics'},
-	    lualine_c = {'filename'},
-	    lualine_x = {'encoding', 'fileformat', 'filetype'},
-	    lualine_y = {'progress'},
-	    lualine_z = {'location'}
-	  },
-	  inactive_sections = {
-	    lualine_a = {},
-	    lualine_b = {},
-	    lualine_c = {'filename'},
-	    lualine_x = {'location'},
-	    lualine_y = {},
-	    lualine_z = {}
-	  },
-	  tabline = {},
-	  winbar = {},  • Default color scheme has been updated to be "Nvim branded" and accessible.
-    Use `:colorscheme vim` to revert to the old legacy color scheme.
-	  inactive_winbar = {},
-	  extensions = {}
-	} ]]
+--[[ local flagline = require'lualine.themes.16color'
+
+flagline.normal.a.bg = '#000000'
+flagline.normal.a.fg = '#00ffff'
+flagline.normal.b.bg = '#000000'
+flagline.normal.b.fg = '#00ffff'
+flagline.normal.c.bg = '#000000'
+flagline.normal.c.fg = '#00ffff'
+
+flagline.insert.a.bg = '#000000'
+flagline.insert.a.fg = '#00ff00'
+
+flagline.visual.a.fg = '#000000'
+flagline.visual.a.bg = '#ff00ff'
+
+require('lualine').setup {
+  options = {
+    icons_enabled = true,
+    theme = flagline,
+    component_separators = { left = '', right = ''},
+    section_separators = { left = '', right = ''},
+    disabled_filetypes = {
+      statusline = {},
+      winbar = {},
+    },
+    ignore_focus = {},
+    always_divide_middle = true,
+    globalstatus = false,
+    refresh = {
+      statusline = 1000,
+      tabline = 1000,
+      winbar = 1000,
+    }
+  },
+  sections = {
+    lualine_a = {'mode'},
+    lualine_b = {'branch', 'diff', 'diagnostics'},
+    lualine_c = {'filename'},
+	-- lualine_x = {'encoding', 'fileformat', 'filetype'},
+    lualine_x = {'filetype'},
+    lualine_y = {'progress'},
+    lualine_z = {'location'}
+  },
+  inactive_sections = {
+    lualine_a = {},
+    lualine_b = {},
+    lualine_c = {'filename'},
+    lualine_x = {'location'},
+    lualine_y = {},
+    lualine_z = {}
+  },
+  tabline = {},
+  winbar = {},
+  inactive_winbar = {},
+  extensions = {}
+} ]]
 
 
 -- GITSIGNS
 require('gitsigns').setup()
 
 -- AUTOTAG
---[[ require'nvim-treesitter.configs'.setup {
-  autotag = {
-    enable = true,
-  }
-} ]]
+require'nvim-treesitter.configs'.setup {
+	-- autotag = { enable = true, }
+    -- ensure_installed = "maintained",
+    --[[ highlight = {
+        enable = true,
+        additional_vim_regex_highlighting = true,
+    },
+    incremental_selection = {
+		enable = true,
+		keymaps = {
+			init_selection = '<CR>',
+			scope_incremental = '<CR>',
+			node_incremental = '<TAB>',
+			node_decremental = '<S-TAB>',
+		}
+	} ]]
+}
 require('nvim-ts-autotag').setup()
+
 -- KASTEN
 require('telekasten').setup({
   home = vim.fn.expand("~/Kasten"), -- Put the name of your notes directory here

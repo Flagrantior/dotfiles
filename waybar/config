@@ -95,7 +95,7 @@
 	"format-charging": "{icon}",
 	"format-time": "~{H}:{m}",
 	"format": "{icon}", //🗲
-	"format-icons": ["🭻", "🭺", "🭹", "🭸", "🭷", "🭶"],
+	"format-icons": ["!!!", "!!", "!", "🭸", "🭷", "🭶"],
 	"format-alt": "{time} {capacity}%"
 },
 "network": {
