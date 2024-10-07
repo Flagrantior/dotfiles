@@ -33,7 +33,7 @@ app_id = swayimg
 # Viewer mode configuration
 ################################################################################
 [viewer]
-window = #00000000
+window = #000000bb
 # grid/RGBA
 transparency = #00000000
 # optimal/fit/width/height/fill/real
