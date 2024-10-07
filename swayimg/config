@@ -48,7 +48,7 @@ slideshow_time = 3
 # Number of previously viewed images to store in cache
 history = 1
 # Number of preloaded images (read ahead)
-preload = 2
+preload = 1
 
 ################################################################################
 # Gallery mode configuration
