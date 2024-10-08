@@ -2,9 +2,26 @@
 
 "layer": "top", // Waybar at top layer
 "position": "bottom", // Waybar position (top|bottom|left|right)
-	"modules-left": ["sway/workspaces"],
-	"modules-right": ["network", "pulseaudio", "backlight", "cpu", "memory", "battery", "clock"],
-	"sway/workspaces": {
+"modules-left": ["sway/workspaces", "hyprland/workspaces"],
+"modules-right": ["network", "pulseaudio", "backlight", "cpu", "memory", "battery", "clock"],
+"sway/workspaces": {
+	"disable-scroll": true,
+	"all-outputs": true,
+	"format": "{icon}",
+	"format-icons": {
+		"1": "\\", //一
+		"2": "\\\\", //二
+		"3": "\\\\\\", //三
+		"4": " 四", //"\\\\\\\\",
+		"5": " 五", //"V",
+		"6": " 六", //"V\\",
+		"7": " 七", //"V\\\\",
+		"8": " 八", //"\\\\X",
+		"9": " 九", //"\\X",
+	 "10": " 十", //"X",
+	}
+},
+"hyprland/workspaces": {
 	"disable-scroll": true,
 	"all-outputs": true,
 	"format": "{icon}",
@@ -12,15 +29,16 @@
 		"1": "\\",
 		"2": "\\\\",
 		"3": "\\\\\\",
-		"4": "\\\\\\\\",
-		"5": "V",
-		"6": "V\\",
-		"7": "V\\\\",
-		"8": "\\\\X",
-		"9": "\\X",
-		"10": "X",
+		"4": " 四",
+		"5": " 五",
+		"6": " 六",
+		"7": " 七",
+		"8": " 八",
+		"9": " 九",
+	 "10": " 十",
 	}
 },
+
 
 //echo "{\"text\":\""$text"\", \"tooltip\":\""$tooltip"\"}"
 "custom/test": {
@@ -58,7 +76,7 @@
 			  "months":     "<span color='#00ffff'>{}</span>",
 			  "days":       "<span color='#00ffff'>{}</span>",
 			  "weekdays":   "<span color='#00ffff'><b>{}</b></span>",
-			  "today":      "<span color='#000000' background='#00ffff'>{}</span>"
+			  "today":      "<span color='#000000' background='#00ffff'><b>{}</b></span>"
 		 }
 	}
 },
