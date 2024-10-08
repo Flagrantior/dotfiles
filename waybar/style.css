@@ -16,4 +16,4 @@ label { all:unset }
 @keyframes blink { 55%{opacity:1} 100%{opacity:0} }
 #battery.warning:not(.charging),  #memory.warning,  #cpu.warning  { color:#ff0; animation:blink 1.2s linear infinite }
 #battery.critical:not(.charging), #memory.critical, #cpu.critical { color:#f00; animation:blink 0.3s linear infinite }
-
+tooltip label { font-size:1.4em }

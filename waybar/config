@@ -3,7 +3,7 @@
 "layer": "top", // Waybar at top layer
 "position": "bottom", // Waybar position (top|bottom|left|right)
 	"modules-left": ["sway/workspaces"],
-	"modules-right": ["pulseaudio", "backlight", "cpu", "memory", "battery", "clock"],
+	"modules-right": ["network", "pulseaudio", "backlight", "cpu", "memory", "battery", "clock"],
 	"sway/workspaces": {
 	"disable-scroll": true,
 	"all-outputs": true,
@@ -51,7 +51,16 @@
 	"format": "{:%H%M}",
 	//"tooltip-format": "<big>{:%Y %B}</big>\n<tt><big>{calendar}</big></tt>",
 	"tooltip-format": "<tt><big>{calendar}</big></tt>",
-	"format-alt": "{:%b %d:%w  }"
+	"format-alt": "{:%b %d:%w  }",
+	"calendar": {
+		 "mode"          : "today",
+		 "format": {
+			  "months":     "<span color='#00ffff'>{}</span>",
+			  "days":       "<span color='#00ffff'>{}</span>",
+			  "weekdays":   "<span color='#00ffff'><b>{}</b></span>",
+			  "today":      "<span color='#000000' background='#00ffff'>{}</span>"
+		 }
+	}
 },
 "cpu": {
 	"interval": 1,
@@ -99,11 +108,12 @@
 	"format-alt": "{time} {capacity}%"
 },
 "network": {
-	"format-wifi": "w{signalStrength} {essid} {ipaddr}",
+	"format-wifi": "",
+	//"format-wifi": "w{signalStrength} {essid} {ipaddr}",
 	"format": "N{icon}",
 	"format-ethernet": "{ifname}: {ipaddr}/{cidr}",
 	"format-linked": "\\\\",
-	"format-disconnected": "//",
+	"format-disconnected": "OFFLINE",
 	"tooltip": false
 	//"format-linked": "{ifname} [NONE]",
 },
