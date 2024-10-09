@@ -6,15 +6,16 @@ window { background:rgba(0,0,0,1);}
 	{	padding-right:.5em; font-size:1.1em; margin:-.1em 0 -.2em 0  }
 #network { padding-left:20px }
 #workspaces button
-	{	color:#0df; padding-left:1em; padding-right:1em; margin:-.5em -.3em -.2em -.3em; font-weight:bold }
+	{	color:#0df; padding-left:1em; padding-right:1em;
+	margin:-.4em -.3em -.1em -.3em; font-weight:bold }
 #workspaces button.focused
 	{ background:linear-gradient(black 85%, rgba(0,0,0,0) 85%),
 	linear-gradient(90deg, #000 30%, #0ff 30%, #0ff 80%, #000 80%) }
 #workspaces button:hover:not(.focused)
 	{ background:linear-gradient(black 80%, rgba(0,0,0,0) 80%),
 	linear-gradient(90deg, #000 40%, #0ff 40%, #0ff 70%, #000 70%) }
-#workspaces button:nth-child(-n+2) { margin: -.4em 0 -.3em 0 }
-#workspaces button:nth-child(-n+2).focused
+#workspaces button:nth-child(-n+3) { margin: -.4em 0 -.3em 0 }
+#workspaces button:nth-child(-n+3).focused
 	{ background:linear-gradient(black 80%, rgba(0,0,0,0) 80%),
 	linear-gradient(90deg, #000 30%, #0ff 30%, #0ff 80%, #000 80%) }
 #battery.charging, #battery.full { color:#0df }
