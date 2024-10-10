@@ -1,9 +1,5 @@
 swipe:
   3:
-    left:
-      command: "swaymsg -r workspace prev"
-    right:
-      command: "swaymsg -r workspace next"
     up:
       update:
         command: "pactl set-sink-volume 0 +5%"
@@ -18,5 +14,24 @@ swipe:
       update:
         command: "light -U 1"
 
+#hold:
+  #1:
+    #begin:
+      #command: "swaymsg 'seat - cursor press button1'"
+    #end:
+      #command: "swaymsg 'seat - cursor release button1'"
+    #cancelled:
+      #command: "swaymsg 'seat - cursor release button1'"
+
+pinch:
+  3:
+    out:
+      update:
+        command: "hyprctl keyword cursor:zoom_factor $(awk \"BEGIN {print $(hyprctl getoption cursor:zoom_factor | rg 'float:' | awk '{print $2}') + 0.1}\")"
+    in:
+      update:
+        command: "hyprctl keyword cursor:zoom_factor $(awk \"BEGIN {print $(hyprctl getoption cursor:zoom_factor | rg 'float:' | awk '{print $2}') - 0.1}\")"
+
 interval:
   swipe: 0.5
+  pinch: 0.1
