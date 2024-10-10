@@ -22,17 +22,37 @@ void main() {
   vec3 col = pixColor.rgb;
 	col.r = texture2D(tex, vec2(uv.x + .0006, uv.y)).r;
 	col.b = texture2D(tex, vec2(uv.x - .0006, uv.y)).b;
-	col.g = texture2D(tex, vec2(uv.x        , uv.y)).g;
+	col.g = texture2D(tex, vec2(uv.x - .0000, uv.y)).g;
+
+
+	col.r = texture2D(tex, vec2(uv.x + .0005, uv.y)).r + .05;
+  col.g = texture2D(tex, vec2(uv.x        , uv.y)).g + .05;
+  col.b = texture2D(tex, vec2(uv.x - .0005, uv.y)).b + .05;
+  col = mix(col, col * smoothstep(.0, 1., col), 0.25);
 
   vec2 uv_ = uv * (1.0 - uv.yx);
-  float vignette = uv_.x * uv_.y * 490.;
-  vignette = clamp(pow(vignette, 0.25), 0., 1.0);
+  float vignette = uv_.x * uv_.y * 1000.;
+  vignette = clamp(pow(vignette, .1), 0., 1.0);
   col *= vec3(vignette);
 
-	col.r = texture2D(tex, vec2(uv.x + .0005, uv.y)).x + .05;
-  col.g = texture2D(tex, vec2(uv.x        , uv.y)).y + .05;
-  col.b = texture2D(tex, vec2(uv.x - .0005, uv.y)).z + .05;
-  col = mix(col, col * smoothstep(.0, 1., col), 0.25);
+  //const float blur_directions = 4.;
+  //const float blur_quality = 4.0;
+  //const float blur_size = 3.0;
+  //const float blur_brightness = 1.0;
+
+  //const vec2 blur_radius = blur_size / (display_resolution.xy * 0.5);
+
+  //vec3 bloomColor = vec3(0.0);
+  //for (float d = 0.0; d < 6.283185307180;	d += 6.283185307180 / blur_directions) {
+  //  for (float i = 1.0 / blur_quality; i <= 1.0; i += 1.0 / blur_quality) {
+  //    vec3 toAdd = texture2D(tex, uv + vec2(cos(d), sin(d)) * blur_radius * i).rgb;
+  //    toAdd *= blur_brightness * vec3(1.5, 0.85, 0.40);
+  //    bloomColor += toAdd;
+  //  }
+  //}
+
+  //bloomColor /= blur_quality * blur_directions;
+  //col.rgb += bloomColor;
 
 
   float phosphor = .02;
