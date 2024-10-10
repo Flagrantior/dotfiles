@@ -7,5 +7,5 @@ if [[ "$(hyprctl getoption decoration:screen_shader | rg '\[\[EMPTY\]\]')" == ''
 else
 	hyprctl keyword monitor ",preferred,auto,1.5"
 	hyprctl keyword cursor:no_hardware_cursors true
-	hyprctl keyword decoration:screen_shader '/home/flagrantior/.config/hypr/crt.frag'
+	hyprctl keyword decoration:screen_shader '/home/flagrantior/.config/hypr/shaders/crt.frag'
 fi
