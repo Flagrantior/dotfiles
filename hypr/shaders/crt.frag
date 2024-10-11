@@ -24,10 +24,6 @@ void main() {
 	col.b = texture2D(tex, vec2(uv.x - .0006, uv.y)).b;
 	col.g = texture2D(tex, vec2(uv.x - .0000, uv.y)).g;
 
-
-	col.r = texture2D(tex, vec2(uv.x + .0005, uv.y)).r + .05;
-  col.g = texture2D(tex, vec2(uv.x        , uv.y)).g + .05;
-  col.b = texture2D(tex, vec2(uv.x - .0005, uv.y)).b + .05;
   col = mix(col, col * smoothstep(.0, 1., col), 0.25);
 
   vec2 uv_ = uv * (1.0 - uv.yx);
@@ -35,14 +31,10 @@ void main() {
   vignette = clamp(pow(vignette, .1), 0., 1.0);
   col *= vec3(vignette);
 
-  float phosphor = .03;
-  float r_phosphor = clamp(phosphor+phosphor*sin((uv.y           )*res.y*1.333333333), .0, 1.);
-  float g_phosphor = clamp(phosphor+phosphor*sin((uv.y+.333333333)*res.y*1.333333333), .0, 1.);
-  float b_phosphor = clamp(phosphor+phosphor*sin((uv.y+.666666666)*res.y*1.333333333), .0, 1.);
-
-  col.r -= r_phosphor*cos(uv.x*3.14);
-  col.g -= g_phosphor*cos(uv.x*3.14);
-  col.b -= b_phosphor*cos(uv.x*3.14);
+  float phosphor = .015;
+  col.r += (phosphor*sin((uv.y           )*res.y*1.333333333)) *(cos(uv.x*6.282)+1.);
+  col.g += (phosphor*sin((uv.y+.333333333)*res.y*1.333333333)) *(cos(uv.x*6.282)+1.);
+  col.b += (phosphor*sin((uv.y+.666666666)*res.y*1.333333333)) *(cos(uv.x*6.282)+1.);
 
   if (uv.x < 0.0 || uv.x > 1.0) col *= 0.0;
   if (uv.y < 0.0 || uv.y > 1.0) col *= 0.0;

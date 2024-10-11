@@ -2,8 +2,9 @@
 
 "layer": "top", // Waybar at top layer
 "position": "bottom", // Waybar position (top|bottom|left|right)
-"modules-left": ["sway/workspaces", "hyprland/workspaces"],
-"modules-right": ["network", "pulseaudio", "backlight", "cpu", "memory", "battery", "clock"],
+"modules-left": ["hyprland/workspaces"],
+"modules-right": ["network", "clock", "pulseaudio", "backlight", "cpu", "memory", "battery"],
+"mode": "hide",
 "sway/workspaces": {
 	"disable-scroll": true,
 	"all-outputs": true,
