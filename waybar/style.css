@@ -23,7 +23,7 @@ window { background: rgba(0,0,0,0) }
 #pulseaudio.muted { color:#d0d }
 #cpu.warning { color:red }
 label { all:unset }
-@keyframes blink { 55%{opacity:1} 100%{opacity:0} }
+@keyframes blink { 55%{} 100%{color:black} }
 #battery.warning:not(.charging), #memory.warning, #cpu.warning
 	{ color:#ff0; animation:blink 1.2s linear infinite }
 #battery.critical:not(.charging), #memory.critical, #cpu.critical
