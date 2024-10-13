@@ -6,3 +6,11 @@ border-color=#00FFFFFF
 text-color=#00FFFFFF
 border-size=2
 icons=0
+history=1
+max-history=64
+
+[urgency=critical]
+border-color=#FF0000FF
+
+[urgency=low]
+border-color=#FF00FFFF
