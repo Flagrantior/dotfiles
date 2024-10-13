@@ -13,8 +13,8 @@ void main() {
 
   vec3 col = texture2D(tex, uv).rgb;
 
-	col.r = texture2D(tex, vec2(uv.x -.0027 *(uv.x-.5), uv.y)).r;
-	col.b = texture2D(tex, vec2(uv.x +.0027 *(uv.x-.5), uv.y)).b;
+	col.r = texture2D(tex, vec2(uv.x -(uv.x-.5)*.004, uv.y -(uv.y-.5)*.002)).r;
+	col.b = texture2D(tex, vec2(uv.x +(uv.x-.5)*.004, uv.y +(uv.y-.5)*.002)).b;
 
   col = mix(col, col * smoothstep(.0, 1., col), 0.25);
 
