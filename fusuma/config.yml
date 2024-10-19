@@ -6,11 +6,10 @@ swipe:
     down:
       update:
         command: "pactl set-sink-volume 0 -5%"
-  4:
-    up:
+    right:
       update:
         command: "light -A 1"
-    down:
+    left:
       update:
         command: "light -U 1"
 

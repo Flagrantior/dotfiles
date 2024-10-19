@@ -139,7 +139,7 @@
 "pulseaudio": {
 	"format": "{icon}",
 	"format-icons": ["🭻", "🭺", "🭹", "🭸", "🭷", "🭶"],
-	"on-click": "pavucontrol",
+	"on-click": "foot pulsemixer",
 	"tooltip": true,
 	"tooltip-format": "{volume}"
 }

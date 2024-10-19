@@ -1,7 +1,8 @@
 # ~/.bashrc
 
 [[ $- != *i* ]] && return
-PS1='\[\033[1;35m\]>\[\033[0m\]'
+# PS1='\[\033[1;35m\]>\[\033[0m\]'
+PS1=''
 # source /usr/share/autojump/autojump.bash
 #alias pacman='sudo pacman --color always'
 #alias factorio='~/Games/Factorio/run.sh'
@@ -69,7 +70,7 @@ alias typespeed='thokr'
 alias surf='GDK_BACKEND=x11 surf'
 alias wr='sudo ip link set wlan0 down ; sudo ip link set wlan0 up'
 alias ns='export {http,https,ftp}_proxy="http://192.168.49.1:8282"'
-alias prox+='export {HTTP,HTTPS}_PROXY=socks5://localhost:1080; export {http,https}_proxy=socks5://localhost:1080'
+alias prox+='export {HTTP,HTTPS}_PROXY=socks5://localhost:20170; export {http,https}_proxy=socks5://localhost:20170'
 alias prox-='unset {HTTP,HTTPS}_PROXY; unset {http,https}_proxy'
 alias yaysize='yay -Qi | rg "(Name.*:|Installed Size.*:)" | cut -f2 -d":" | paste - - | rg "MiB$" | sed "s/ MiB$//" | awk "{print \$4,\$2}" | column -t | sort -n'
 alias nv='nvim -p'
@@ -108,3 +109,6 @@ export PATH=~/.local/bin/:~/.cargo/bin/:$PATH
 # eval "$(thefuck --alias)"
 eval "$(_ZO_ECHO=1 zoxide init bash)"
 eval "$(fzf --bash)"
+
+set -o vi
+
