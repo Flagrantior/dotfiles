@@ -1,34 +1,26 @@
+@define-color bg rgba(0,0,0,.8);
+
 * { border:none; border-radius:0; font-family:Flagrantior; font-size:13px;
     min-height:0; color:#0df; padding-bottom:0; margin-bottom:0 }
 window#waybar.hidded { opacity:.0 }
 window { background: rgba(0,0,0,0) }
 #network, #clock, #battery, #temperature, #backlight, #pulseaudio, #memory, #cpu, #disk
-	{	padding-right:.5em; font-size:1.1em; margin:-.1em 0 -.2em 0; background: black }
-#workspaces { background: black }
-#network, #clock { padding-left:5px }
-#network { background:red; color:black; font-weight:bold }
+	{	padding-right:.5em; font-size:1.1em; margin:-.1em 0 -.2em 0; background: @bg }
+#clock { padding-left:5px }
+#network { background:red; color:@bg; font-weight:bold; padding-left:5px }
+#workspaces { background: @bg; margin-left: 6em }
 #workspaces button
-	{	color:#0df; padding-left:1em; padding-right:1em;
-	margin:-.4em -.3em -.1em -.3em; font-weight:bold }
+	{	color:#0df; margin:-.4em .65em -.1em .85em; font-weight:bold; padding-left:0; padding-right:.35em }
 #workspaces button.active
-	{ background:linear-gradient(black 88%, rgba(0,0,0,0) 88%),
-	linear-gradient(90deg, #000 30%, #0ff 30%, #0ff 80%, #000 80%) }
-#workspaces button:nth-child(-n+3) { margin: -.4em 0 -.3em 0 }
-#workspaces button:nth-child(-n+3).active
-	{ background:linear-gradient(black 80%, rgba(0,0,0,0) 80%),
-	linear-gradient(90deg, #000 30%, #0ff 30%, #0ff 80%, #000 80%) }
-#workspaces button:hover { margin-top:-.7em }
-#battery.charging, #battery.full { color:#0df }
-#battery { color:#d0d }
+	{ background:linear-gradient(rgba(0,0,0,0) 88%, #0df 88%) }
 #pulseaudio.muted { color:#d0d }
 #cpu.warning { color:red }
 label { all:unset }
-@keyframes blink { 55%{} 100%{color:black} }
+@keyframes blink { 55%{} 100%{color:@bg} }
+#battery { color:#d0d; margin-right: 6em }
+#battery.charging, #battery.full { color:#0df }
 #battery.warning:not(.charging), #memory.warning, #cpu.warning
 	{ color:#ff0; animation:blink 1.2s linear infinite }
 #battery.critical:not(.charging), #memory.critical, #cpu.critical
 	{ color:#f00; animation:blink 0.3s linear infinite }
 tooltip label { font-size:1.3em }
-#workspaces { margin-left: 6em }
-#battery { margin-right: 6em }
-

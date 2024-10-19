@@ -144,11 +144,11 @@ vim.keymap.set('n', 'fh', builtin.help_tags, {})
 
 
 -- COLORS/SETS
--- vim.api.nvim_set_hl(0, "ColorColumn", { ctermbg=0, bg=LightGrey })
 vim.cmd([[
 	colorscheme vim
 	set notermguicolors
 	hi Comment ctermfg=darkred
+	hi Visual ctermfg=none ctermbg=23
 	hi TabLineFill ctermfg=none ctermbg=none cterm=none
 	hi TabLine ctermfg=cyan ctermbg=none cterm=none
 	hi TabLineSel ctermfg=cyan cterm=underline
@@ -211,6 +211,13 @@ vim.cmd([[
 	nmap <silent> <A-Down> :wincmd j<CR>
 	nmap <silent> <A-Left> :wincmd h<CR>
 	nmap <silent> <A-Right> :wincmd l<CR>
+
+	nnoremap <A-j> :m .+1<CR>==
+	nnoremap <A-k> :m .-2<CR>==
+	inoremap <A-j> <Esc>:m .+1<CR>==gi
+	inoremap <A-k> <Esc>:m .-2<CR>==gi
+	vnoremap <A-j> :m '>+1<CR>gv=gv
+	vnoremap <A-k> :m '<-2<CR>gv=gv
 
 	" noremap <C-Tab>		 :NvimTreeToggle<CR>
 	" vnoremap <C-Tab>		<C-C>:NvimTreeToggle<CR>
