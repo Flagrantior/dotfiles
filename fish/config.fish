@@ -45,6 +45,7 @@ set fish_color_error 00dddd
 set -g fish_key_bindings fish_vi_key_bindings
 set fish_cursor_insert underscore blink
 set fish_color_param 00dddd
+set -U fish_features qmark-noglob
 
 _ZO_ECHO=1 zoxide init fish | source
 fzf_configure_bindings --directory=\cf
