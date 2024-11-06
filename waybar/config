@@ -4,7 +4,8 @@
 "position": "bottom", // Waybar position (top|bottom|left|right)
 "modules-left": ["hyprland/workspaces"],
 "modules-right": ["network", "clock", "pulseaudio", "backlight", "cpu", "memory", "battery"],
-"mode": "hide",
+"mode": "overlay",
+"passthrough": true,
 "sway/workspaces": {
 	"disable-scroll": true,
 	"all-outputs": true,
@@ -41,7 +42,6 @@
 },
 
 
-//echo "{\"text\":\""$text"\", \"tooltip\":\""$tooltip"\"}"
 "custom/test": {
 	"exec" : "echo '{\"text\":\"text\", \"tooltip\":\"$(cal)\"}'",
 	"return-type": "json",
@@ -68,7 +68,6 @@
 },
 "clock": {
 	"format": "{:%H%M}",
-	//"tooltip-format": "<big>{:%Y %B}</big>\n<tt><big>{calendar}</big></tt>",
 	"tooltip-format": "<tt><big>{calendar}</big></tt>",
 	"format-alt": "{:%b %d:%w  }",
 	"calendar": {
@@ -111,8 +110,6 @@
 	"format-icons": ["🭻", "🭺", "🭹", "🭸", "🭷", "🭶"],
 	"on-scroll-up": "light -A 1",
 	"on-scroll-down": "light -U 1",
-	//"on-scroll-up": "BR=$(cat /sys/class/backlight/intel_backlight/brightness); echo $(($BR+10)) > /sys/class/backlight/intel_backlight/brightness",
-	//"on-scroll-down": "BR=$(cat /sys/class/backlight/intel_backlight/brightness); echo $(($BR-10)) > /sys/class/backlight/intel_backlight/brightness"
 },
 "battery": {
 	"interval": 1,
@@ -128,13 +125,11 @@
 },
 "network": {
 	"format-wifi": "",
-	//"format-wifi": "w{signalStrength} {essid} {ipaddr}",
 	"format": "N{icon}",
-	"format-ethernet": "{ifname}: {ipaddr}/{cidr}",
+	"format-ethernet": "{ipaddr}",
 	"format-linked": "\\\\",
 	"format-disconnected": "OFFLINE",
 	"tooltip": false
-	//"format-linked": "{ifname} [NONE]",
 },
 "pulseaudio": {
 	"format": "{icon}",

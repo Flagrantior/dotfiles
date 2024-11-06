@@ -1,8 +1,9 @@
 # ~/.bashrc
+# [[ $- == *i* ]] && source /usr/share/blesh/ble.sh --noattach
 
 [[ $- != *i* ]] && return
-# PS1='\[\033[1;35m\]>\[\033[0m\]'
-PS1=''
+PS1='\[\033[1;35m\]>\[\033[0m\]'
+# PS1=''
 # source /usr/share/autojump/autojump.bash
 #alias pacman='sudo pacman --color always'
 #alias factorio='~/Games/Factorio/run.sh'
@@ -101,6 +102,10 @@ reset-cursor() {
 export PS1="$(reset-cursor)$PS1"
 export PATH=~/.local/bin/:~/.cargo/bin/:$PATH
 
+HISTCONTROL=ignoredups:erasedups
+shopt -s histappend
+PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r"
+
 # function cdc {
   # cd "$(llama "$@")"
 # }
@@ -110,5 +115,10 @@ export PATH=~/.local/bin/:~/.cargo/bin/:$PATH
 eval "$(_ZO_ECHO=1 zoxide init bash)"
 eval "$(fzf --bash)"
 
-set -o vi
+# set -o vi
+# bind 'set show-all-if-ambiguous on'
+# bind 'TAB:menu-complete'
 
+# source /usr/share/blesh/ble.sh
+
+# [[ ${BLE_VERSION-} ]] && ble-attach
