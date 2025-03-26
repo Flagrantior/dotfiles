@@ -1,0 +1,9 @@
+#!/bin/bash
+
+current_rotation=$(hyprctl monitors | rg transform | sed 's/.* //')
+case "$current_rotation" in
+	0) hyprctl keyword monitor eDP-1,preferred,auto,1,transform,3 ;;
+	1) hyprctl keyword monitor eDP-1,preferred,auto,1,transform,0 ;;
+	2) hyprctl keyword monitor eDP-1,preferred,auto,1,transform,1 ;;
+	*) hyprctl keyword monitor eDP-1,preferred,auto,1,transform,2 ;;
+esac

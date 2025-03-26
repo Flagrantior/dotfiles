@@ -1,0 +1,8 @@
+#!/bin/bash
+
+
+words=$(echo ${QUTE_SELECTED_TEXT@Q} | trans :ru -b -- )
+words=${words//\\n/<br/>}
+words=${words:2:-1}
+printf 'message-info -r -- "<br/><center>%s</center><br/><br/>"' "$words" >> "$QUTE_FIFO"
+

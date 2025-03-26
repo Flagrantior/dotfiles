@@ -3,6 +3,11 @@
 "$schema" = "https://yazi-rs.github.io/schemas/keymap.json"
 
 [manager]
+prepend_keymap = [
+	{ on = "<Enter>", run = "plugin smart-enter", desc = "Smart enter" },
+	{ on = "l",       run = "plugin smart-enter", desc = "Smart enter" },
+	{ on = "<Right>", run = "plugin smart-enter", desc = "Smart enter" },
+]
 
 keymap = [
 
@@ -34,15 +39,17 @@ keymap = [
 	{ on = "<PageUp>",     run = "arrow -100%", desc = "Move cursor up one page" },
 	{ on = "<PageDown>",   run = "arrow 100%",  desc = "Move cursor down one page" },
 
-	{ on = [ "g", "g" ], run = "arrow -99999999", desc = "Move cursor to the top" },
-	{ on = "G",          run = "arrow 99999999",  desc = "Move cursor to the bottom" },
+	{ on = [ "g", "g" ], run = "arrow top", desc = "Move cursor to the top" },
+	{ on = "G",          run = "arrow bot",  desc = "Move cursor to the bottom" },
 
 	# Navigation
 	{ on = "h", run = "leave", desc = "Go back to the parent directory" },
-	{ on = "l", run = "plugin --sync smart-enter", desc = "Enter the child directory" },
+	# { on = "l", run = "plugin smart-enter", desc = "Enter the child directory" },
+	{ on = "l", run = "enter", desc = "Enter the child directory" },
 
 	{ on = "<Left>",  run = "leave",    desc = "Go back to the parent directory" },
-	{ on = "<Right>", run = "plugin --sync smart-enter",    desc = "Enter the child directory" },
+	{ on = "<Right>", run = "enter", desc = "Enter the child directory" },
+	# { on = "<Right>", run = "plugin smart-enter",    desc = "Enter the child directory" },
 
 	{ on = "H", run = "back",    desc = "Go back to the previous directory" },
 	{ on = "L", run = "forward", desc = "Go forward to the next directory" },
@@ -52,17 +59,19 @@ keymap = [
 	{ on = "J", run = "seek 1",  desc = "Seek down 1 units in the preview" },
 
 	# Selection
-	{ on = "<Space>", run = [ "select --state=none", "arrow 1" ], desc = "Toggle the current selection state" },
+	{ on = "<Space>", run = [ "toggle --state=none", "arrow 1" ], desc = "Toggle the current selection state" },
 	{ on = "v",       run = "visual_mode",                        desc = "Enter visual mode (selection mode)" },
 	{ on = "V",       run = "visual_mode --unset",                desc = "Enter visual mode (unset mode)" },
-	{ on = "<C-a>",   run = "select_all --state=true",            desc = "Select all files" },
-	{ on = "<C-r>",   run = "select_all --state=none",            desc = "Inverse selection of all files" },
+	{ on = "<C-a>",   run = "toggle_all --state=on", desc = "Select all files" },
+	{ on = "<C-r>",   run = "toggle_all --state=none",            desc = "Invert selection of all files" },
+
 
 	# Operation
 	{ on = "o",         run = "open",                        desc = "Open selected files" },
 	{ on = "O",         run = "open --interactive",          desc = "Open selected files interactively" },
 	# { on = "<Enter>",   run = "open",                        desc = "Open selected files" },
-	{ on = "<Enter>",   run = "plugin --sync smart-enter",   desc = "Open selected files" },
+	# { on = "<Enter>",   run = "open",                        desc = "Open selected files" },
+	# { on = "<Enter>",   run = "plugin smart-enter",   desc = "Open selected files" },
 	{ on = "<S-Enter>", run = "open --interactive",          desc = "Open selected files interactively" },
 	{ on = "y",         run = "yank",                        desc = "Yank selected files (copy)" },
 	{ on = "<C-y>",     run = '''shell 'for path in "$@"; do echo "file://$path"; done | wl-copy -t text/uri-list' --confirm''',                        desc = "Yank selected files to clipboard" },
@@ -93,7 +102,7 @@ keymap = [
 	# Linemode
 	{ on = [ "m", "s" ], run = "linemode size",        desc = "Set linemode to size" },
 	{ on = [ "m", "p" ], run = "linemode permissions", desc = "Set linemode to permissions" },
-	{ on = [ "m", "c" ], run = "linemode ctime",       desc = "Set linemode to ctime" },
+	{ on = [ "m", "c" ], run = "linemode btime",       desc = "Set linemode to btime" },
 	{ on = [ "m", "m" ], run = "linemode mtime",       desc = "Set linemode to mtime" },
 	{ on = [ "m", "o" ], run = "linemode owner",       desc = "Set linemode to owner" },
 	{ on = [ "m", "n" ], run = "linemode none",        desc = "Set linemode to none" },
@@ -115,10 +124,10 @@ keymap = [
 	{ on = "N", run = "find_arrow --previous",   desc = "Go to the previous found" },
 
 	# Sorting
-	{ on = [ "s", "M" ], run = [ "sort modified --reverse=no", "linemode mtime" ], desc = "Sort by modified time" },
-	{ on = [ "s", "m" ], run = [ "sort modified --reverse", "linemode mtime" ],    desc = "Sort by modified time (reverse)" },
-	{ on = [ "s", "c" ], run = [ "sort created --reverse=no", "linemode ctime" ],  desc = "Sort by created time" },
-	{ on = [ "s", "C" ], run = [ "sort created --reverse", "linemode ctime" ],     desc = "Sort by created time (reverse)" },
+	{ on = [ "s", "M" ], run = [ "sort mtime --reverse=no", "linemode mtime" ], desc = "Sort by modified time" },
+	{ on = [ "s", "m" ], run = [ "sort mtime --reverse", "linemode mtime" ],    desc = "Sort by modified time (reverse)" },
+	{ on = [ "s", "C" ], run = [ "sort btime --reverse=no", "linemode btime" ],  desc = "Sort by created time" },
+	{ on = [ "s", "c" ], run = [ "sort btime --reverse", "linemode btime" ],     desc = "Sort by created time (reverse)" },
 	{ on = [ "s", "e" ], run = "sort extension --reverse=no",                      desc = "Sort by extension" },
 	{ on = [ "s", "E" ], run = "sort extension --reverse",                         desc = "Sort by extension (reverse)" },
 	{ on = [ "s", "a" ], run = "sort alphabetical --reverse=no",                   desc = "Sort alphabetically" },
@@ -175,7 +184,6 @@ keymap = [
 ]
 
 [tasks]
-
 keymap = [
 	{ on = "<Esc>", run = "close", desc = "Close task manager" },
 	{ on = "<C-[>", run = "close", desc = "Close task manager" },
@@ -198,7 +206,6 @@ keymap = [
 ]
 
 [select]
-
 keymap = [
 	{ on = "<Esc>",   run = "close",          desc = "Cancel selection" },
 	{ on = "<C-[>",   run = "close",          desc = "Cancel selection" },
@@ -217,9 +224,8 @@ keymap = [
 ]
 
 [input]
-
 prepend_keymap = [
-	{ on   = "<Esc>", run  = "close", desc = "Cancel input" },
+	{ on = "<Esc>", run  = "close", desc = "Cancel input" },
 	# { on  = "y", run = [ '''shell 'for path in "$@"; do echo "file://$path"; done | wl-copy -t text/uri-list' --confirm''', "yank" ] },
 ]
 
@@ -313,7 +319,6 @@ keymap = [
 ]
 
 [completion]
-
 keymap = [
 	{ on = "<C-c>",   run = "close",                                      desc = "Cancel completion" },
 	{ on = "<Tab>",   run = "close --submit",                             desc = "Submit the completion" },
@@ -334,7 +339,6 @@ keymap = [
 ]
 
 [help]
-
 keymap = [
 	{ on = "<Esc>", run = "escape", desc = "Clear the filter, or hide the help" },
 	{ on = "<C-[>", run = "escape", desc = "Clear the filter, or hide the help" },
@@ -351,3 +355,4 @@ keymap = [
 	# Filtering
 	{ on = "/", run = "filter", desc = "Apply a filter for the help items" },
 ]
+

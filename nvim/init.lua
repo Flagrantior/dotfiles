@@ -65,7 +65,9 @@ require("lazy").setup({
 		event = "VeryLazy",
 		keys = {
 			-- 👇 in this section, choose your own keymappings!
-			{ "<C-Tab>", "<cmd>Yazi<cr>" },
+			{ "<S-Tab>", "<cmd>Yazi<CR>" },
+			{ "<S-t>", ":tabnew<CR><cmd>Yazi<CR>" },
+			{ "<C-S-Tab>", ":tabnew<CR><cmd>Yazi<CR>" },
 		},
 		---@type YaziConfig
 		opts = {
@@ -76,6 +78,7 @@ require("lazy").setup({
 			},
 		},
 	},
+	{ 'mfussenegger/nvim-dap' },
 	{ 'epwalsh/obsidian.nvim',
 		version = "*",  -- recommended, use latest release instead of latest commit
 		lazy = false,
@@ -100,12 +103,47 @@ require("lazy").setup({
     ---@module 'render-markdown'
     ---@type render.md.userconfig
     opts = {
+			indent = {
+				enabled = true,
+				skip_heading = true,
+				per_level = 4,
+			},
+			paragraph = {
+        enabled = true,
+        left_margin = 1,
+			},
+			heading = {
+				icons = {''},
+				sign = false,
+				backgrounds = {'FlagMarkdownHead'},
+				width = 'block',
+				left_margin = 0,
+        left_pad = 0,
+        right_pad = 0,
+				position = 'inline',
+			},
 			code = {
-				highlight = '',
+				style = 'normal',
+				width = 'block',
+				sign = false,
+        left_pad = 1,
+				highlight = 'FlagMarkdownCode',
+				highlight_inline = 'FlagMarkdownCodeInline',
+				border = 'thick',
 			},
 			pipe_table = {
 				 filler = '',
-			}
+			},
+			dash = {
+				width = 20,
+				highlight = 'FlagMarkdownDash',
+			},
+			bullet = {
+				left_pad = 1,
+			},
+			anti_conceal = {
+				enabled = false,
+			},
 		},
 	},
 })
@@ -114,15 +152,25 @@ require("lazy").setup({
 -- vim.g.codeium_enabled = false
 
 -- map
-vim.keymap.set('n', '<m-1>', '1gt')
-vim.keymap.set('n', '<m-2>', '2gt')
-vim.keymap.set('n', '<m-3>', '3gt')
-vim.keymap.set('n', '<m-4>', '4gt')
-vim.keymap.set('n', '<m-5>', '5gt')
-vim.keymap.set('n', '<m-6>', '6gt')
-vim.keymap.set('n', '<m-7>', '7gt')
-vim.keymap.set('n', '<m-8>', '8gt')
-vim.keymap.set('n', '<m-9>', '9gt')
+vim.keymap.set('v', '<C-y>', '"+y', opts)
+vim.keymap.set('n', '<A-1>', '1gt')
+vim.keymap.set('n', '<A-2>', '2gt')
+vim.keymap.set('n', '<A-3>', '3gt')
+vim.keymap.set('n', '<A-4>', '4gt')
+vim.keymap.set('n', '<A-5>', '5gt')
+vim.keymap.set('n', '<A-6>', '6gt')
+vim.keymap.set('n', '<A-7>', '7gt')
+vim.keymap.set('n', '<A-8>', '8gt')
+vim.keymap.set('n', '<A-9>', '9gt')
+vim.keymap.set('n', '<A-C-1>', ':tabmove 0<CR>')
+vim.keymap.set('n', '<A-C-2>', ':tabmove 1<CR>')
+vim.keymap.set('n', '<A-C-3>', ':tabmove 2<CR>')
+vim.keymap.set('n', '<A-C-4>', ':tabmove 3<CR>')
+vim.keymap.set('n', '<A-C-5>', ':tabmove 4<CR>')
+vim.keymap.set('n', '<A-C-6>', ':tabmove 5<CR>')
+vim.keymap.set('n', '<A-C-7>', ':tabmove 6<CR>')
+vim.keymap.set('n', '<A-C-8>', ':tabmove 7<CR>')
+vim.keymap.set('n', '<A-C-9>', ':tabmove 8<CR>')
 vim.keymap.set('n', 'zz', ':q!<cr>')
 vim.keymap.set('i', 'jj', '<esc>')
 vim.keymap.set('i', 'jk', '<esc>')
@@ -130,7 +178,7 @@ vim.keymap.set('i', 'kj', '<esc>')
 -- vim.keymap.set({'n', 'x', 'v'}, ' ', '<cmd>HopChar1<CR>', { silent = true })
 vim.keymap.set({'n', 'x'}, ' ', '<cmd>HopChar1<CR>', { silent = true })
 vim.keymap.set('n', ';', ':')
-vim.keymap.set('', '<C-t>', ':tabnew<CR>')
+-- vim.keymap.set('', '<S-t>', ':tabnew<CR>')
 vim.keymap.set('n', '<S-u>' , ':redo<CR>')
 vim.keymap.set('n', '<C-k>', ':ObsidianQuickSwitch<CR>')
 vim.api.nvim_create_user_command('Hex', ':set bin | %!xxd', {})
@@ -162,6 +210,10 @@ vim.cmd([[
 	hi Folded ctermbg=17
 	hi FoldColumn ctermbg=0
 	hi MatchParen cterm=bold ctermbg=none ctermbg=darkmagenta
+	hi FlagMarkdownHead ctermfg=darkyellow ctermbg=none
+	hi FlagMarkdownDash ctermfg=53 ctermbg=none
+	hi FlagMarkdownCode ctermbg=none
+	hi FlagMarkdownCodeInline ctermbg=none ctermfg=magenta
 	" hi CocInlayHint ctermfg=8
 	" hi CocGitAddedSign ctermbg=none ctermfg=green
 	" hi CocGitChangeRemovedSign ctermbg=none ctermfg=magenta
@@ -202,22 +254,29 @@ vim.cmd([[
 	au BufNewFile,BufRead *.md set conceallevel=2
 
 	let g:vim_markdown_edit_url_in = 'tab'
+	" let g:rust_recommended_style = v:false
 
-	nmap <silent> <A-k> :wincmd k<CR>
-	nmap <silent> <A-j> :wincmd j<CR>
-	nmap <silent> <A-h> :wincmd h<CR>
-	nmap <silent> <A-l> :wincmd l<CR>
-	nmap <silent> <A-Up> :wincmd k<CR>
-	nmap <silent> <A-Down> :wincmd j<CR>
-	nmap <silent> <A-Left> :wincmd h<CR>
-	nmap <silent> <A-Right> :wincmd l<CR>
+	" nmap <silent> <A-k> :wincmd k<CR>
+	" nmap <silent> <A-j> :wincmd j<CR>
+	" nmap <silent> <C-h> :wincmd h<CR>
+	" nmap <silent> <C-l> :wincmd l<CR>
+	nmap <silent> <C-Up> :wincmd k<CR>
+	nmap <silent> <C-Down> :wincmd j<CR>
+	nmap <silent> <C-Left> :wincmd h<CR>
+	nmap <silent> <C-Right> :wincmd l<CR>
 
 	nnoremap <A-j> :m .+1<CR>==
+	nnoremap <A-Down> :m .+1<CR>==
 	nnoremap <A-k> :m .-2<CR>==
+	nnoremap <A-Up> :m .-2<CR>==
 	inoremap <A-j> <Esc>:m .+1<CR>==gi
+	inoremap <A-Down> <Esc>:m .+1<CR>==gi
 	inoremap <A-k> <Esc>:m .-2<CR>==gi
+	inoremap <A-Up> <Esc>:m .-2<CR>==gi
 	vnoremap <A-j> :m '>+1<CR>gv=gv
+	vnoremap <A-Down> :m '>+1<CR>gv=gv
 	vnoremap <A-k> :m '<-2<CR>gv=gv
+	vnoremap <A-Up> :m '<-2<CR>gv=gv
 
 	" noremap <C-Tab>		 :NvimTreeToggle<CR>
 	" vnoremap <C-Tab>		<C-C>:NvimTreeToggle<CR>
@@ -243,6 +302,7 @@ vim.api.nvim_create_autocmd('VimLeave', {
 		opleader = { block = '<C-/>' },
 	})
 -- LSP
+	-- vim.g.markdown_fenced_languages = { "ts=typescript"	}
 	local capabilities = vim.lsp.protocol.make_client_capabilities()
 	capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 	local lspconfig = require('lspconfig')
@@ -250,8 +310,9 @@ vim.api.nvim_create_autocmd('VimLeave', {
 	lspconfig.eslint.setup {}
 	lspconfig.pyright.setup {}
 	lspconfig.html.setup {}
+	lspconfig.denols.setup {}
 	lspconfig.cssls.setup {
-			capabilities = capabilities
+		capabilities = capabilities
 	}
 	local configs = require('lspconfig/configs')
 	capabilities.textDocument.completion.completionItem.snippetSupport = true
@@ -269,7 +330,9 @@ vim.api.nvim_create_autocmd('VimLeave', {
 			},
 		}
 	})
-	lspconfig.golangci_lint_ls.setup {}
+
+	-- lspconfig.golangci_lint_ls.setup {}
+	lspconfig.gopls.setup {}
 	lspconfig.rust_analyzer.setup {
 		settings = {
 			['rust-analyzer'] = {
@@ -283,6 +346,29 @@ vim.api.nvim_create_autocmd('VimLeave', {
 		},
 	}
 	lspconfig.bashls.setup {}
+	lspconfig.gdscript.setup({
+		name = 'godot',
+		cmd = vim.lsp.rpc.connect("127.0.0.1", "6005"),
+	})
+
+
+	local dap = require("dap")
+	dap.adapters.godot = {
+		type = "server",
+		host = "127.0.0.1",
+		port = 6006,
+	}
+
+	dap.configurations.gdscript = {
+		{
+			type = "godot",
+			request = "launch",
+			name = "Launch scene",
+			project = "${workspaceFolder}",
+			launch_scene = true,
+		},
+	}
+
 
 	-- Global mappings.
 	-- See `:help vim.diagnostic.*` for documentation on any of the below functions

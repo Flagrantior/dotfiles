@@ -3,14 +3,19 @@
 
 case $1 in
 	1)
+		hyprctl keyword monitor ',preferred,auto,1.5'
+		hyprctl keyword cursor:no_hardware_cursors true
+		hyprctl keyword decoration:screen_shader '/home/flagrantior/.config/hypr/shaders/crt.frag'
+		;;
+	2)
 		hyprctl keyword monitor ',preferred,auto,1'
 		hyprctl keyword cursor:no_hardware_cursors false
 		hyprctl keyword decoration:screen_shader '/home/flagrantior/.config/hypr/shaders/redlight.frag'
 		;;
-	2)
+	3)
 		hyprctl keyword monitor ',preferred,auto,1.5'
 		hyprctl keyword cursor:no_hardware_cursors true
-		hyprctl keyword decoration:screen_shader '/home/flagrantior/.config/hypr/shaders/crt.frag'
+		hyprctl keyword decoration:screen_shader '/home/flagrantior/.config/hypr/shaders/crt_redlight.frag'
 		;;
 	*)
 		hyprctl keyword monitor ',preferred,auto,1'

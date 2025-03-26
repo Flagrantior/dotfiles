@@ -36,9 +36,9 @@ tab_inactive = {}
 tab_width    = 1
 
 # Count
-count_copied   = { fg = "white", bg = "green" }
+count_copied   = { fg = "black", bg = "green" }
 count_cut      = { fg = "white", bg = "red" }
-count_selected = { fg = "white", bg = "yellow" }
+count_selected = { fg = "black", bg = "yellow" }
 
 # Border
 border_symbol = " "
@@ -53,26 +53,30 @@ syntect_theme = ""
 # : Status {{{
 
 [status]
-separator_open  = ""
-separator_close = ""
+sep_left  = { open = "", close = "" }
+sep_right = { open = "", close = "" }
 separator_style = { fg = "black", bg = "#00ffff" }
 
-# Mode
-mode_normal = { bg = "black", bold = true }
-mode_select = { bg = "red", bold = true }
-mode_unset  = { bg = "red", bold = true }
-
-# Progress
 progress_label  = { bold = true }
-progress_normal = { fg = "blue", bg = "black" }
+progress_normal = { fg = "cyan", bg = "black" }
 progress_error  = { fg = "red", bg = "black" }
 
-# Permissions
-permissions_t = { fg = "#880088" }
-permissions_r = { fg = "#00ffff" }
-permissions_w = { fg = "#00ffff" }
-permissions_x = { fg = "#00ffff" }
-permissions_s = { fg = "#aa00aa" }
+perm_type  = { fg = "#880088" }
+perm_read  = { fg = "#00ffff" }
+perm_write = { fg = "#00ffff" }
+perm_exec  = { fg = "#00ffff" }
+perm_sep   = { fg = "#aa00aa" }
+
+
+[mode]
+normal_main = { fg = "#00ffff", bg = "#002222", bold = true }
+normal_alt  = { fg = "#00ffff", bg = "#002222" }
+
+select_main = { fg = "#00ffff", bg = "#002222", bold = true }
+select_alt  = { fg = "#00ffff", bg = "#002222" }
+
+unset_main = { fg = "#00ffff", bg = "#660000", bold = true }
+unset_alt  = { fg = "#00ffff", bg = "#660000" }
 
 # : }}}
 

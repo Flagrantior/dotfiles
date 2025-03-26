@@ -1,6 +1,6 @@
 {
 
-"layer": "top", // Waybar at top layer
+//"layer": "top", // Waybar at top layer
 "position": "bottom", // Waybar position (top|bottom|left|right)
 "modules-left": ["hyprland/workspaces"],
 "modules-right": ["network", "clock", "pulseaudio", "backlight", "cpu", "memory", "battery"],
@@ -70,15 +70,15 @@
 	"format": "{:%H%M}",
 	"tooltip-format": "<tt><big>{calendar}</big></tt>",
 	"format-alt": "{:%b %d:%w  }",
-	"calendar": {
-		 "mode"          : "today",
-		 "format": {
-			  "months":     "<span color='#00ffff'>{}</span>",
-			  "days":       "<span color='#00ffff'>{}</span>",
-			  "weekdays":   "<span color='#00ffff'><b>{}</b></span>",
-			  "today":      "<span color='#000000' background='#00ffff'><b>{}</b></span>"
-		 }
-	}
+	//"calendar": {
+	//	 "mode"          : "today",
+	//	 "format": {
+	//		  "months":     "<span color='#00ffff'>{}</span>",
+	//		  "days":       "<span color='#00ffff'>{}</span>",
+	//		  "weekdays":   "<span color='#00ffff'><b>{}</b></span>",
+	//		  "today":      "<span color='#000000' background='#00ffff'><b>{}</b></span>"
+	//	 }
+	//}
 },
 "cpu": {
 	"interval": 1,
@@ -126,7 +126,8 @@
 "network": {
 	"format-wifi": "",
 	"format": "N{icon}",
-	"format-ethernet": "{ipaddr}",
+	"format-ethernet": "",
+	//"format-ethernet": "{ipaddr}",
 	"format-linked": "\\\\",
 	"format-disconnected": "OFFLINE",
 	"tooltip": false

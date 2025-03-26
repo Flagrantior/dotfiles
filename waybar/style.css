@@ -7,7 +7,7 @@ window { background: rgba(0,0,0,0) }
 #network, #clock, #battery, #temperature, #backlight, #pulseaudio, #memory, #cpu, #disk
 	{	padding-right:.5em; font-size:1.1em; margin:-.1em 0 -.2em 0; background: @bg }
 #clock { padding-left:5px }
-#network { background:red; color:@bg; font-weight:bold; padding-left:5px }
+#network { background:#f0a; color:@bg; font-weight:bold; padding-left:5px }
 #network.ethernet { background:@bg; color:#0df; margin-right:2em }
 #workspaces { background: @bg; margin-left: 6em }
 #workspaces button

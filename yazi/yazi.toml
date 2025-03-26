@@ -4,7 +4,7 @@
 
 [manager]
 ratio          = [ 1, 3, 4 ]
-sort_by        = "created"
+sort_by        = "btime"
 sort_sensitive = false
 sort_reverse   = true
 sort_dir_first = true
@@ -42,7 +42,9 @@ open = [
 ]
 reveal = [
 	# { run = 'xdg-open "$(dirname "$1")"',           desc = "Reveal", for = "linux" },
-	{ run = 'foot nvim -p "$1"',           desc = "Reveal", for = "linux" },
+	{ run = 'foot nvim -p "$1"',										desc = "Reveal", for = "linux" },
+	{ run = 'jpegoptim --size=75% --overwrite "$1"',desc = "jpegoptim 75%", for = "linux" },
+	{ run = 'jpegoptim --size=50% --overwrite "$1"',desc = "jpegoptim 50%", for = "linux" },
 	{ run = 'open -R "$1"',                         desc = "Reveal", for = "macos" },
 	{ run = 'explorer /select,"%1"', orphan = true, desc = "Reveal", for = "windows" },
 	{ run = '''exiftool "$1"; echo "Press enter to exit"; read _''', block = true, desc = "Show EXIF", for = "unix" },
@@ -60,23 +62,17 @@ play = [
 
 [open]
 rules = [
-	# Folder
 	{ name = "*/", use = [ "edit", "open", "reveal" ] },
-	# Text
 	{ mime = "text/*", use = [ "edit", "reveal" ] },
-	# Image
-	{ mime = "image/*", use = [ "open", "reveal" ] },
-	# Media
 	{ mime = "{audio,video}/*", use = [ "play", "reveal" ] },
-	# Archive
+	{ mime = "image/gif", use = [ "play", "reveal" ] },
+	{ mime = "image/*", use = [ "open", "reveal" ] },
 	{ mime = "application/{,g}zip", use = [ "extract", "reveal" ] },
-	{ mime = "application/x-{tar,bzip*,7z-compressed,xz,rar}", use = [ "extract", "reveal" ] },
-	# JSON
+	{ mime = "application/{tar,bzip*,7z-compressed,xz,rar}", use = [ "extract", "reveal" ] },
 	{ mime = "application/{json,x-ndjson}", use = [ "edit", "reveal" ] },
 	{ mime = "*/javascript", use = [ "edit", "reveal" ] },
-	# Empty file
+
 	{ mime = "inode/x-empty", use = [ "edit", "reveal" ] },
-	# Fallback
 	{ name = "*", use = [ "open", "reveal" ] },
 ]
 
@@ -89,20 +85,18 @@ image_bound      = [ 0, 0 ]
 suppress_preload = false
 
 [plugin]
-
+prepend_fetchers = [
+	{ id = "git", name = "*",  run  = "git" },
+	{ id = "git", name = "*/", run  = "git" }
+]
 fetchers = [
-	# Mimetype
 	{ id = "mime", name = "*", run = "mime", if = "!mime", prio = "high" },
 ]
 preloaders = [
-	# Image
 	{ mime = "image/{avif,hei?,jxl,svg+xml}", run = "magick" },
 	{ mime = "image/*", run = "image" },
-	# Video
 	{ mime = "video/*", run = "video" },
-	# PDF
 	{ mime = "application/pdf", run = "pdf" },
-	# Font
 	{ mime = "font/*", run = "font" },
 	{ mime = "application/vnd.ms-opentype", run = "font" },
 ]
@@ -110,9 +104,9 @@ preloaders = [
   # { name = "*.md", run = "glow" },
 # ]
 prepend_previewers = [
-    # { mime = "audio/*",   run = "exifaudio"}, #?
-    { mime = "{image,audio,video}/*", run = "mediainfo"},
-    { mime = "application/x-subrip", run = "mediainfo"},
+	# { mime = "audio/*",   run = "exifaudio"}, #?
+	{ mime = "{image,audio,video}/*", run = "mediainfo"},
+	{ mime = "application/x-subrip", run = "mediainfo"},
 	{ mime = "application/*zip",            run = "ouch" },
 	{ mime = "application/x-tar",           run = "ouch" },
 	{ mime = "application/x-bzip2",         run = "ouch" },
@@ -160,15 +154,14 @@ cd_origin = "top-center"
 cd_offset = [ 0, 13, 50, 3 ]
 
 # create
-create_title  = "CREATE:"
+create_title  = ["CREATE:", "Create (dir):"]
 create_origin = "top-center"
 create_offset = [ 0, 13, 50, 3 ]
 
 # rename
-rename_title  = "RENAME:"
-# rename_origin = "hovered"
+rename_title  = "RENAME:" # rename_origin = "hovered"
 rename_origin = "top-center"
-rename_offset = [ 0, 13, 50, 3 ]
+rename_offset = [ 0, 13, 80, 3 ]
 
 # filter
 filter_title  = "FILTER:"
@@ -188,7 +181,7 @@ search_offset = [ 0, 13, 50, 3 ]
 # shell
 shell_title  = [ "SHELL:", "SHELL (block):" ]
 shell_origin = "top-center"
-shell_offset = [ 0, 13, 50, 3 ]
+shell_offset = [ 0, 25, 85, 3 ]
 
 [confirm]
 # trash
@@ -199,7 +192,7 @@ trash_offset	= [ 0, 0, 70, 20 ]
 # delete
 delete_title 	= "DELETE {n} file{s}?"
 delete_origin	= "center"
-delete_offset	= [ 0, 0, 70, 20 ]
+delete_offset	= [ 0, 0, 150, 20 ]
 
 # overwrite
 overwrite_title   = "OVERWRITE?"

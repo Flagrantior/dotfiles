@@ -1,0 +1,8 @@
+#!/bin/bash
+notify-send -t 5000 -u critical \
+	"$(hyprctl activewindow | rg 'initialClass: ' | sed 's/\tinitialClass: //')" \
+	"$(hyprctl activewindow | rg 'initialTitle: ' | sed 's/\tinitialTitle: //')"
+notify-send -t 5000 -u low \
+	"$(hyprctl activewindow | rg 'class: ' | sed 's/\tclass: //')" \
+	"$(hyprctl activewindow | rg 'title: ' | sed 's/\ttitle: //')"
+
