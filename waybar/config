@@ -1,6 +1,7 @@
 {
 
 //"layer": "top", // Waybar at top layer
+//"ipc": true,
 "position": "bottom", // Waybar position (top|bottom|left|right)
 "modules-left": ["hyprland/workspaces"],
 "modules-right": ["network", "clock", "pulseaudio", "backlight", "cpu", "memory", "battery"],

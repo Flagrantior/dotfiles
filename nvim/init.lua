@@ -14,6 +14,8 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 	{ "folke/neodev.nvim" },
 	{ "nvim-treesitter/nvim-treesitter" },
+	{ "williamboman/mason.nvim" },
+	{ "williamboman/mason-lspconfig.nvim", after = "mason.nvim" },
 	{ "neovim/nvim-lspconfig" },
 	{ "ap/vim-css-color" },
 	{ "hrsh7th/nvim-cmp",
@@ -46,8 +48,7 @@ require("lazy").setup({
 		require"hop".setup { keys = "fqwerasdmnkj123vg4tcxz" }
 		end
 	},
-	{ "https://github.com/aca/emmet-ls" }, --- ???
-	{ "williamboman/mason.nvim" }, --- ???
+	-- { "https://github.com/aca/emmet-ls" }, --- ???
 	{ "hrsh7th/vim-vsnip" }, --- ???
 	{ "hrsh7th/vim-vsnip-integ" }, --- ???
 	--[[ { "renerocksai/telekasten.nvim",
@@ -317,7 +318,7 @@ vim.api.nvim_create_autocmd('VimLeave', {
 	local configs = require('lspconfig/configs')
 	capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-	lspconfig.emmet_ls.setup({ --- ???
+	--[[ lspconfig.emmet_ls.setup({ --- ???
 		-- on_attach = on_attach,
 		capabilities = capabilities,
 		filetypes = { "css", "eruby", "html", "javascript", "javascriptreact", "less", "sass", "scss", "svelte", "pug", "typescriptreact", "vue" },
@@ -329,7 +330,7 @@ vim.api.nvim_create_autocmd('VimLeave', {
 			},
 			},
 		}
-	})
+	}) ]]
 
 	-- lspconfig.golangci_lint_ls.setup {}
 	lspconfig.gopls.setup {}
@@ -346,10 +347,11 @@ vim.api.nvim_create_autocmd('VimLeave', {
 		},
 	}
 	lspconfig.bashls.setup {}
-	lspconfig.gdscript.setup({
+	-- BUG?
+	--[[ lspconfig.gdscript.setup({
 		name = 'godot',
 		cmd = vim.lsp.rpc.connect("127.0.0.1", "6005"),
-	})
+	}) ]]
 
 
 	local dap = require("dap")
@@ -542,6 +544,8 @@ require('lualine').setup {
 	extensions = {}
 } ]]
 
+
+require("mason").setup()
 
 -- GITSIGNS
 require('gitsigns').setup()

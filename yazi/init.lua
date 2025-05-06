@@ -35,12 +35,12 @@ Status:children_add(
 )
 
 
-THEME.git = THEME.git or {}
+--[[ THEME.git = THEME.git or {}
 THEME.git.added_sign    = "A"; THEME.git.added    = ui.Style():fg("green");
 THEME.git.updated_sign  = "U"; THEME.git.updated  = ui.Style():fg("green");
 THEME.git.modified_sign = "M"; THEME.git.modified = ui.Style():fg("yellow");
 THEME.git.deleted_sign  = "X"; THEME.git.deleted  = ui.Style():fg("red");
 THEME.git.untracked_sign = "?"
 THEME.git.ignored_sign = "-"
-require("git"):setup()
+require("git"):setup() ]]
 

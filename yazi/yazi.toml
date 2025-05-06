@@ -42,11 +42,12 @@ open = [
 ]
 reveal = [
 	# { run = 'xdg-open "$(dirname "$1")"',           desc = "Reveal", for = "linux" },
+	{ run = 'vlc -- "$@"', orphan = false, desc = "VLC", for = "linux", block = true },
 	{ run = 'foot nvim -p "$1"',										desc = "Reveal", for = "linux" },
-	{ run = 'jpegoptim --size=75% --overwrite "$1"',desc = "jpegoptim 75%", for = "linux" },
+	# { run = 'jpegoptim --size=75% --overwrite "$1"',desc = "jpegoptim 75%", for = "linux" },
 	{ run = 'jpegoptim --size=50% --overwrite "$1"',desc = "jpegoptim 50%", for = "linux" },
 	{ run = 'open -R "$1"',                         desc = "Reveal", for = "macos" },
-	{ run = 'explorer /select,"%1"', orphan = true, desc = "Reveal", for = "windows" },
+	# { run = 'explorer /select,"%1"', orphan = true, desc = "Reveal", for = "windows" },
 	{ run = '''exiftool "$1"; echo "Press enter to exit"; read _''', block = true, desc = "Show EXIF", for = "unix" },
 ]
 extract = [
@@ -54,7 +55,8 @@ extract = [
 	{ run = 'ya pub extract --list %*',   desc = "Extract here", for = "windows" },
 ]
 play = [
-	{ run = 'mpv --loop-playlist -- "$@"', orphan = false, for = "unix", block = true },
+	{ run = 'mpv --loop-playlist -- "$@"', orphan = false, for = "unix", block = true }, # TODO
+	# { run = 'vlc -- "$@"', orphan = false, for = "unix", block = true },
 	# { run = 'mpv --force-window "$@"', orphan = true, for = "unix" },
 	{ run = 'mpv --force-window %*', orphan = true, for = "windows" },
 	{ run = '''mediainfo "$1"; echo "Press enter to exit"; read _''', block = true, desc = "Show media info", for = "unix" },
@@ -85,10 +87,10 @@ image_bound      = [ 0, 0 ]
 suppress_preload = false
 
 [plugin]
-prepend_fetchers = [
-	{ id = "git", name = "*",  run  = "git" },
-	{ id = "git", name = "*/", run  = "git" }
-]
+# prepend_fetchers = [
+	# { id = "git", name = "*",  run  = "git" },
+	# { id = "git", name = "*/", run  = "git" }
+# ]
 fetchers = [
 	{ id = "mime", name = "*", run = "mime", if = "!mime", prio = "high" },
 ]
