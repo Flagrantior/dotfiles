@@ -25,3 +25,4 @@ label { all:unset }
 #battery.critical:not(.charging), #memory.critical, #cpu.critical
 	{ color:#f00; animation:blink 0.3s linear infinite }
 tooltip label { font-size:1.3em }
+#disk { margin-right: 1em; padding-left: .35em; padding-right: .35em; opacity: .85; }

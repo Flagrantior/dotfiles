@@ -4,7 +4,7 @@
 //"ipc": true,
 "position": "bottom", // Waybar position (top|bottom|left|right)
 "modules-left": ["hyprland/workspaces"],
-"modules-right": ["network", "clock", "pulseaudio", "backlight", "cpu", "memory", "battery"],
+"modules-right": ["network", "disk", "clock", "pulseaudio", "backlight", "cpu", "memory", "battery"],
 "mode": "overlay",
 "passthrough": true,
 "sway/workspaces": {
@@ -60,8 +60,9 @@
 	"format": "{short}"
 },
 "disk": {
-	"interval": 30,
-	"format": "{free}"
+	"interval": 10,
+	"format": "{specific_free:.0f}",
+	"unit":"MiB"
 },
 "tray": {
 	"icon-size": 21,

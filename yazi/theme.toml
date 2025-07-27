@@ -13,7 +13,7 @@ use = ""
 
 # : Manager {{{
 
-[manager]
+[mgr]
 cwd = { fg = "cyan" }
 
 # Hovered
@@ -48,6 +48,12 @@ border_symbol = " "
 syntect_theme = ""
 
 # : }}}
+
+[tabs]
+active = { fg = "black", bg = "#00ffff" }
+inactive = { fg = "#00dddd", bg = "#003333" }
+sep_inner  = { open = "", close = "" }
+sep_outer = { open = "", close = "" }
 
 
 # : Status {{{

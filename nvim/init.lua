@@ -229,7 +229,7 @@ vim.cmd([[
 	set noswapfile
 	set scrolloff=7
 	set autoindent
-	set wrap nowrap
+	" set wrap nowrap
 	" set fileformat=unix
 	set expandtab tabstop=2 shiftwidth=2 softtabstop=2
 	set mouse=a
