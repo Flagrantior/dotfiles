@@ -114,15 +114,30 @@ require("lazy").setup({
 		"folke/tokyonight.nvim",
 		priority = 1000,
 		opts = {
+			style = "night",
 			transparent = true,
+			colors = {
+				neon_cyan = "#00ffff",
+				neon_magenta = "#ff00ff",
+			},
 			on_highlights = function(hl, c)
-				hl.Function = { fg = c.cyan }
-				hl.String = { fg = c.green }
-				hl.Type = { fg = c.magenta }
-				hl.Constant = { fg = c.orange }
-				hl.Variable = { fg = c.fg } -- Corrected typo
-				hl.Comment = { fg = c.red, italic = true }
-				hl.Visual = { bg = c.blue } -- Removed invalid style
+				-- Main text and variables
+				hl.Normal = { fg = c.neon_cyan }
+				hl.Variable = { fg = c.neon_cyan }
+				hl.Identifier = { fg = c.neon_cyan }
+
+				-- Accents
+				hl.Function = { fg = c.neon_magenta, bold = true }
+				hl.Statement = { fg = c.neon_magenta }
+				hl.Type = { fg = c.neon_magenta }
+				hl.Constant = { fg = c.neon_magenta }
+				hl.String = { fg = c.green } -- Keep some variety
+				hl.Number = { fg = c.orange } -- Keep some variety
+
+				-- UI
+				hl.Visual = { bg = "#440044" } -- Dark magenta for selection
+				hl.Comment = { fg = "#808080", italic = true } -- Grey out comments
+				hl.LineNr = { fg = "#808080" }
 			end,
 		},
 		config = function(_, opts)
@@ -138,8 +153,8 @@ require("lazy").setup({
 				options = {
 					theme = "tokyonight",
 					icons_enabled = true,
-					component_separators = { left = "", right = "" },
-					section_separators = { left = "", right = "" },
+					component_separators = { left = "", right = "" },
+					section_separators = { left = "", right = "" },
 				},
 			})
 		end,
@@ -232,7 +247,7 @@ require("lazy").setup({
 				end, bufopts)
 			end
 
-			local servers = {
+			local servers_to_install = {
 				"bashls",
 				"cssls",
 				"denols",
@@ -243,19 +258,39 @@ require("lazy").setup({
 				"rust_analyzer",
 				"svelte",
 				"emmet_ls",
-				"ts_ls", -- Corrected from tsserver
+				"ts_ls",
+			}
+
+			local servers_to_setup = {
+				"bashls",
+				"cssls",
+				"eslint",
+				"gopls",
+				"html",
+				"pyright",
+				"rust_analyzer",
+				"svelte",
+				"emmet_ls",
+				"ts_ls",
 			}
 
 			require("mason-lspconfig").setup({
-				ensure_installed = servers,
+				ensure_installed = servers_to_install,
 			})
 
-			for _, server_name in ipairs(servers) do
+			for _, server_name in ipairs(servers_to_setup) do
 				vim.lsp.config(server_name, {
 					on_attach = on_attach,
 					capabilities = capabilities,
 				})
 			end
+
+			-- Special setup for Deno LSP to activate only in Deno projects
+			vim.lsp.config("denols", {
+				on_attach = on_attach,
+				capabilities = capabilities,
+				root_dir = require("lspconfig").util.root_pattern("deno.json", "deno.jsonc"),
+			})
 
 			vim.lsp.config("gdscript", {
 				on_attach = on_attach,
@@ -439,4 +474,3 @@ require("lazy").setup({
 		opts = {},
 	},
 })
-
