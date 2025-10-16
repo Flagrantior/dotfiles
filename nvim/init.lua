@@ -113,11 +113,20 @@ require("lazy").setup({
 	{
 		"folke/tokyonight.nvim",
 		priority = 1000,
-		config = function()
-			require("tokyonight").setup({
-				style = "night",
-				transparent = true,
-			})
+		opts = {
+			transparent = true,
+			on_highlights = function(hl, c)
+				hl.Function = { fg = c.cyan }
+				hl.String = { fg = c.green }
+				hl.Type = { fg = c.magenta }
+				hl.Constant = { fg = c.orange }
+				hl.Variable = { fg = c.fg } -- Corrected typo
+				hl.Comment = { fg = c.red, italic = true }
+				hl.Visual = { bg = c.blue } -- Removed invalid style
+			end,
+		},
+		config = function(_, opts)
+			require("tokyonight").setup(opts)
 			vim.cmd.colorscheme("tokyonight")
 		end,
 	},
@@ -345,8 +354,22 @@ require("lazy").setup({
 		event = "VeryLazy",
 		opts = {},
 		keys = {
-			{ "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
-			{ "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
+			{
+				"s",
+				mode = { "n", "x", "o" },
+				function()
+					require("flash").jump()
+				end,
+				desc = "Flash",
+			},
+			{
+				"S",
+				mode = { "n", "x", "o" },
+				function()
+					require("flash").treesitter()
+				end,
+				desc = "Flash Treesitter",
+			},
 		},
 	},
 	{
@@ -397,6 +420,9 @@ require("lazy").setup({
 		lazy = false,
 		ft = "markdown",
 		dependencies = { "nvim-lua/plenary.nvim" },
+		keys = {
+			{ "<leader>oo", "<cmd>ObsidianQuickSwitch<CR>", desc = "Obsidian Quick Switch" },
+		},
 		opts = {
 			workspaces = {
 				{
@@ -413,3 +439,4 @@ require("lazy").setup({
 		opts = {},
 	},
 })
+
