@@ -19,23 +19,26 @@ vim.opt.rtp:prepend(lazypath)
 -- =============================================================================
 -- 2. CORE NEOVIM SETTINGS
 -- =============================================================================
-vim.g.mapleader = " " -- Set Leader key to space
+vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- Disable standard plugins we don't need
+-- Disable standard plugins
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
 -- Editor settings
 vim.opt.encoding = "utf-8"
-vim.opt.scrolloff = 7
+vim.opt.scrolloff = 8 -- Increased for better centering
 vim.opt.mouse = "a"
 vim.opt.hlsearch = true
 vim.opt.incsearch = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
-vim.opt.gdefault = true -- Use /g flag for :s by default
-vim.opt.cmdheight = 0 -- Hide the command line
+vim.opt.gdefault = true
+vim.opt.cmdheight = 1 -- A bit more space for messages
+vim.opt.signcolumn = "yes" -- Always show the sign column
+vim.opt.number = true -- Show line numbers
+vim.opt.relativenumber = true -- Show relative line numbers
 
 -- Tabs and indentation
 vim.opt.expandtab = true
@@ -45,15 +48,13 @@ vim.opt.softtabstop = 2
 
 -- Appearance
 vim.opt.list = true
-vim.opt.listchars = { tab = "  ", trail = "_", precedes = "-", extends = "-" }
-vim.opt.fillchars:append({ vert = " " })
+vim.opt.listchars = { tab = "  ", trail = "·", precedes = "‹", extends = "›" }
 vim.opt.conceallevel = 2
-vim.opt.guifont = "Source Code Pro for Powerline:h15:cANSI"
+vim.opt.termguicolors = true -- Enable true colors
 
 -- Buffer behavior
 vim.opt.swapfile = false
 vim.opt.foldenable = false
-vim.opt.foldlevel = 99
 
 -- Restore cursor on exit
 vim.api.nvim_create_autocmd("VimLeave", {
@@ -80,9 +81,8 @@ end
 
 -- Convenient exits and navigation
 keymap("i", "jj", "<Esc>", opts)
-keymap("i", "jk", "<Esc>", opts)
-keymap("i", "kj", "<Esc>", opts)
-keymap("n", "zz", ":q!<CR>", opts)
+keymap("n", "<leader>q", ":q<CR>", { desc = "Quit" })
+keymap("n", "<leader>Q", ":q!<CR>", { desc = "Quit without saving" })
 keymap("n", ";", ":", { silent = false })
 keymap("n", "<S-u>", ":redo<CR>", opts)
 
@@ -101,61 +101,76 @@ keymap("n", "<C-Right>", ":wincmd l<CR>", opts)
 -- Save
 keymap({ "i", "v", "n" }, "<C-s>", ":update<CR>", opts)
 
--- Obsidian
-keymap("n", "<C-k>", ":ObsidianQuickSwitch<CR>", opts)
-
 -- HEX
 vim.api.nvim_create_user_command("Hex", ":set bin | %!xxd", {})
 vim.api.nvim_create_user_command("Hexr", ":%!xxd -r", {})
 
 -- =============================================================================
--- 4. COLORSCHEME
--- =============================================================================
-vim.cmd([[
-  colorscheme vim
-  set notermguicolors
-  hi Comment ctermfg=darkred
-  hi Visual ctermfg=none ctermbg=23
-  hi TabLineFill ctermfg=none ctermbg=none cterm=none
-  hi TabLine ctermfg=cyan ctermbg=none cterm=none
-  hi TabLineSel ctermfg=cyan cterm=underline
-  hi StatusLine ctermbg=none cterm=bold
-  hi VertSplit cterm=none
-  hi Pmenu ctermfg=13 ctermbg=black
-  hi PmenuThumb ctermbg=23
-  hi PmenuSbar ctermbg=black
-  hi PmenuSel ctermfg=black ctermbg=cyan
-  hi SignColumn ctermbg=none
-  hi Folded ctermbg=17
-  hi FoldColumn ctermbg=0
-  hi MatchParen cterm=bold ctermbg=none ctermbg=darkmagenta
-  hi FlagMarkdownHead ctermfg=darkyellow ctermbg=none
-  hi FlagMarkdownDash ctermfg=53 ctermbg=none
-  hi FlagMarkdownCode ctermbg=none
-  hi FlagMarkdownCodeInline ctermbg=none ctermfg=magenta
-
-  set statusline=
-  set statusline+=%#StatusLine#
-  set statusline+=%f\ 
-  set statusline+=%m\ 
-  set statusline+=%=%r%=
-  set statusline+=\ %y
-  set statusline+=\ %l:%c/%L
-]])
-
--- =============================================================================
--- 5. PLUGINS
+-- 4. PLUGINS
 -- =============================================================================
 require("lazy").setup({
-	-- Core dependencies
+	-- ================== UI & THEME ================== --
+	{
+		"folke/tokyonight.nvim",
+		priority = 1000,
+		config = function()
+			require("tokyonight").setup({
+				style = "night",
+				transparent = true,
+			})
+			vim.cmd.colorscheme("tokyonight")
+		end,
+	},
+	{
+		"nvim-lualine/lualine.nvim",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		config = function()
+			require("lualine").setup({
+				options = {
+					theme = "tokyonight",
+					icons_enabled = true,
+					component_separators = { left = "", right = "" },
+					section_separators = { left = "", right = "" },
+				},
+			})
+		end,
+	},
+	{
+		"lukas-reineke/indent-blankline.nvim",
+		main = "ibl",
+		opts = {},
+	},
+	{
+		"folke/noice.nvim",
+		event = "VeryLazy",
+		opts = {
+			lsp = {
+				override = {
+					["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+					["vim.lsp.util.stylize_markdown"] = true,
+					["cmp.entry.get_documentation"] = true,
+				},
+			},
+			presets = {
+				bottom_search = true,
+				command_palette = true,
+				long_message_to_split = true,
+				inc_rename = false,
+				lsp_doc_border = false,
+			},
+		},
+		dependencies = {
+			"MunifTanjim/nui.nvim",
+			"rcarriga/nvim-notify",
+		},
+	},
+
+	-- ================== CORE ================== --
 	{ "nvim-lua/plenary.nvim" },
 	{ "folke/neodev.nvim" },
+	{ "slint-ui/vim-slint" }, -- For Slint UI framework, remove if not used
 
-	-- Colors
-	{ "ap/vim-css-color" },
-	{ "slint-ui/vim-slint" },
-
-	-- Treesitter for syntax highlighting
+	-- ================== TREESITTER ================== --
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
@@ -174,21 +189,15 @@ require("lazy").setup({
 					"html",
 					"css",
 				},
-				highlight = {
-					enable = true,
-					additional_vim_regex_highlighting = { "markdown" },
-				},
-				autotag = {
-					enable = true,
-				},
+				highlight = { enable = true },
+				autotag = { enable = true },
+				indent = { enable = true },
 			})
 		end,
 	},
-
-	-- Auto-close tags
 	{ "windwp/nvim-ts-autotag" },
 
-	-- LSP, DAP and autocompletion
+	-- ================== LSP, DAP & AUTOCOMPLETION ================== --
 	{
 		"williamboman/mason.nvim",
 		build = ":MasonUpdate",
@@ -200,7 +209,6 @@ require("lazy").setup({
 		"williamboman/mason-lspconfig.nvim",
 		dependencies = { "neovim/nvim-lspconfig" },
 		config = function()
-			-- Define common settings for all LSP servers
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 			local on_attach = function(client, bufnr)
 				vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
@@ -215,7 +223,6 @@ require("lazy").setup({
 				end, bufopts)
 			end
 
-			-- List of servers for automatic installation and setup
 			local servers = {
 				"bashls",
 				"cssls",
@@ -227,39 +234,29 @@ require("lazy").setup({
 				"rust_analyzer",
 				"svelte",
 				"emmet_ls",
-				"ts_ls",
+				"ts_ls", -- Corrected from tsserver
 			}
 
 			require("mason-lspconfig").setup({
 				ensure_installed = servers,
-				handlers = {
-					-- Use the new vim.lsp.config API, as mentioned in the warning
-					function(server_name)
-						vim.lsp.config(server_name, {
-							on_attach = on_attach,
-							capabilities = capabilities,
-						})
-					end,
-				},
 			})
 
-			-- Separate setup for Godot, also using the new API
+			for _, server_name in ipairs(servers) do
+				vim.lsp.config(server_name, {
+					on_attach = on_attach,
+					capabilities = capabilities,
+				})
+			end
+
 			vim.lsp.config("gdscript", {
 				on_attach = on_attach,
 				capabilities = capabilities,
 			})
 
-			-- Diagnostics (errors and warnings)
-			vim.keymap.set("n", "<leader>lD", vim.diagnostic.open_float)
-			vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
-			vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
-			vim.o.updatetime = 250
-			vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-				group = vim.api.nvim_create_augroup("float_diagnostic", { clear = true }),
-				callback = function()
-					vim.diagnostic.open_float(nil, { focus = false })
-				end,
-			})
+			-- Diagnostics
+			vim.keymap.set("n", "<leader>ld", vim.diagnostic.open_float, { desc = "Line Diagnostics" })
+			vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to Previous Diagnostic" })
+			vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to Next Diagnostic" })
 		end,
 	},
 	{
@@ -318,15 +315,19 @@ require("lazy").setup({
 		end,
 	},
 
-	-- Utilities
+	-- ================== UTILITIES ================== --
+	{
+		"folke/which-key.nvim",
+		event = "VeryLazy",
+		init = function()
+			vim.o.timeout = true
+			vim.o.timeoutlen = 300
+		end,
+		opts = {},
+	},
 	{
 		"numToStr/Comment.nvim",
-		config = function()
-			require("Comment").setup({
-				toggler = { line = "<C-_>", block = "<S-C-_>" }, -- Use standard <C-/>
-				opleader = { block = "<S-C-_>" },
-			})
-		end,
+		opts = {},
 	},
 	{
 		"windwp/nvim-autopairs",
@@ -340,22 +341,24 @@ require("lazy").setup({
 		end,
 	},
 	{
-		"phaazon/hop.nvim",
-		branch = "v2",
-		config = function()
-			require("hop").setup({ keys = "fqwerasdmnkj123vg4tcxz" })
-			keymap({ "n", "x", "o" }, " ", "<cmd>HopChar1<CR>", { silent = true })
-		end,
+		"folke/flash.nvim",
+		event = "VeryLazy",
+		opts = {},
+		keys = {
+			{ "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
+			{ "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
+		},
 	},
 	{
 		"nvim-telescope/telescope.nvim",
 		dependencies = { "nvim-lua/plenary.nvim" },
 		config = function()
 			local builtin = require("telescope.builtin")
-			keymap("n", "ff", builtin.find_files, {})
-			keymap("n", "fg", builtin.live_grep, {})
-			keymap("n", "fb", builtin.buffers, {})
-			keymap("n", "fh", builtin.help_tags, {})
+			keymap("n", "<leader>ff", builtin.find_files, { desc = "Find Files" })
+			keymap("n", "<leader>fg", builtin.live_grep, { desc = "Live Grep" })
+			keymap("n", "<leader>fb", builtin.buffers, { desc = "Find Buffers" })
+			keymap("n", "<leader>fh", builtin.help_tags, { desc = "Help Tags" })
+			keymap("n", "<leader>fo", builtin.oldfiles, { desc = "Find Old Files" })
 		end,
 	},
 	{
@@ -377,7 +380,7 @@ require("lazy").setup({
 		},
 	},
 
-	-- File manager
+	-- ================== FILE MANAGER ================== --
 	{
 		"mikavilpas/yazi.nvim",
 		dependencies = { "nvim-lua/plenary.nvim" },
@@ -387,7 +390,7 @@ require("lazy").setup({
 		},
 	},
 
-	-- Notes and Markdown
+	-- ================== NOTES & MARKDOWN ================== --
 	{
 		"epwalsh/obsidian.nvim",
 		version = "*",
@@ -407,9 +410,6 @@ require("lazy").setup({
 	{
 		"meanderingprogrammer/render-markdown.nvim",
 		dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.nvim" },
-		opts = {
-			-- Settings for render-markdown
-		},
+		opts = {},
 	},
 })
-
