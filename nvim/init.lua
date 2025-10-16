@@ -143,6 +143,11 @@ require("lazy").setup({
 		config = function(_, opts)
 			require("tokyonight").setup(opts)
 			vim.cmd.colorscheme("tokyonight")
+
+			-- Make tabs less bright
+			vim.api.nvim_set_hl(0, "TabLine", { fg = "#666666", bg = "#1a1a1a" })
+			vim.api.nvim_set_hl(0, "TabLineSel", { fg = "#cccccc", bg = "#333333", bold = true })
+			vim.api.nvim_set_hl(0, "TabLineFill", { fg = "#666666", bg = "#1a1a1a" })
 		end,
 	},
 	{
@@ -155,6 +160,9 @@ require("lazy").setup({
 					icons_enabled = true,
 					component_separators = { left = "", right = "" },
 					section_separators = { left = "", right = "" },
+				},
+				tabline = {
+					lualine_a = { { "tabs", padding = { left = 0, right = 0 } } },
 				},
 			})
 		end,
@@ -191,7 +199,7 @@ require("lazy").setup({
 
 	-- ================== CORE ================== --
 	{ "nvim-lua/plenary.nvim" },
-	{ "folke/neodev.nvim" },
+	{ "folke/neodev.nvim", opts = {} },
 	{ "slint-ui/vim-slint" }, -- For Slint UI framework, remove if not used
 
 	-- ================== TREESITTER ================== --
