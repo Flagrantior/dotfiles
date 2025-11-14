@@ -42,11 +42,11 @@ open = [
 ]
 reveal = [
 	# { run = 'xdg-open "$(dirname "$1")"',           desc = "Reveal", for = "linux" },
-	{ run = 'vlc -- "$@"', orphan = false, desc = "VLC", for = "linux", block = true },
-	{ run = 'foot nvim -p "$1"',										desc = "Reveal", for = "linux" },
-	# { run = 'jpegoptim --size=75% --overwrite "$1"',desc = "jpegoptim 75%", for = "linux" },
-	{ run = 'jpegoptim --size=50% --overwrite "$1"',desc = "jpegoptim 50%", for = "linux" },
-	{ run = 'open -R "$1"',                         desc = "Reveal", for = "macos" },
+	{ run = 'ffmpeg -i "$1" "$1.webp" && rm "$1"',    desc = "to webp", for = "linux" },
+	{ run = 'cwebp -q 90 "$1" -o "$1.webp" && rm "$1"',    desc = "cwebp 90", for = "linux" },
+	{ run = 'vlc -- "$@"', orphan = false,            desc = "VLC", for = "linux", block = true },
+	{ run = 'foot nvim -p "$1"',										  desc = "Reveal", for = "linux" },
+	{ run = 'jpegoptim --size=50% --overwrite "$1"',  desc = "jpegoptim 50%", for = "linux" },
 	# { run = 'explorer /select,"%1"', orphan = true, desc = "Reveal", for = "windows" },
 	{ run = '''exiftool "$1"; echo "Press enter to exit"; read _''', block = true, desc = "Show EXIF", for = "unix" },
 ]
