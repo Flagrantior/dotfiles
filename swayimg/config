@@ -87,11 +87,13 @@ pstore = no
 fill = yes
 # Anti-aliasing mode for thumbnails (none/box/bilinear/bicubic/mks13)
 antialiasing = mks13
+selected_scale = 1,15
 window = #000000bb
 background = #000000bb
 select = #000000c9
-border = #00ffffbb
+border_color = #00ffffbb
 shadow = #00000000
+padding = 2
 
 ################################################################################
 # Image list configuration

@@ -64,7 +64,7 @@ play = [
 
 [open]
 rules = [
-	{ name = "*/", use = [ "edit", "open", "reveal" ] },
+	{ url = "*/", use = [ "edit", "open", "reveal" ] },
 	{ mime = "text/*", use = [ "edit", "reveal" ] },
 	{ mime = "{audio,video}/*", use = [ "play", "reveal" ] },
 	{ mime = "image/gif", use = [ "play", "reveal" ] },
@@ -75,7 +75,7 @@ rules = [
 	{ mime = "*/javascript", use = [ "edit", "reveal" ] },
 
 	{ mime = "inode/x-empty", use = [ "edit", "reveal" ] },
-	{ name = "*", use = [ "open", "reveal" ] },
+	{ url = "*", use = [ "open", "reveal" ] },
 ]
 
 [tasks]

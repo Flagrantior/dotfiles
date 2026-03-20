@@ -7,9 +7,14 @@
 # : Flavor {{{
 
 [flavor]
-use = ""
+# use = ""
+dark  = ""
+light = ""
 
 # : }}}
+
+[app]
+overall = {}
 
 # : Manager {{{
 

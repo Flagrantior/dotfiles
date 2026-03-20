@@ -204,6 +204,21 @@ require("lazy").setup({
 
 	-- ================== CORE ================== --
 	{ "folke/neodev.nvim" },
+	{
+		"kndndrj/nvim-dbee",
+		dependencies = {
+			"MunifTanjim/nui.nvim",
+		},
+		build = function()
+			-- Install tries to automatically detect the install method.
+			-- if it fails, try calling it with one of these parameters:
+			--    "curl", "wget", "bitsadmin", "go"
+			require("dbee").install()
+		end,
+		config = function()
+			require("dbee").setup(--[[optional config]])
+		end,
+	},
 
 	-- ================== TREESITTER ================== --
 	{
@@ -470,10 +485,10 @@ require("lazy").setup({
 				return dotgit and vim.fn.fnamemodify(dotgit, ":h")
 			end
 
-			keymap("n", "<leader>ff", function()
+			keymap("n", "<leader><leader>", function()
 				builtin.find_files({ cwd = get_git_root() })
 			end, { desc = "Find Files (Git)" })
-			keymap("n", "<leader>fg", function()
+			keymap("n", "<leader>/", function()
 				builtin.live_grep({ cwd = get_git_root() })
 			end, { desc = "Live Grep (Git)" })
 			keymap("n", "<leader>fb", builtin.buffers, { desc = "Find Buffers" })
@@ -508,7 +523,8 @@ require("lazy").setup({
 		keys = {
 			{ "<leader>y", "<cmd>Yazi<CR>", desc = "Open Yazi" },
 			{ "<S-Tab>", "<cmd>Yazi<CR>" },
-			{ "<S-t>", ":tabnew<CR><cmd>Yazi<CR>" },
+			-- { "<S-t>", ":tabnew<CR><cmd>Yazi<CR>" },
+			{ "<S-t>", ":tabnew<CR>" },
 			{ "<C-S-Tab>", ":tabnew<CR><cmd>Yazi<CR>" },
 		},
 	},
