@@ -141,6 +141,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 })
 
 -- Markview
+vim.g.markview_alpha = 0
 safe_config("markview", nil, function(m)
 	m.setup({ preview = { hybrid_mode = true } })
 end)
@@ -235,6 +236,19 @@ local kopts = { silent = true }
 map("i", "jj", "<Esc>", kopts)
 map("v", "<C-y>", '"+y', kopts)
 map("n", "<S-u>", ":redo<CR>", kopts)
+
+-- Move lines
+map("n", "<A-j>", ":m .+1<CR>==", kopts)
+map("v", "<A-j>", ":m '>+1<CR>gv=gv", kopts)
+
+map("n", "<A-Down>", ":m .+1<CR>==", kopts)
+map("v", "<A-Down>", ":m '>+1<CR>gv=gv", kopts)
+
+map("n", "<A-Up>", ":m .-2<CR>==", kopts)
+map("v", "<A-k>", ":m '<-2<CR>gv=gv", kopts)
+
+map("n", "<A-k>", ":m .-2<CR>==", kopts)
+map("v", "<A-Up>", ":m '<-2<CR>gv=gv", kopts)
 
 -- Diagnostics
 map("n", "<leader>w", vim.diagnostic.open_float, { desc = "Line Diagnostics" })
@@ -334,3 +348,18 @@ hl(0, "DiagnosticUnderlineError", { undercurl = true, sp = "#ff005f" })
 hl(0, "DiagnosticUnderlineWarn", { undercurl = true, sp = "#ffaa00" })
 hl(0, "DiagnosticSignError", { fg = "#ff005f", bg = "none" })
 hl(0, "DiagnosticSignWarn", { fg = "#ffaa00", bg = "none" })
+
+-- Markview
+hl(0, "MarkviewCode", { bg = "#000000" })
+hl(0, "MarkviewCodeInfo", { fg = "#00ffff", bg = "#001a1a", italic = true })
+hl(0, "MarkviewInlineCode", { fg = "#00ffff", bg = "#001a1a" })
+
+for i = 1, 6 do
+	hl(0, "MarkviewHeading" .. i, { bg = "none" })
+	hl(0, "MarkviewHeading" .. i .. "Sign", { bg = "none" })
+end
+
+hl(0, "MarkviewBlockQuote", { bg = "none" })
+hl(0, "MarkviewTableBorder", { bg = "none" })
+hl(0, "MarkviewTableHeader", { bg = "none" })
+hl(0, "MarkviewHorizontalRule", { bg = "none" })
