@@ -553,48 +553,6 @@ require("lazy").setup({
 	{
 		"meanderingprogrammer/render-markdown.nvim",
 		dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.nvim" },
-		opts = {
-			indent = {
-				enabled = true,
-				skip_heading = true,
-				per_level = 4,
-			},
-			paragraph = {
-				enabled = true,
-				left_margin = 1,
-			},
-			heading = {
-				icons = { "" },
-				sign = false,
-				backgrounds = { "FlagMarkdownHead" },
-				width = "block",
-				left_margin = 0,
-				left_pad = 0,
-				right_pad = 0,
-				position = "inline",
-			},
-			code = {
-				style = "normal",
-				width = "block",
-				sign = false,
-				left_pad = 1,
-				highlight = "FlagMarkdownCode",
-				highlight_inline = "FlagMarkdownCodeInline",
-				border = "thick",
-			},
-			pipe_table = {
-				filler = "",
-			},
-			dash = {
-				width = 20,
-				highlight = "FlagMarkdownDash",
-			},
-			bullet = {
-				left_pad = 1,
-			},
-			anti_conceal = {
-				enabled = false,
-			},
-		},
+		opts = {},
 	},
 })
