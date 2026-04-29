@@ -140,6 +140,26 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	end,
 })
 
+-- Flash
+safe_config("flash.nvim", "flash", function(flash)
+	flash.setup({
+		modes = {
+			char = {
+				enabled = false,
+				search = false,
+			},
+		},
+	})
+
+	local fmap = vim.keymap.set
+	fmap({ "n", "x", "o" }, "<space>", function()
+		flash.jump()
+	end, { desc = "Flash" })
+	fmap({ "n", "x", "o" }, "<S-Space>", function()
+		flash.treesitter()
+	end, { desc = "Flash" })
+end)
+
 -- Markview
 vim.g.markview_alpha = 0
 safe_config("markview", nil, function(m)
@@ -197,7 +217,10 @@ safe_config("gitsigns.nvim", "gitsigns", function(g)
 	g.setup({})
 end)
 safe_config("Comment.nvim", "Comment", function(c)
-	c.setup({ toggler = { line = "<C-/>" } })
+	c.setup({
+		toggler = { line = "<C-/>" },
+		opleader = { block = "<C-/>" },
+	})
 end)
 safe_config("nvim-autopairs", nil, function(a)
 	a.setup({})
@@ -236,6 +259,10 @@ local kopts = { silent = true }
 map("i", "jj", "<Esc>", kopts)
 map("v", "<C-y>", '"+y', kopts)
 map("n", "<S-u>", ":redo<CR>", kopts)
+
+-- Inserts
+map("n", "e", "i", { noremap = true })
+map("n", "<CR>", "i", { noremap = true })
 
 -- Move lines
 map("n", "<A-j>", ":m .+1<CR>==", kopts)
@@ -363,3 +390,7 @@ hl(0, "MarkviewBlockQuote", { bg = "none" })
 hl(0, "MarkviewTableBorder", { bg = "none" })
 hl(0, "MarkviewTableHeader", { bg = "none" })
 hl(0, "MarkviewHorizontalRule", { bg = "none" })
+
+-- Flash
+hl(0, "FlashMatch", { bg = "#555555" })
+hl(0, "FlashLabel", { fg = "#000000", bg = "#ff00ff" })
