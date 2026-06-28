@@ -26,9 +26,21 @@ opt.listchars = { tab = "  ", trail = "_", precedes = "-", extends = "-" }
 opt.conceallevel = 2
 opt.swapfile = false
 opt.foldenable = false
+opt.fillchars = {
+	horiz = "─",
+	vert = "│",
+	verthoriz = "┼",
+	horizup = "┴",
+	horizdown = "┬",
+	vertleft = "┤",
+	vertright = "├",
+	eob = "│",
+}
+vim.api.nvim_set_hl(0, "WinSeparator", { fg = "#00ffff", bg = "NONE" })
 
 -- Statusline
 opt.statusline = "%#StatusLine# %f %m %= %y %l:%c/%L "
+opt.laststatus = 3
 
 -- Cursor behavior
 vim.api.nvim_create_autocmd("VimLeave", {
@@ -283,6 +295,8 @@ map("n", "[w", vim.diagnostic.goto_prev, { desc = "Go to Previous Diagnostic" })
 map("n", "]w", vim.diagnostic.goto_next, { desc = "Go to Next Diagnostic" })
 
 -- Window navigation
+map("n", "<C-w>s", ":vsplit<CR>", { silent = true })
+map("n", "<C-w>S", ":split<CR>", { silent = true })
 map("n", "<C-Up>", ":wincmd k<CR>", kopts)
 map("n", "<C-Down>", ":wincmd j<CR>", kopts)
 map("n", "<C-Left>", ":wincmd h<CR>", kopts)

@@ -8,10 +8,12 @@ swipe:
         command: "pactl set-sink-volume 0 -5%"
     right:
       update:
-        command: "light -A 1"
+        #command: "light -A 1"
+        command: "brightnessctl set 1%+"
     left:
       update:
-        command: "light -U 1"
+        #command: "light -U 1"
+        command: "brightnessctl set 1%-"
 
 #hold:
   #1:
