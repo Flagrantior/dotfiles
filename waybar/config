@@ -107,7 +107,7 @@
 	"format": "t{temperatureC}"
 },
 "backlight": {
-	"device": "radeon_b10",
+	"device": "nvidia_wmi_ec_backlight",
 	"format": "{icon}",
 	"format-icons": ["🭻", "🭺", "🭹", "🭸", "🭷", "🭶"],
 	"on-scroll-up": "light -A 1",
@@ -120,13 +120,14 @@
 		"critical": 15
 	},
 	"format-charging": "{icon}",
+   "format-plugged": "{icon}",
 	"format-time": "~{H}:{m}",
 	"format": "{icon}", //🗲
 	"format-icons": ["!!!", "!!", "!", "🭸", "🭷", "🭶"],
 	"format-alt": "{time} {capacity}%"
 },
 "network": {
-	"format-wifi": "",
+	"format-wifi": "{signalStrength}",
 	"format": "N{icon}",
 	"format-ethernet": "",
 	//"format-ethernet": "{ipaddr}",

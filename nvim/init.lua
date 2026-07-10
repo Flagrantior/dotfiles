@@ -115,8 +115,9 @@ safe_config("nvim-treesitter", "nvim-treesitter.configs", function(ts)
 			"html",
 			"css",
 			"scss",
+			"wgsl",
 		},
-		highlight = { enable = true },
+		highlight = { enable = true, additional_vim_regex_highlighting = false },
 		indent = { enable = true },
 	})
 end)
@@ -128,7 +129,7 @@ end)
 
 -- Force Treesitter attachment for Svelte
 vim.api.nvim_create_autocmd({ "FileType", "BufEnter" }, {
-	pattern = { "svelte", "html", "javascript", "css", "scss" },
+	pattern = { "svelte", "html", "javascript", "css", "scss", "glsl", "wgsl" },
 	callback = function()
 		local lang = vim.treesitter.language.get_lang(vim.bo.filetype) or vim.bo.filetype
 		pcall(vim.treesitter.start, 0, lang)
@@ -206,7 +207,6 @@ safe_config("nvim-cmp", "cmp", function(cmp)
 		sources = cmp.config.sources({
 			{ name = "nvim_lsp" },
 			{ name = "luasnip" },
-		}, {
 			{ name = "buffer" },
 			{ name = "path" },
 		}),
@@ -215,8 +215,34 @@ end)
 
 -- Formatting
 safe_config("conform.nvim", "conform", function(c)
+	local home = vim.env.HOME
 	c.setup({
-		formatters_by_ft = { svelte = { "prettier" }, lua = { "stylua" } },
+
+		formatters = {
+			prettier_wgsl = {
+				command = home .. "/node_modules/.bin/prettier",
+				args = {
+					"--plugin",
+					home .. "/node_modules/prettier-plugin-wgsl/dist/index.mjs",
+					"--stdin-filepath",
+					"$FILENAME",
+				},
+				stdin = true,
+			},
+		},
+
+		formatters_by_ft = {
+			svelte = { "prettier" },
+			lua = { "stylua" },
+			rust = { "rustfmt" },
+			python = { "ruff_fix", "ruff_format" },
+			javascript = { "prettier" },
+			typescript = { "prettier" },
+			javascriptreact = { "prettier" },
+			typescriptreact = { "prettier" },
+			wgsl = { "prettier_wgsl" },
+		},
+
 		format_on_save = { timeout_ms = 500, lsp_fallback = true },
 	})
 end)
