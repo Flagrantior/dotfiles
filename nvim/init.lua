@@ -101,25 +101,33 @@ local function safe_config(plugin_name, module_name, callback)
 end
 
 -- Treesitter Configuration
-safe_config("nvim-treesitter", "nvim-treesitter.configs", function(ts)
-	ts.setup({
-		ensure_installed = {
-			"lua",
-			"vim",
-			"vimdoc",
-			"markdown",
-			"markdown_inline",
-			"svelte",
-			"javascript",
-			"typescript",
-			"html",
-			"css",
-			"scss",
-			"wgsl",
-		},
-		highlight = { enable = true, additional_vim_regex_highlighting = false },
-		indent = { enable = true },
-	})
+safe_config("nvim-treesitter", "nvim-treesitter", function(ts)
+	local ensure = {
+		"lua",
+		"vim",
+		"vimdoc",
+		"markdown",
+		"markdown_inline",
+		"svelte",
+		"javascript",
+		"typescript",
+		"html",
+		"css",
+		"scss",
+		"wgsl",
+		"elixir",
+		"heex",
+		"eex",
+	}
+
+	local installed = ts.get_installed and ts.get_installed() or {}
+	local to_install = vim.tbl_filter(function(p)
+		return not vim.tbl_contains(installed, p)
+	end, ensure)
+
+	if #to_install > 0 then
+		ts.install(to_install)
+	end
 end)
 
 -- Auto-close tags
@@ -129,13 +137,12 @@ end)
 
 -- Force Treesitter attachment for Svelte
 vim.api.nvim_create_autocmd({ "FileType", "BufEnter" }, {
-	pattern = { "svelte", "html", "javascript", "css", "scss", "glsl", "wgsl" },
+	pattern = { "svelte", "html", "javascript", "css", "scss", "glsl", "wgsl", "elixir", "heex", "eex" },
 	callback = function()
 		local lang = vim.treesitter.language.get_lang(vim.bo.filetype) or vim.bo.filetype
 		pcall(vim.treesitter.start, 0, lang)
 	end,
 })
-
 -- LSP Keymaps (Modern way via LspAttach)
 vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function(args)
@@ -184,7 +191,7 @@ safe_config("mason", nil, function(m)
 	m.setup()
 end)
 safe_config("mason-lspconfig", nil, function(ml)
-	local servers = { "svelte", "ts_ls", "html", "cssls", "eslint", "emmet_ls" }
+	local servers = { "svelte", "ts_ls", "html", "cssls", "eslint", "emmet_ls", "elixirls" }
 	ml.setup({ ensure_installed = servers })
 	for _, s in ipairs(servers) do
 		vim.lsp.config(s, { install = true })

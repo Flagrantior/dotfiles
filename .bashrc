@@ -52,7 +52,7 @@ alias rsmv='rsync -aP --remove-source-files --'
 alias myip='curl https://api.db-ip.com/v2/free/self'
 alias rustrepl='evcxr'
 alias ranger='TERM=alacritty ranger'
-alias js='deno'
+alias js='bun repl'
 alias twt='taskwarrior-tui'
 alias trans='trans -t ru'
 alias transi='trans -t ru -I -b'
@@ -77,8 +77,11 @@ alias yaysize='yay -Qi | rg "(Name.*:|Installed Size.*:)" | cut -f2 -d":" | past
 alias nv='nvim -p'
 alias nvim='nvim -p'
 alias vim='nvim -p'
-# alias tg='telegram-desktop'
+alias tg='Telegram'
 alias rr='zz'
+alias lg='lazygit'
+alias bt='bluetui'
+alias nm='nmcli'
 
 function zz() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
@@ -122,3 +125,19 @@ eval "$(fzf --bash)"
 # source /usr/share/blesh/ble.sh
 
 # [[ ${BLE_VERSION-} ]] && ble-attach
+
+# Use bash-completion, if available, and avoid double-sourcing
+#[[ $PS1 &&
+#  ! ${BASH_COMPLETION_VERSINFO:-} &&
+#  -f /usr/share/bash-completion/bash_completion ]] &&
+#    . /usr/share/bash-completion/bash_completion
+
+source '/home/flagrantior/.bash_completions/comfy.sh'
+
+
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/home/flagrantior/.lmstudio/bin"
+# End of LM Studio CLI section
+
+
