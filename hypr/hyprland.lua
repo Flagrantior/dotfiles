@@ -246,17 +246,31 @@ hl.bind("SUPER + SHIFT + S", hl.dsp.exec_cmd("SLURP_ARGS='-B 000000cc -c 006666 
 
 -- SYSTEM
 
-hl.bind("SUPER + R", hl.dsp.exec_cmd(hypr_config .. "/scripts/screen_rotator"))
+hl.bind("SUPER + R", function()
+	dofile(os.getenv("HOME") .. "/.config/hypr/scripts/screen_rotator.lua")
+end)
 hl.bind("SUPER + SHIFT + D", hl.dsp.exec_cmd("yes | wf-recorder -f rec.mp4"))
 hl.bind("SUPER + CTRL + D", hl.dsp.exec_cmd("killall --signal 2 wf-recorder"))
 hl.bind("SUPER + C", hl.dsp.exec_cmd("hyprpicker -a"))
 hl.bind("SUPER + I", hl.dsp.exec_cmd("hyprctl dispatch invertactivewindow"))
 hl.bind("SUPER + O", hl.dsp.exec_cmd(hypr_config .. "/scripts/activeinfo"))
 hl.bind("SUPER + G", hl.dsp.exec_cmd(hypr_config .. "/scripts/gamemode"))
---hl.bind("SUPER + F1", hl.dsp.exec_cmd(hypr_config .. "/scripts/shaderer"))
---hl.bind("SUPER + F2", hl.dsp.exec_cmd(hypr_config .. "/scripts/shaderer 1"))
---hl.bind("SUPER + F3", hl.dsp.exec_cmd(hypr_config .. "/scripts/shaderer 2"))
---hl.bind("SUPER + F4", hl.dsp.exec_cmd(hypr_config .. "/scripts/shaderer 3"))
+
+local shaderer = dofile(os.getenv("HOME") .. "/.config/hypr/scripts/shaderer.lua")
+
+hl.bind("SUPER + F1", function()
+	shaderer(0)
+end)
+hl.bind("SUPER + F2", function()
+	shaderer(1)
+end)
+hl.bind("SUPER + F3", function()
+	shaderer(2)
+end)
+hl.bind("SUPER + F4", function()
+	shaderer(3)
+end)
+
 hl.bind("SUPER + Z", hl.dsp.exec_cmd("hyprwhspr record toggle"))
 
 -- LOCKSCREEN
