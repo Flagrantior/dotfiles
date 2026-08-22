@@ -30,7 +30,8 @@ hl.env("HYPRCURSOR_THEME", "Dot-Flagrantior")
 -- MONITORS
 
 hl.monitor({
-	output = "eDP-2",
+	output = "eDP-1",
+	-- output = "eDP-2",
 	mode = "preferred",
 	position = "auto",
 	scale = 1,
@@ -198,23 +199,23 @@ hl.bind("SUPER + CTRL + down", hl.dsp.send_shortcut({ mods = "", key = "Page_Dow
 
 -- WINDOW MOVE & RESIZE
 
-hl.bind("SUPER + ALT + left", hl.dsp.window.move({ x = -100, y = 0, relative = true }))
-hl.bind("SUPER + ALT + H", hl.dsp.window.move({ x = -100, y = 0, relative = true }))
-hl.bind("SUPER + ALT + right", hl.dsp.window.move({ x = 100, y = 0, relative = true }))
-hl.bind("SUPER + ALT + L", hl.dsp.window.move({ x = 100, y = 0, relative = true }))
-hl.bind("SUPER + ALT + up", hl.dsp.window.move({ x = 0, y = -100, relative = true }))
-hl.bind("SUPER + ALT + K", hl.dsp.window.move({ x = 0, y = -100, relative = true }))
-hl.bind("SUPER + ALT + down", hl.dsp.window.move({ x = 0, y = 100, relative = true }))
-hl.bind("SUPER + ALT + J", hl.dsp.window.move({ x = 0, y = 100, relative = true }))
+hl.bind("SUPER + CTRL + left", hl.dsp.window.move({ x = -100, y = 0, relative = true }))
+hl.bind("SUPER + CTRL + H", hl.dsp.window.move({ x = -100, y = 0, relative = true }))
+hl.bind("SUPER + CTRL + right", hl.dsp.window.move({ x = 100, y = 0, relative = true }))
+hl.bind("SUPER + CTRL + L", hl.dsp.window.move({ x = 100, y = 0, relative = true }))
+hl.bind("SUPER + CTRL + up", hl.dsp.window.move({ x = 0, y = -100, relative = true }))
+hl.bind("SUPER + CTRL + K", hl.dsp.window.move({ x = 0, y = -100, relative = true }))
+hl.bind("SUPER + CTRL + down", hl.dsp.window.move({ x = 0, y = 100, relative = true }))
+hl.bind("SUPER + CTRL + J", hl.dsp.window.move({ x = 0, y = 100, relative = true }))
 
-hl.bind("SUPER + ALT + CTRL + left", hl.dsp.window.resize({ x = -200, y = 0, relative = true }))
-hl.bind("SUPER + ALT + CTRL + H", hl.dsp.window.resize({ x = -200, y = 0, relative = true }))
-hl.bind("SUPER + ALT + CTRL + right", hl.dsp.window.resize({ x = 200, y = 0, relative = true }))
-hl.bind("SUPER + ALT + CTRL + L", hl.dsp.window.resize({ x = 200, y = 0, relative = true }))
-hl.bind("SUPER + ALT + CTRL + down", hl.dsp.window.resize({ x = 0, y = -200, relative = true }))
-hl.bind("SUPER + ALT + CTRL + J", hl.dsp.window.resize({ x = 0, y = -200, relative = true }))
-hl.bind("SUPER + ALT + CTRL + up", hl.dsp.window.resize({ x = 0, y = 200, relative = true }))
-hl.bind("SUPER + ALT + CTRL + K", hl.dsp.window.resize({ x = 0, y = 200, relative = true }))
+hl.bind("SUPER + ALT + left", hl.dsp.window.resize({ x = -200, y = 0, relative = true }))
+hl.bind("SUPER + ALT + H", hl.dsp.window.resize({ x = -200, y = 0, relative = true }))
+hl.bind("SUPER + ALT + right", hl.dsp.window.resize({ x = 200, y = 0, relative = true }))
+hl.bind("SUPER + ALT + L", hl.dsp.window.resize({ x = 200, y = 0, relative = true }))
+hl.bind("SUPER + ALT + down", hl.dsp.window.resize({ x = 0, y = -200, relative = true }))
+hl.bind("SUPER + ALT + J", hl.dsp.window.resize({ x = 0, y = -200, relative = true }))
+hl.bind("SUPER + ALT + up", hl.dsp.window.resize({ x = 0, y = 200, relative = true }))
+hl.bind("SUPER + ALT + K", hl.dsp.window.resize({ x = 0, y = 200, relative = true }))
 
 hl.bind("SUPER + CTRL + S", hl.dsp.exec_cmd("hyprctl dispatch pin active"))
 hl.bind("SUPER + CTRL + C", hl.dsp.exec_cmd("hyprctl dispatch centerwindow"))
@@ -289,6 +290,9 @@ hl.on("hyprland.start", function()
 	hl.exec_cmd("waybar")
 	hl.exec_cmd("mako")
 	hl.exec_cmd("fusuma")
+	hl.exec_cmd("pipewire")
+	hl.exec_cmd("pipewire-pulse")
+	hl.exec_cmd("wireplumber")
 	hl.exec_cmd("hyprpm reload")
 	hl.exec_cmd("swaybg --mode fill --image '" .. wallpaper .. "'")
 end)
