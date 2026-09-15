@@ -61,6 +61,7 @@ vim.pack.add({
 	{ src = "https://github.com/nvim-treesitter/nvim-treesitter", branch = "main" },
 	"https://github.com/windwp/nvim-ts-autotag",
 	"https://github.com/OXY2DEV/markview.nvim",
+	"https://github.com/gunasekar/markview-smart-tables.nvim",
 
 	-- LSP & Autocomplete
 	"https://github.com/williamboman/mason.nvim",
@@ -185,6 +186,13 @@ vim.g.markview_alpha = 0
 safe_config("markview", nil, function(m)
 	m.setup({ preview = { hybrid_mode = true } })
 end)
+require("markview").setup({
+	renderers = {
+		markdown_table = function(buffer, item)
+			require("markview-smart-tables").render(buffer, item)
+		end,
+	},
+})
 
 -- LSP & Mason
 safe_config("mason", nil, function(m)
