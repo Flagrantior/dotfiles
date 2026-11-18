@@ -1,6 +1,6 @@
 # A TOML linter such as https://taplo.tamasfe.dev/ can use this schema to validate your config.
 # If you encounter any issues, please make an issue at https://github.com/yazi-rs/schemas.
-"$schema" = "https://yazi-rs.github.io/schemas/theme.json"
+#"$schema" = "https://yazi-rs.github.io/schemas/theme.json"
 
 # vim:fileencoding=utf-8:foldmethod=marker
 
@@ -21,10 +21,6 @@ overall = {}
 [mgr]
 cwd = { fg = "cyan" }
 
-# Hovered
-hovered         = { reversed = true }
-preview_hovered = { underline = true }
-
 # Find
 find_keyword  = { fg = "yellow", bold = true, italic = true, underline = true }
 find_position = { fg = "magenta", bg = "reset", bold = true, italic = true }
@@ -34,11 +30,6 @@ marker_copied   = { fg = "lightgreen",  bg = "lightgreen" }
 marker_cut      = { fg = "lightred",    bg = "lightred" }
 marker_marked   = { fg = "lightcyan",   bg = "lightcyan" }
 marker_selected = { fg = "lightyellow", bg = "lightyellow" }
-
-# Tab
-tab_active   = { reversed = true }
-tab_inactive = {}
-tab_width    = 1
 
 # Count
 count_copied   = { fg = "black", bg = "green" }
@@ -61,12 +52,23 @@ sep_inner  = { open = "", close = "" }
 sep_outer = { open = "", close = "" }
 
 
+# : Indicator of hovered file {{{
+
+[indicator]
+parent  = { reversed = true }
+current = { bg = "black", reversed = true, bold = false }
+preview = { underline = true }
+# Empty caps: no rounded corners on the hovered file
+padding = { open = "", close = "" }
+
+# : }}}
+
+
 # : Status {{{
 
 [status]
 sep_left  = { open = "", close = "" }
 sep_right = { open = "", close = "" }
-separator_style = { fg = "black", bg = "#00ffff" }
 
 progress_label  = { bold = true }
 progress_normal = { fg = "cyan", bg = "black" }
@@ -94,7 +96,7 @@ unset_alt  = { fg = "#00ffff", bg = "#660000" }
 
 # : Select {{{
 
-[select]
+[pick]
 border   = { fg = "#660066" }
 active   = { fg = "magenta", bold = true }
 inactive = {}
@@ -115,7 +117,7 @@ selected = { reversed = true }
 
 # : Completion {{{
 
-[completion]
+[cmp]
 border   = { fg = "#660066" }
 active   = { reversed = true }
 inactive = {}
@@ -155,11 +157,10 @@ separator_style = { fg = "darkgray" }
 # : Help {{{
 
 [help]
-on      = { fg = "#00ffff", bold = true }
-run     = { fg = "#ff00ff" }
-desc    = { fg = "#00aaaa"}
+border  = { fg = "#660066" }
+chord   = { fg = "#00ffff", bold = true }
+action  = { fg = "#00aaaa" }
 hovered = { reversed = true, bold = true }
-footer  = { fg = "black", bg = "white" }
 
 # : }}}
 
@@ -201,16 +202,16 @@ rules = [
 	# { mime = "inode/x-empty", fg = "red" },
 
 	# Special files
-	{ name = "*", is = "orphan", bg = "red" },
-	{ name = "*", is = "exec"  , bold = true },
+	{ url = "*", is = "orphan", bg = "red" },
+	{ url = "*", is = "exec"  , bold = true },
 
 	# Dummy files
-	{ name = "*", is = "dummy", bg = "red" },
-	{ name = "*/", is = "dummy", bg = "red" },
+	{ url = "*", is = "dummy", bg = "red" },
+	{ url = "*/", is = "dummy", bg = "red" },
 
 	# Fallback
 	# { name = "*", fg = "white" },
-	{ name = "*/", fg = "#ff00aa", bold = true }
+	{ url = "*/", fg = "#ff00aa", bold = true }
 ]
 
 [icon]
