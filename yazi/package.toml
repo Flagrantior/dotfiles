@@ -3,5 +3,10 @@ use = "Ape/smart-enter"
 rev = "1c835cc"
 hash = "d6d6fa001c2cda9dda6eb5bc6beb96b7"
 
+[[plugin.deps]]
+use = "skylightlim/gridview"
+rev = "4c7a2b1"
+hash = "3ccce349df27e8ce5ededc3395d2235b"
+
 [flavor]
 deps = []

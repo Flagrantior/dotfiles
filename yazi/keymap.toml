@@ -4,7 +4,8 @@
 
 [mgr]
 prepend_keymap = [
-	{ on = "<Enter>", run = "plugin smart-enter", desc = "Enter the child directory, or open the file" }
+	{ on = "<Enter>", run = "plugin smart-enter", desc = "Enter the child directory, or open the file" },
+	{ on = [ "g", "v" ], run  = "plugin gridview", desc = "Grid view" }
 ]
 
 keymap = [
@@ -85,6 +86,7 @@ keymap = [
 	{ on = "d",         run = "remove",                      desc = "Trash selected files" },
 	{ on = "D",         run = "remove --permanently",        desc = "Permanently delete selected files" },
 	{ on = "A",         run = "create",                      desc = "Create a file (ends with / for directories)" },
+	{ on = "B",         run = "bulk_create",                 desc = "Bulk create a file (ends with / for directories)" },
 	{ on = "a",         run = "rename --cursor=before_ext",  desc = "Rename selected file(s)" },
 	{ on = "<F2>",      run = "rename --cursor=before_ext",  desc = "Rename selected file(s)" },
 	{ on = ";",         run = "shell --interactive",         desc = "Run a shell command" },
@@ -146,7 +148,7 @@ keymap = [
 
 	# Tabs
 	{ on = "<Tab>", run = "tab_create --current", desc = "Create a new tab with CWD" },
-	{ on = "t", run = "tab_create --current", desc = "Create a new tab with CWD" },
+	#{ on = "t", run = "tab_create --current", desc = "Create a new tab with CWD" },
 
 	{ on = "1", run = "tab_switch 0", desc = "Switch to the first tab" },
 	{ on = "2", run = "tab_switch 1", desc = "Switch to the second tab" },

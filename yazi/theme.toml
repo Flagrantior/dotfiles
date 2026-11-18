@@ -55,7 +55,7 @@ sep_outer = { open = "", close = "" }
 # : Indicator of hovered file {{{
 
 [indicator]
-parent  = { reversed = true }
+parent  = { reversed = true, bold = false }
 current = { bg = "black", reversed = true, bold = false }
 preview = { underline = true }
 # Empty caps: no rounded corners on the hovered file
